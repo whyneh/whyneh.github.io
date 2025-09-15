@@ -13,7 +13,7 @@ async function loadGithubCommits() {
 
     try {
         // github的API
-        const apiUrl = `https://blog.yww52.com/yww/github/api/getCommits/4`;
+        const apiUrl = `https://blog.yww52.com/whyne/github/getCommits/4`;
 
         const response = await fetch(apiUrl);
 
