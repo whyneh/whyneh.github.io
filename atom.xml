@@ -17,7 +17,7 @@
     <link href="https://yww52.com/" rel="alternate" type="text/html"/>
 
     <!-- Feed Update Time and Identifier -->
-    <updated>2025-09-18T10:28:33.755Z</updated>
+    <updated>2025-09-29T10:04:39.448Z</updated>
     <id>https://yww52.com/</id>
 
     <!-- Author Information -->
@@ -48,7 +48,7 @@
 
         <!-- Entry Dates -->
         <published>2025-08-09T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.755Z</updated>
+        <updated>2025-09-29T10:04:39.448Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -155,7 +155,7 @@
     
     <entry>
         <!-- Entry Title -->
-        <title type="html"><![CDATA[开发环境配置]]></title>
+        <title type="html"><![CDATA[服务器软件]]></title>
 
         <!-- Entry Links -->
         <link href="https://yww52.com/posts/58d09dd7/" rel="alternate" type="text/html"/>
@@ -163,7 +163,7 @@
 
         <!-- Entry Dates -->
         <published>2023-04-10T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.757Z</updated>
+        <updated>2025-09-29T10:04:39.452Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -182,17 +182,15 @@
         <!-- Entry Cover Image -->
         
         <media:content url="https://img.yww52.com/2023/4/2023-4-11top_img.jpg" type="image" medium="image">
-            <media:title>开发环境配置</media:title>
-            <media:description>开发环境配置 - 封面图</media:description>
+            <media:title>服务器软件</media:title>
+            <media:description>服务器软件 - 封面图</media:description>
         </media:content>
         
 
         <!-- Entry Categories -->
         
         
-        <category term="Java" label="Java" />
-        
-        <category term="SpringBoot" label="SpringBoot" />
+        <category term="服务工具" label="服务工具" />
         
         
 
@@ -218,7 +216,7 @@
 
         <!-- Entry Dates -->
         <published>2023-02-01T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.754Z</updated>
+        <updated>2025-09-29T10:04:39.446Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -273,7 +271,7 @@
 
         <!-- Entry Dates -->
         <published>2022-12-31T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.752Z</updated>
+        <updated>2025-09-29T10:04:39.443Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -326,7 +324,7 @@
 
         <!-- Entry Dates -->
         <published>2022-09-27T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.755Z</updated>
+        <updated>2025-09-29T10:04:39.448Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -390,7 +388,7 @@
 
         <!-- Entry Dates -->
         <published>2021-12-25T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.754Z</updated>
+        <updated>2025-09-29T10:04:39.447Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -443,7 +441,7 @@
 
         <!-- Entry Dates -->
         <published>2021-12-16T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.756Z</updated>
+        <updated>2025-09-29T10:04:39.449Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -498,7 +496,7 @@
 
         <!-- Entry Dates -->
         <published>2021-12-05T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.756Z</updated>
+        <updated>2025-09-29T10:04:39.449Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -551,7 +549,7 @@
 
         <!-- Entry Dates -->
         <published>2021-10-09T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.757Z</updated>
+        <updated>2025-09-29T10:04:39.451Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -606,7 +604,7 @@
 
         <!-- Entry Dates -->
         <published>2021-06-09T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.756Z</updated>
+        <updated>2025-09-29T10:04:39.450Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -659,7 +657,7 @@
 
         <!-- Entry Dates -->
         <published>2021-06-03T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.754Z</updated>
+        <updated>2025-09-29T10:04:39.446Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -712,7 +710,7 @@
 
         <!-- Entry Dates -->
         <published>2021-06-02T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.758Z</updated>
+        <updated>2025-09-29T10:04:39.452Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -765,7 +763,7 @@
 
         <!-- Entry Dates -->
         <published>2021-05-29T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.753Z</updated>
+        <updated>2025-09-29T10:04:39.445Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -818,7 +816,7 @@
 
         <!-- Entry Dates -->
         <published>2021-05-21T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.758Z</updated>
+        <updated>2025-09-29T10:04:39.453Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -873,7 +871,7 @@
 
         <!-- Entry Dates -->
         <published>2021-04-18T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.758Z</updated>
+        <updated>2025-09-29T10:04:39.453Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -926,7 +924,7 @@
 
         <!-- Entry Dates -->
         <published>2021-04-01T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.758Z</updated>
+        <updated>2025-09-29T10:04:39.451Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -981,7 +979,7 @@
 
         <!-- Entry Dates -->
         <published>2021-03-18T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.757Z</updated>
+        <updated>2025-09-29T10:04:39.450Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -1034,7 +1032,7 @@
 
         <!-- Entry Dates -->
         <published>2021-02-14T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.755Z</updated>
+        <updated>2025-09-29T10:04:39.447Z</updated>
 
         <!-- Entry Author -->
         <author>
@@ -1087,7 +1085,7 @@
 
         <!-- Entry Dates -->
         <published>2021-02-02T16:00:00.000Z</published>
-        <updated>2025-09-18T10:28:33.757Z</updated>
+        <updated>2025-09-29T10:04:39.451Z</updated>
 
         <!-- Entry Author -->
         <author>
