@@ -3174,6 +3174,26 @@
       </categories>
   </entry>
   <entry>
+    <title>Ngrok内网穿透</title>
+    <url>/posts/4a19524b/</url>
+    <content><![CDATA[<h2 id="什么是Ngrok"><a href="#什么是Ngrok" class="headerlink" title="什么是Ngrok"></a>什么是Ngrok</h2><p>ngrok 是一个反向代理，通过在公共的端点和本地运行的 Web 服务器之间建立一个安全的通道。ngrok 可捕获和分析所有通道上的流量，便于后期分析和重放。</p>
+<h2 id="有什么用"><a href="#有什么用" class="headerlink" title="有什么用"></a>有什么用</h2><p>内网穿透意思是能让外网访问到你本地，就比如你在本地运行tomacat等，外网是无法访问到你本地的项目的，当然你部署到服务器上就可以，这篇文章只是为了简化你的操作，而且你应该不会什么测试都部署到服务器，所以就能使用ngrok实现内网穿透。</p>
+<h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>先去官网注册一个用户，然后登陆。<br>国内Ngrok的地址：<a href="https://www.ngrok.cc/">https://www.ngrok.cc/</a></p>
+<h2 id="购买隧道"><a href="#购买隧道" class="headerlink" title="购买隧道"></a>购买隧道</h2><p><img src="https://img.yww52.com/2020/7/2020-7-3/img1.png" alt=""></p>
+<p>这个是免费的，当然你想体验更流畅那就付费呗。</p>
+<p><img src="https://img.yww52.com/2020/7/2020-7-3/img2.png" alt=""></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><img src="https://img.yww52.com/2020/7/2020-7-3/img3.png" alt=""></p>
+<p><img src="https://img.yww52.com/2020/7/2020-7-3/img4.png" alt=""></p>
+<p>把你的隧道ID输入就好了<br><img src="https://img.yww52.com/2020/7/2020-7-3/img5.png" alt=""></p>
+<p>然后你就能用赠送的域名访问到你的内网了。</p>
+<p><img src="https://img.yww52.com/2020/7/2020-7-3/img6.png" alt=""></p>
+<h2 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h2><p>这只是个简单的穿透，不过也挺有用的，能让外网访问到你的本地项目，在一些时候能很方便。你不想用他的域名，应该是可以解析的，解析成你的就好。</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>MySQL必知必会</title>
     <url>/posts/df083c4d/</url>
     <content><![CDATA[<h1 id="了解数据库和表"><a href="#了解数据库和表" class="headerlink" title="了解数据库和表"></a>了解数据库和表</h1><h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
@@ -3298,26 +3318,6 @@
 ]]></content>
       <categories>
         <category>读书笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Ngrok内网穿透</title>
-    <url>/posts/4a19524b/</url>
-    <content><![CDATA[<h2 id="什么是Ngrok"><a href="#什么是Ngrok" class="headerlink" title="什么是Ngrok"></a>什么是Ngrok</h2><p>ngrok 是一个反向代理，通过在公共的端点和本地运行的 Web 服务器之间建立一个安全的通道。ngrok 可捕获和分析所有通道上的流量，便于后期分析和重放。</p>
-<h2 id="有什么用"><a href="#有什么用" class="headerlink" title="有什么用"></a>有什么用</h2><p>内网穿透意思是能让外网访问到你本地，就比如你在本地运行tomacat等，外网是无法访问到你本地的项目的，当然你部署到服务器上就可以，这篇文章只是为了简化你的操作，而且你应该不会什么测试都部署到服务器，所以就能使用ngrok实现内网穿透。</p>
-<h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>先去官网注册一个用户，然后登陆。<br>国内Ngrok的地址：<a href="https://www.ngrok.cc/">https://www.ngrok.cc/</a></p>
-<h2 id="购买隧道"><a href="#购买隧道" class="headerlink" title="购买隧道"></a>购买隧道</h2><p><img src="https://img.yww52.com/2020/7/2020-7-3/img1.png" alt=""></p>
-<p>这个是免费的，当然你想体验更流畅那就付费呗。</p>
-<p><img src="https://img.yww52.com/2020/7/2020-7-3/img2.png" alt=""></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><img src="https://img.yww52.com/2020/7/2020-7-3/img3.png" alt=""></p>
-<p><img src="https://img.yww52.com/2020/7/2020-7-3/img4.png" alt=""></p>
-<p>把你的隧道ID输入就好了<br><img src="https://img.yww52.com/2020/7/2020-7-3/img5.png" alt=""></p>
-<p>然后你就能用赠送的域名访问到你的内网了。</p>
-<p><img src="https://img.yww52.com/2020/7/2020-7-3/img6.png" alt=""></p>
-<h2 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h2><p>这只是个简单的穿透，不过也挺有用的，能让外网访问到你的本地项目，在一些时候能很方便。你不想用他的域名，应该是可以解析的，解析成你的就好。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
       </categories>
   </entry>
   <entry>
@@ -4736,6 +4736,44 @@
       </categories>
   </entry>
   <entry>
+    <title>git常用命令</title>
+    <url>/posts/423abe9e/</url>
+    <content><![CDATA[<h2 id="本地库操作"><a href="#本地库操作" class="headerlink" title="本地库操作"></a>本地库操作</h2><h3 id="git的签名"><a href="#git的签名" class="headerlink" title="git的签名"></a>git的签名</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#用户名和邮件地址又称签名</span></span><br><span class="line"><span class="comment">#系统用户级别的签名设置（这个是一定要设置的）</span></span><br><span class="line">	git config --global user.name name</span><br><span class="line">	git config --global user.email email</span><br><span class="line"><span class="comment">#仓库级别的签名设置</span></span><br><span class="line">	git config user.name name </span><br><span class="line">	git config user.email email</span><br><span class="line"><span class="comment">#这两个签名就是范围不同，一个是全局的一个是部分的，当两个签名都存在时，就会使用仓库级别的签名</span></span><br><span class="line"><span class="comment">#注意的是，用户名不能是中文的</span></span><br></pre></td></tr></table></figure>
+<h3 id="git的添加和删除"><a href="#git的添加和删除" class="headerlink" title="git的添加和删除"></a>git的添加和删除</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将操作提交的暂存区</span></span><br><span class="line">	git add file</span><br><span class="line"><span class="comment">#将所有操作都提交到暂存区</span></span><br><span class="line">	git add .</span><br><span class="line"><span class="comment">#将操作从暂存区删除掉</span></span><br><span class="line">	git <span class="built_in">rm</span> --cached file</span><br></pre></td></tr></table></figure>
+<h3 id="git提交"><a href="#git提交" class="headerlink" title="git提交"></a>git提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将暂存区中没提交的操作提交到本地版本库</span></span><br><span class="line">	git commit file</span><br><span class="line"><span class="comment">#因为git每次提交都需要写日志来清楚知道修改了什么，所以可以这么写</span></span><br><span class="line">	git commit -m<span class="string">&quot;message&quot;</span> (file)</span><br><span class="line"><span class="comment">#还能这么写,-a表示执行修改或删除的操作都提交到本地库，可以不用add操作</span></span><br><span class="line">	git commit -a -m<span class="string">&quot;message&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="git状态查看"><a href="#git状态查看" class="headerlink" title="git状态查看"></a>git状态查看</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看库中有无修改操作，即有无操作可以add或commit</span></span><br><span class="line">	git status file</span><br></pre></td></tr></table></figure>
+<h3 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#这些操作都是查看历史版本的，只是显示的方式不同</span></span><br><span class="line">    git <span class="built_in">log</span> </span><br><span class="line">    git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">    git <span class="built_in">log</span> --oneline</span><br><span class="line">    git reflog 			<span class="comment">#这个方式比较好看出索引和易于前进后退</span></span><br></pre></td></tr></table></figure>
+<h3 id="前进后退"><a href="#前进后退" class="headerlink" title="前进后退"></a>前进后退</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基于索引操作</span></span><br><span class="line">	git reset --hard <span class="string">&quot;索引值&quot;</span></span><br><span class="line"><span class="comment"># 用^来操作</span></span><br><span class="line">	git reset --hard Head^^		<span class="comment">#该操作只能后退，一个^后退一个版本</span></span><br><span class="line"><span class="comment">#用~来操作       </span></span><br><span class="line">	git reset --hard Head~n		<span class="comment">#这样表示后退n个版本    </span></span><br></pre></td></tr></table></figure>
+<h3 id="reset三个参数的对比"><a href="#reset三个参数的对比" class="headerlink" title="reset三个参数的对比"></a>reset三个参数的对比</h3><h4 id="soft"><a href="#soft" class="headerlink" title="soft"></a>soft</h4><ul>
+<li>仅仅时在本地库移动HEAD指针</li>
+</ul>
+<h4 id="mixed"><a href="#mixed" class="headerlink" title="mixed"></a>mixed</h4><ul>
+<li><p>在本地库移动HEAD指针</p>
+</li>
+<li><p>重置暂存区</p>
+</li>
+</ul>
+<h4 id="hard"><a href="#hard" class="headerlink" title="hard"></a>hard</h4><ul>
+<li>在本地库移动HEAD指针</li>
+<li>重置暂存区</li>
+<li>重置工作区</li>
+</ul>
+<h3 id="从本地库中删除文件"><a href="#从本地库中删除文件" class="headerlink" title="从本地库中删除文件"></a>从本地库中删除文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#用rm命令把文件从工作区删除</span></span><br><span class="line">	<span class="built_in">rm</span> file</span><br><span class="line"><span class="comment">#此时用status命令可以发现该操作可以添加到暂存区</span></span><br><span class="line">	git add file</span><br><span class="line"><span class="comment">#然后把该操作提交到本地版本库就可以从本地库中删除该文件</span></span><br><span class="line">	git commit -m<span class="string">&quot;delete a file&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="比较文件差异"><a href="#比较文件差异" class="headerlink" title="比较文件差异"></a>比较文件差异</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将工作区中的文件和暂存区进行比较</span></span><br><span class="line">	git diff file</span><br><span class="line"><span class="comment">#将工作区中的文件和本地库历史记录比较，不带文件名时多个文件比较</span></span><br><span class="line">	git diff [历史版本] file      </span><br></pre></td></tr></table></figure>
+<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><h3 id="查看分支情况"><a href="#查看分支情况" class="headerlink" title="查看分支情况"></a>查看分支情况</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch</span><br><span class="line">git branch -v </span><br></pre></td></tr></table></figure>
+<h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch branch_name</span><br></pre></td></tr></table></figure>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout branch_name</span><br></pre></td></tr></table></figure>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#切换到被合并的分支上，然后执行merge命令</span></span><br><span class="line">	git merge branch_name		</span><br></pre></td></tr></table></figure>
+<h2 id="关于远程仓库的操作"><a href="#关于远程仓库的操作" class="headerlink" title="关于远程仓库的操作"></a>关于远程仓库的操作</h2><h3 id="关于远程仓库的地址"><a href="#关于远程仓库的地址" class="headerlink" title="关于远程仓库的地址"></a>关于远程仓库的地址</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看现在库里保存的远程仓库的地址</span></span><br><span class="line">	git remote -v</span><br><span class="line"><span class="comment">#设置远程仓库的地址，也可以理解为为origin创建一个别名</span></span><br><span class="line">	git remote add origin (加上远程仓库的地址，就比如https)</span><br><span class="line"><span class="comment">#删除现在的远程仓库的地址</span></span><br><span class="line">	git remote <span class="built_in">rm</span> origin</span><br></pre></td></tr></table></figure>
+<h3 id="本地库的推送"><a href="#本地库的推送" class="headerlink" title="本地库的推送"></a>本地库的推送</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">	git push origin master</span><br><span class="line"><span class="comment">#master可以改为其他分支，必须指定</span></span><br></pre></td></tr></table></figure>
+<h3 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">	git <span class="built_in">clone</span> (加上远程库的地址)</span><br><span class="line"><span class="comment">#克隆会帮你初始好本地库，并帮你把远程库下载到本地，还可以为你的origin创建好别名</span></span><br></pre></td></tr></table></figure>
+<h3 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#pull=fetch+merge</span></span><br><span class="line"><span class="comment">#抓取,该操作只是把远程仓库的东西下载下来，并没有修改你本地的文件</span></span><br><span class="line">	git fetch origin master </span><br><span class="line"><span class="comment">#这时你可以切换到origin/master这个分支上查看变化</span></span><br><span class="line">	git checkout origin/master </span><br><span class="line"><span class="comment">#然后通过两个分支的合并就可以变成远程仓库的样子</span></span><br><span class="line">	git merge origin/master</span><br><span class="line"><span class="comment">#当然直接执行pull也可以</span></span><br><span class="line">	git pull origin master</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>自建busuanzi网站计数服务</title>
     <url>/posts/5315dfbb/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> <a href="https://busuanzi.ibruce.info/">不蒜子(busuanzi)</a> 是一个广受欢迎的免费网页计数服务，能够轻松实现网站的页面浏览量(PV)和独立访客数(UV)统计。许多基于Hexo的网站都在使用busuanzi来实现访问统计功能，我的博客当前使用的主题是<code>Butterfly</code>，这个主题也是通过集成busuanzi计数器来实现网页计数。</p>
@@ -4865,44 +4903,6 @@
 ]]></content>
       <categories>
         <category>服务开发</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>git常用命令</title>
-    <url>/posts/423abe9e/</url>
-    <content><![CDATA[<h2 id="本地库操作"><a href="#本地库操作" class="headerlink" title="本地库操作"></a>本地库操作</h2><h3 id="git的签名"><a href="#git的签名" class="headerlink" title="git的签名"></a>git的签名</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#用户名和邮件地址又称签名</span></span><br><span class="line"><span class="comment">#系统用户级别的签名设置（这个是一定要设置的）</span></span><br><span class="line">	git config --global user.name name</span><br><span class="line">	git config --global user.email email</span><br><span class="line"><span class="comment">#仓库级别的签名设置</span></span><br><span class="line">	git config user.name name </span><br><span class="line">	git config user.email email</span><br><span class="line"><span class="comment">#这两个签名就是范围不同，一个是全局的一个是部分的，当两个签名都存在时，就会使用仓库级别的签名</span></span><br><span class="line"><span class="comment">#注意的是，用户名不能是中文的</span></span><br></pre></td></tr></table></figure>
-<h3 id="git的添加和删除"><a href="#git的添加和删除" class="headerlink" title="git的添加和删除"></a>git的添加和删除</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将操作提交的暂存区</span></span><br><span class="line">	git add file</span><br><span class="line"><span class="comment">#将所有操作都提交到暂存区</span></span><br><span class="line">	git add .</span><br><span class="line"><span class="comment">#将操作从暂存区删除掉</span></span><br><span class="line">	git <span class="built_in">rm</span> --cached file</span><br></pre></td></tr></table></figure>
-<h3 id="git提交"><a href="#git提交" class="headerlink" title="git提交"></a>git提交</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将暂存区中没提交的操作提交到本地版本库</span></span><br><span class="line">	git commit file</span><br><span class="line"><span class="comment">#因为git每次提交都需要写日志来清楚知道修改了什么，所以可以这么写</span></span><br><span class="line">	git commit -m<span class="string">&quot;message&quot;</span> (file)</span><br><span class="line"><span class="comment">#还能这么写,-a表示执行修改或删除的操作都提交到本地库，可以不用add操作</span></span><br><span class="line">	git commit -a -m<span class="string">&quot;message&quot;</span></span><br></pre></td></tr></table></figure>
-<h3 id="git状态查看"><a href="#git状态查看" class="headerlink" title="git状态查看"></a>git状态查看</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看库中有无修改操作，即有无操作可以add或commit</span></span><br><span class="line">	git status file</span><br></pre></td></tr></table></figure>
-<h3 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#这些操作都是查看历史版本的，只是显示的方式不同</span></span><br><span class="line">    git <span class="built_in">log</span> </span><br><span class="line">    git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">    git <span class="built_in">log</span> --oneline</span><br><span class="line">    git reflog 			<span class="comment">#这个方式比较好看出索引和易于前进后退</span></span><br></pre></td></tr></table></figure>
-<h3 id="前进后退"><a href="#前进后退" class="headerlink" title="前进后退"></a>前进后退</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基于索引操作</span></span><br><span class="line">	git reset --hard <span class="string">&quot;索引值&quot;</span></span><br><span class="line"><span class="comment"># 用^来操作</span></span><br><span class="line">	git reset --hard Head^^		<span class="comment">#该操作只能后退，一个^后退一个版本</span></span><br><span class="line"><span class="comment">#用~来操作       </span></span><br><span class="line">	git reset --hard Head~n		<span class="comment">#这样表示后退n个版本    </span></span><br></pre></td></tr></table></figure>
-<h3 id="reset三个参数的对比"><a href="#reset三个参数的对比" class="headerlink" title="reset三个参数的对比"></a>reset三个参数的对比</h3><h4 id="soft"><a href="#soft" class="headerlink" title="soft"></a>soft</h4><ul>
-<li>仅仅时在本地库移动HEAD指针</li>
-</ul>
-<h4 id="mixed"><a href="#mixed" class="headerlink" title="mixed"></a>mixed</h4><ul>
-<li><p>在本地库移动HEAD指针</p>
-</li>
-<li><p>重置暂存区</p>
-</li>
-</ul>
-<h4 id="hard"><a href="#hard" class="headerlink" title="hard"></a>hard</h4><ul>
-<li>在本地库移动HEAD指针</li>
-<li>重置暂存区</li>
-<li>重置工作区</li>
-</ul>
-<h3 id="从本地库中删除文件"><a href="#从本地库中删除文件" class="headerlink" title="从本地库中删除文件"></a>从本地库中删除文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#用rm命令把文件从工作区删除</span></span><br><span class="line">	<span class="built_in">rm</span> file</span><br><span class="line"><span class="comment">#此时用status命令可以发现该操作可以添加到暂存区</span></span><br><span class="line">	git add file</span><br><span class="line"><span class="comment">#然后把该操作提交到本地版本库就可以从本地库中删除该文件</span></span><br><span class="line">	git commit -m<span class="string">&quot;delete a file&quot;</span></span><br></pre></td></tr></table></figure>
-<h3 id="比较文件差异"><a href="#比较文件差异" class="headerlink" title="比较文件差异"></a>比较文件差异</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将工作区中的文件和暂存区进行比较</span></span><br><span class="line">	git diff file</span><br><span class="line"><span class="comment">#将工作区中的文件和本地库历史记录比较，不带文件名时多个文件比较</span></span><br><span class="line">	git diff [历史版本] file      </span><br></pre></td></tr></table></figure>
-<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h2><h3 id="查看分支情况"><a href="#查看分支情况" class="headerlink" title="查看分支情况"></a>查看分支情况</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch</span><br><span class="line">git branch -v </span><br></pre></td></tr></table></figure>
-<h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch branch_name</span><br></pre></td></tr></table></figure>
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout branch_name</span><br></pre></td></tr></table></figure>
-<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#切换到被合并的分支上，然后执行merge命令</span></span><br><span class="line">	git merge branch_name		</span><br></pre></td></tr></table></figure>
-<h2 id="关于远程仓库的操作"><a href="#关于远程仓库的操作" class="headerlink" title="关于远程仓库的操作"></a>关于远程仓库的操作</h2><h3 id="关于远程仓库的地址"><a href="#关于远程仓库的地址" class="headerlink" title="关于远程仓库的地址"></a>关于远程仓库的地址</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看现在库里保存的远程仓库的地址</span></span><br><span class="line">	git remote -v</span><br><span class="line"><span class="comment">#设置远程仓库的地址，也可以理解为为origin创建一个别名</span></span><br><span class="line">	git remote add origin (加上远程仓库的地址，就比如https)</span><br><span class="line"><span class="comment">#删除现在的远程仓库的地址</span></span><br><span class="line">	git remote <span class="built_in">rm</span> origin</span><br></pre></td></tr></table></figure>
-<h3 id="本地库的推送"><a href="#本地库的推送" class="headerlink" title="本地库的推送"></a>本地库的推送</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">	git push origin master</span><br><span class="line"><span class="comment">#master可以改为其他分支，必须指定</span></span><br></pre></td></tr></table></figure>
-<h3 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">	git <span class="built_in">clone</span> (加上远程库的地址)</span><br><span class="line"><span class="comment">#克隆会帮你初始好本地库，并帮你把远程库下载到本地，还可以为你的origin创建好别名</span></span><br></pre></td></tr></table></figure>
-<h3 id="拉取"><a href="#拉取" class="headerlink" title="拉取"></a>拉取</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#pull=fetch+merge</span></span><br><span class="line"><span class="comment">#抓取,该操作只是把远程仓库的东西下载下来，并没有修改你本地的文件</span></span><br><span class="line">	git fetch origin master </span><br><span class="line"><span class="comment">#这时你可以切换到origin/master这个分支上查看变化</span></span><br><span class="line">	git checkout origin/master </span><br><span class="line"><span class="comment">#然后通过两个分支的合并就可以变成远程仓库的样子</span></span><br><span class="line">	git merge origin/master</span><br><span class="line"><span class="comment">#当然直接执行pull也可以</span></span><br><span class="line">	git pull origin master</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工具</category>
       </categories>
   </entry>
   <entry>
@@ -6428,6 +6428,81 @@
       </categories>
   </entry>
   <entry>
+    <title>单例模式</title>
+    <url>/posts/f1601c3e/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>单例模式是一个很简单的设计模式，当然这里的简单说的是理解起来很简单，其实单例模式中有很多细节值得我们去深究。</p>
+<h1 id="什么是单例模式"><a href="#什么是单例模式" class="headerlink" title="什么是单例模式"></a>什么是单例模式</h1><p>单例模式顾名思义就是<code>只有一个实例</code>。</p>
+<p>每一个单例的类都只会存在一个实例，需要使用到该类时，就需要使用该实例，不得在创建另一个实例对象。</p>
+<p>为什么会需要单例模式呢？每次使用类的时候就直接创建对象就好了，何必这么麻烦。</p>
+<p>的确在大多数使用类的情况下，单例是没有必要的。但是在某些情况下单例还是很有必要的。</p>
+<p>比如需要重复用到的类，就会不断重复创建实例，这个实例完全可以复用，但是还是重新创建了，这样是十分浪费系统资源和性能的。</p>
+<p>再比如数据库的连接，如果每次使用都需要连接一次，使用完在断开连接，要是这样的开销完全大于一直连接，那为什么不一直连接直到程序结束呢？</p>
+<p>所以单例模式在一些情况下显得十分必要。</p>
+<h1 id="单例模式的实现"><a href="#单例模式的实现" class="headerlink" title="单例模式的实现"></a>单例模式的实现</h1><p>单例模式实现的方式有很多种，大多都是围绕两个核心的问题来变化的。</p>
+<ol>
+<li>何时生成实例，也就是是否是懒加载</li>
+<li>是否线程安全</li>
+</ol>
+<p>接下来就围绕这两个问题进行探讨。</p>
+<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>首先是最简单的一种单例模式的实现方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();    </span><br><span class="line">    <span class="comment">// 要使用实例，只能用该方法获取</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> instance;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 重写构造方法，使其不能再外部创建实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span> <span class="params">()</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方式很简单，这也就是网上提到的饿汉式的单例模式。</p>
+<p>现在回到刚刚那两个核心问题来看看这个饿汉式的单例模式。</p>
+<ol>
+<li>这是线程安全的</li>
+<li>不是懒加载的</li>
+</ol>
+<p>这种方式简单，其实就简答在一开始就创建了对象，所以就是线程安全的，多个对象用<code>getInstance</code>方法，都是调用同一个对象，不会出现线程安全的问题。</p>
+<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><p>懒汉式其实就是使用了懒加载的。现在来看看最简单的一种写法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为使用了懒加载，即直到要使用该类了才会创建实例，但是就是因为懒加载，所以出现了线程安全的问题。</p>
+<p>这其实不难理解，单个线程该类不会出现任何的问题，但是在多线程环境下，当多个线程同时进入到判断语句，此时都是<code>null</code>，那就会导致多个线程会创建多个实例，那就不是只有一个实例了，这就出现了线程不安全的问题。</p>
+<p>于是为了实现线程安全就可以改成下面这样。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接在<code>getInstance</code>方法上增加<code>synchronized</code>关键字，就能保证只有一个方法进入到该线程，从而就能保证线程的安全。</p>
+<h2 id="双检锁"><a href="#双检锁" class="headerlink" title="双检锁"></a>双检锁</h2><p>上面的线程安全的懒汉式已经解决了之前提到的两个问题，懒加载和线程安全。</p>
+<p>但是在方法上增加<code>synchronized</code>，会显得加锁粒度太重，我们只需要在创建对象的时候加锁就好了，何必在方法上加锁呢？所以就能再次优化。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但仔细思考之后，就会发现这段代码虽然降低了加锁粒度，但是并没有保证线程安全，因为也是存在有多个线程同时通过了判断语句，每次封锁就只能封锁住创建的顺序而已，并不能保证只创建一个实例。为了解决这个问题，我们可以在为这段代码增加一个判断语句。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这就是双检锁的单例模式了，这段代码看上去已经很完美了，但是这其实并没有实现线程安全。</p>
+<p>因为<code>instance = new Singleton();</code>这个创建对象的语句并不是原子性的操作，这个语句在底层其实分成了三步。</p>
+<ol>
+<li>分配实例的内存地址</li>
+<li>在该内存地址初始化实例对象</li>
+<li>将<code>instance</code>的地址指向这个内存地址。</li>
+</ol>
+<p>之前我们学习多线程的时候有提到过指令重排。这三个指令经过优化可能会重排，会导致执行出现以下几种顺序</p>
+<ul>
+<li><p>123，正常顺序</p>
+</li>
+<li><p>132，结果与正常顺序一样的顺序</p>
+</li>
+</ul>
+<p>这个不正常的顺序在单线程虽然结果与正常顺序一样，但是在多线就会出现一些线程不安全的问题。</p>
+<p>比如存在两个线程A和B调用了<code>getInstance</code>方法，就会出现这种情况。当线程A进入到同步代码块，并通过了第二个判断语句，进入到创建实例的阶段，经过指令重排，执行132这个顺序，当执行完3时，B也到了第一个判断语句，此时<code>instance != null</code>，所以就会直接返回<code>instance</code>，但是线程A还没执行初始化对象，所以这个内存地址其实还是没有被使用的，这样线程B拿到的实例就会是没有被初始化的空的内存地址。</p>
+<p>解决这个问题也很简单，之前有提到过<code>volatile</code>是可以禁止指令重排的，所以为该实例加上<code>volatile</code>关键字就好了，所以代码如下。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样即实现了懒加载，又实现了线程安全，而且封锁的粒度还小。</p>
+<p>这种方法就一个缺点，写起来很麻烦，下面探讨一下更简单的写法。</p>
+<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">SingletonHolder</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton</span> <span class="variable">INSTANCE</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种单例模式就使用到了静态内部类了，它是可以实现懒加载和线程安全的。因为静态内部类在调用的时候才会加载，也就会在调用到的时候才会创建对象，从而实现懒加载。静态内部类在类加载机制中也会实现线程安全，所以这种方法是比较简单的实现这两个问题的。</p>
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>上面提到的方法其实都还存在一个问题，可以被反射机制所破坏。</p>
+<p>下面我就使用双检索的方式创建一个单例，看看反射机制是否能破环该单例模式。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException &#123;</span><br><span class="line">        <span class="type">Constructor</span> <span class="variable">constructor</span> <span class="operator">=</span> Singleton.class.getDeclaredConstructor();</span><br><span class="line">        constructor.setAccessible(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">Singleton</span> <span class="variable">demo1</span> <span class="operator">=</span> (Singleton) constructor.newInstance();</span><br><span class="line">        <span class="type">Singleton</span> <span class="variable">demo2</span> <span class="operator">=</span> (Singleton) constructor.newInstance();</span><br><span class="line">        System.out.println(demo1);</span><br><span class="line">        System.out.println(demo2);</span><br><span class="line">        System.out.println(demo1.equals(demo2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">com.yw.Singleton@1b6d3586</span><br><span class="line">com.yw.Singleton@4554617c</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+<p>内存地址并不一样，这并不是同一个对象，所以可以看出反射机制是能够破坏上面的方法的。这种情况基本都是人为破坏的，所以不怎么需要考虑，不过实在要解决也是有方法的，那就是使用枚举。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">SingletonEnum</span> &#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为枚举是可以防止反射的，所以使用枚举可以防止别人使用反射，不过这样就和饿汉式差不多了，所以并不怎么推荐使用。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>因为反射破坏基本都是人为因素，所以不怎么需要考虑，所以单例模式一般使用双检锁或者是静态内部类的方法就好，如果懒加载并不是必须的，可以考虑使用饿汉式的单例模式。</p>
+<div class="note info flat"><p>单例模式的使用需要经过认真思考，滥用单例模式就是造成内存泄漏的原因之一，所以要在项目中使用单例模式，就需要确定该实例一直存在的开销是否要比使用完就销毁的开销要大。</p>
+</div>
+]]></content>
+      <categories>
+        <category>Design pattern</category>
+      </categories>
+  </entry>
+  <entry>
     <title>剑指Offer</title>
     <url>/posts/dd921d98/</url>
     <content><![CDATA[<h1 id="3-数组中重复的数字"><a href="#3-数组中重复的数字" class="headerlink" title="3.数组中重复的数字"></a>3.数组中重复的数字</h1><h2 id="排序遍历"><a href="#排序遍历" class="headerlink" title="排序遍历"></a>排序遍历</h2><p>可以直接将数组排序，然后进行循环遍历，就可以找到数组中重复的数字了。</p>
@@ -6693,81 +6768,6 @@
 ]]></content>
       <categories>
         <category>数据结构与算法</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>单例模式</title>
-    <url>/posts/f1601c3e/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>单例模式是一个很简单的设计模式，当然这里的简单说的是理解起来很简单，其实单例模式中有很多细节值得我们去深究。</p>
-<h1 id="什么是单例模式"><a href="#什么是单例模式" class="headerlink" title="什么是单例模式"></a>什么是单例模式</h1><p>单例模式顾名思义就是<code>只有一个实例</code>。</p>
-<p>每一个单例的类都只会存在一个实例，需要使用到该类时，就需要使用该实例，不得在创建另一个实例对象。</p>
-<p>为什么会需要单例模式呢？每次使用类的时候就直接创建对象就好了，何必这么麻烦。</p>
-<p>的确在大多数使用类的情况下，单例是没有必要的。但是在某些情况下单例还是很有必要的。</p>
-<p>比如需要重复用到的类，就会不断重复创建实例，这个实例完全可以复用，但是还是重新创建了，这样是十分浪费系统资源和性能的。</p>
-<p>再比如数据库的连接，如果每次使用都需要连接一次，使用完在断开连接，要是这样的开销完全大于一直连接，那为什么不一直连接直到程序结束呢？</p>
-<p>所以单例模式在一些情况下显得十分必要。</p>
-<h1 id="单例模式的实现"><a href="#单例模式的实现" class="headerlink" title="单例模式的实现"></a>单例模式的实现</h1><p>单例模式实现的方式有很多种，大多都是围绕两个核心的问题来变化的。</p>
-<ol>
-<li>何时生成实例，也就是是否是懒加载</li>
-<li>是否线程安全</li>
-</ol>
-<p>接下来就围绕这两个问题进行探讨。</p>
-<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>首先是最简单的一种单例模式的实现方法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();    </span><br><span class="line">    <span class="comment">// 要使用实例，只能用该方法获取</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> instance;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 重写构造方法，使其不能再外部创建实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span> <span class="params">()</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种方式很简单，这也就是网上提到的饿汉式的单例模式。</p>
-<p>现在回到刚刚那两个核心问题来看看这个饿汉式的单例模式。</p>
-<ol>
-<li>这是线程安全的</li>
-<li>不是懒加载的</li>
-</ol>
-<p>这种方式简单，其实就简答在一开始就创建了对象，所以就是线程安全的，多个对象用<code>getInstance</code>方法，都是调用同一个对象，不会出现线程安全的问题。</p>
-<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><p>懒汉式其实就是使用了懒加载的。现在来看看最简单的一种写法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因为使用了懒加载，即直到要使用该类了才会创建实例，但是就是因为懒加载，所以出现了线程安全的问题。</p>
-<p>这其实不难理解，单个线程该类不会出现任何的问题，但是在多线程环境下，当多个线程同时进入到判断语句，此时都是<code>null</code>，那就会导致多个线程会创建多个实例，那就不是只有一个实例了，这就出现了线程不安全的问题。</p>
-<p>于是为了实现线程安全就可以改成下面这样。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>直接在<code>getInstance</code>方法上增加<code>synchronized</code>关键字，就能保证只有一个方法进入到该线程，从而就能保证线程的安全。</p>
-<h2 id="双检锁"><a href="#双检锁" class="headerlink" title="双检锁"></a>双检锁</h2><p>上面的线程安全的懒汉式已经解决了之前提到的两个问题，懒加载和线程安全。</p>
-<p>但是在方法上增加<code>synchronized</code>，会显得加锁粒度太重，我们只需要在创建对象的时候加锁就好了，何必在方法上加锁呢？所以就能再次优化。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但仔细思考之后，就会发现这段代码虽然降低了加锁粒度，但是并没有保证线程安全，因为也是存在有多个线程同时通过了判断语句，每次封锁就只能封锁住创建的顺序而已，并不能保证只创建一个实例。为了解决这个问题，我们可以在为这段代码增加一个判断语句。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这就是双检锁的单例模式了，这段代码看上去已经很完美了，但是这其实并没有实现线程安全。</p>
-<p>因为<code>instance = new Singleton();</code>这个创建对象的语句并不是原子性的操作，这个语句在底层其实分成了三步。</p>
-<ol>
-<li>分配实例的内存地址</li>
-<li>在该内存地址初始化实例对象</li>
-<li>将<code>instance</code>的地址指向这个内存地址。</li>
-</ol>
-<p>之前我们学习多线程的时候有提到过指令重排。这三个指令经过优化可能会重排，会导致执行出现以下几种顺序</p>
-<ul>
-<li><p>123，正常顺序</p>
-</li>
-<li><p>132，结果与正常顺序一样的顺序</p>
-</li>
-</ul>
-<p>这个不正常的顺序在单线程虽然结果与正常顺序一样，但是在多线就会出现一些线程不安全的问题。</p>
-<p>比如存在两个线程A和B调用了<code>getInstance</code>方法，就会出现这种情况。当线程A进入到同步代码块，并通过了第二个判断语句，进入到创建实例的阶段，经过指令重排，执行132这个顺序，当执行完3时，B也到了第一个判断语句，此时<code>instance != null</code>，所以就会直接返回<code>instance</code>，但是线程A还没执行初始化对象，所以这个内存地址其实还是没有被使用的，这样线程B拿到的实例就会是没有被初始化的空的内存地址。</p>
-<p>解决这个问题也很简单，之前有提到过<code>volatile</code>是可以禁止指令重排的，所以为该实例加上<code>volatile</code>关键字就好了，所以代码如下。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Singleton</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">synchronized</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="literal">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样即实现了懒加载，又实现了线程安全，而且封锁的粒度还小。</p>
-<p>这种方法就一个缺点，写起来很麻烦，下面探讨一下更简单的写法。</p>
-<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">SingletonHolder</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton</span> <span class="variable">INSTANCE</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种单例模式就使用到了静态内部类了，它是可以实现懒加载和线程安全的。因为静态内部类在调用的时候才会加载，也就会在调用到的时候才会创建对象，从而实现懒加载。静态内部类在类加载机制中也会实现线程安全，所以这种方法是比较简单的实现这两个问题的。</p>
-<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>上面提到的方法其实都还存在一个问题，可以被反射机制所破坏。</p>
-<p>下面我就使用双检索的方式创建一个单例，看看反射机制是否能破环该单例模式。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException &#123;</span><br><span class="line">        <span class="type">Constructor</span> <span class="variable">constructor</span> <span class="operator">=</span> Singleton.class.getDeclaredConstructor();</span><br><span class="line">        constructor.setAccessible(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">Singleton</span> <span class="variable">demo1</span> <span class="operator">=</span> (Singleton) constructor.newInstance();</span><br><span class="line">        <span class="type">Singleton</span> <span class="variable">demo2</span> <span class="operator">=</span> (Singleton) constructor.newInstance();</span><br><span class="line">        System.out.println(demo1);</span><br><span class="line">        System.out.println(demo2);</span><br><span class="line">        System.out.println(demo1.equals(demo2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">com.yw.Singleton@1b6d3586</span><br><span class="line">com.yw.Singleton@4554617c</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
-<p>内存地址并不一样，这并不是同一个对象，所以可以看出反射机制是能够破坏上面的方法的。这种情况基本都是人为破坏的，所以不怎么需要考虑，不过实在要解决也是有方法的，那就是使用枚举。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">SingletonEnum</span> &#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因为枚举是可以防止反射的，所以使用枚举可以防止别人使用反射，不过这样就和饿汉式差不多了，所以并不怎么推荐使用。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>因为反射破坏基本都是人为因素，所以不怎么需要考虑，所以单例模式一般使用双检锁或者是静态内部类的方法就好，如果懒加载并不是必须的，可以考虑使用饿汉式的单例模式。</p>
-<div class="note info flat"><p>单例模式的使用需要经过认真思考，滥用单例模式就是造成内存泄漏的原因之一，所以要在项目中使用单例模式，就需要确定该实例一直存在的开销是否要比使用完就销毁的开销要大。</p>
-</div>
-]]></content>
-      <categories>
-        <category>Design pattern</category>
       </categories>
   </entry>
   <entry>
