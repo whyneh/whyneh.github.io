@@ -1,309 +1,45 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>分类: 个人总结 | yw</title><meta name="author" content="yw"><meta name="copyright" content="yw"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="debug myself"><meta property="og:type" content="website"><meta property="og:title" content="yw"><meta property="og:url" content="https://yww52.com/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.html"><meta property="og:site_name" content="yw"><meta property="og:description" content="debug myself"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://img.yww52.com/avatar.jpg"><meta property="article:author" content="yw"><meta property="article:tag" content="yw"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://img.yww52.com/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/favicon.jpg"><link rel="canonical" href="https://yww52.com/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"><link rel="preconnect" href="//hm.baidu.com"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.29/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>(() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!true && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
-  
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-  
-    })()</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?136a6aeed7736be835cf2e59b702bfd6";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-btf.addGlobalFn('pjaxComplete', () => {
-  _hmt.push(['_trackPageview',window.location.pathname])
-}, 'baidu_analytics')</script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300,"highlightFullpage":false,"highlightMacStyle":true},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#8EC5FC","bgDark":"#1f1f1f","position":"top-center"},
-  infinitegrid: {
-    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.12.0/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: true,
-  islazyloadPlugin: true,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: true,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"分类: 个人总结",isHighlightShrink:!1,isToc:!1,pageType:"category"}</script><script data-pjax charset="UTF-8" id="LA_COLLECT" src="https://img.yww52.com/source/scripts/js-sdk-pro.min.js"></script><script data-pjax>LA.init({id:"3H0GBfojNsZxwWln",ck:"3H0GBfojNsZxwWln"})</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="yw" type="application/rss+xml"></head><body><div id="web_bg" style="background-color:#efefef"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/loading.gif" data-lazy-src="https://img.yww52.com/avatar.jpg" onerror='this.onerror=null,this.src="https://img.yww52.com/source/image/404.jpg"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-categories"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw iconfont icon-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw iconfont icon-comment"></i><span> 留言页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw iconfont icon-site"></i><span> 站点相关</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-archives"></i><span> 文章归档</span></a></li><li><a class="site-page child" href="/site/"><i class="fa-fw iconfont icon-sitelog"></i><span> 站点日志</span></a></li><li><a class="site-page child" href="/rss2.xml"><i class="fa-fw iconfont icon-rss"></i><span> RSS</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-about"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image:url(https://img.yww52.com/source/index_img/category_top_img.jpg)"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">yw</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-categories"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw iconfont icon-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw iconfont icon-comment"></i><span> 留言页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw iconfont icon-site"></i><span> 站点相关</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-archives"></i><span> 文章归档</span></a></li><li><a class="site-page child" href="/site/"><i class="fa-fw iconfont icon-sitelog"></i><span> 站点日志</span></a></li><li><a class="site-page child" href="/rss2.xml"><i class="fa-fw iconfont icon-rss"></i><span> RSS</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-about"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">个人总结</h1></div></header><main class="layout" id="content-inner"><div id="category"><div class="article-sort-title">分类 - 个人总结</div><div class="article-sort"><div class="article-sort-item year">2023</div><div class="article-sort-item"><a class="article-sort-item-img" href="/posts/622a5765/" title="2022年度总结"><img src="/loading.gif" data-lazy-src="https://img.yww52.com/2023/1/2023-1-1/top_img.jpg" alt="2022年度总结" onerror='this.onerror=null,this.src="https://img.yww52.com/source/image/404.jpg"'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-12-31T16:00:00.000Z" title="发表于 2023-01-01 00:00:00">2023-01-01</time></div><a class="article-sort-item-title" href="/posts/622a5765/" title="2022年度总结">2022年度总结</a></div></div><div class="article-sort-item year">2021</div><div class="article-sort-item"><a class="article-sort-item-img" href="/posts/276e22e/" title="2020年度总结"><img src="/loading.gif" data-lazy-src="https://img.yww52.com/2020/2020%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/top_img.jpg" alt="2020年度总结" onerror='this.onerror=null,this.src="https://img.yww52.com/source/image/404.jpg"'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2021-01-07T16:00:00.000Z" title="发表于 2021-01-08 00:00:00">2021-01-08</time></div><a class="article-sort-item-title" href="/posts/276e22e/" title="2020年度总结">2020年度总结</a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/loading.gif" data-lazy-src="https://img.yww52.com/avatar.jpg" onerror='this.onerror=null,this.src="https://img.yww52.com/source/image/404.jpg"' alt="avatar"></div><div class="author-info-name">yw</div><div class="author-info-description">debug myself</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://space.bilibili.com/35327819" rel="external nofollow noreferrer" target="_blank" title="哔哩哔哩"><i class="iconfont icon-bilibili-line"></i></a><a class="social-icon" href="https://github.com/whyneh" rel="external nofollow noreferrer" target="_blank" title="github"><i class="iconfont icon-GitHub"></i></a><a class="social-icon" href="https://wpa.qq.com/msgrd?v=3&amp;uin=1141950370&amp;site=qq&amp;menu=yes" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="iconfont icon-QQ"></i></a><a class="social-icon" href="mailto:1141950370@qq.com" rel="external nofollow noreferrer" target="_blank" title="邮箱"><i class="iconfont icon-Email"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客!<br>希望我的博客能在某些方面帮到大家。</div></div><div class="sticky_layout"><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-comment-dots"></i><span>最新评论</span></div><div class="aside-list"><span>加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i> <span>分类</span></div><ul class="card-category-list" id="aside-cat-list"><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"><span class="card-category-list-name">个人总结</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/"><span class="card-category-list-name">我的技术学习物语果然有问题</span><span class="card-category-list-count">66</span></a><ul class="card-category-list child"><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/Java%E5%9F%BA%E7%A1%80/"><span class="card-category-list-name">Java基础</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"><span class="card-category-list-name">Java并发编程</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"><span class="card-category-list-name">Java虚拟机</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/Spring/"><span class="card-category-list-name">Spring</span><span class="card-category-list-count">20</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="card-category-list-name">分布式</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/"><span class="card-category-list-name">开发技巧</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/%E5%BC%80%E5%8F%91%E6%8A%80%E8%83%BD/"><span class="card-category-list-name">开发技能</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="card-category-list-name">数据结构</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"><span class="card-category-list-name">源码分析</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="card-category-list-name">设计模式</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">项目开发</span><span class="card-category-list-count">3</span></a></li></ul></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/"><span class="card-category-list-name">瞎折腾</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item"><a class="card-category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">读书笔记</span><span class="card-category-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">73</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishdate="2019-09-23T00:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">216.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastpushdate="2026-01-26T08:15:38.096Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image:url(https://img.yww52.com/source/index_img/footer.jpg)"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2019 - 2026 By yw</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.0</a></span></div><div class="footer_custom_text"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra">又拍云</a><span>提供加速服务</span><br><a id="yww-beian" target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn"><span>桂ICP备20005765号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.29/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><div class="js-pjax"></div><script>window.newestComments = {
-  changeContent: content => {
-    if (content === '') return content
-
-    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g, "") // remove html tag
-
-    if (content.length > 150) {
-      content = content.substring(0, 150) + '...'
-    }
-    return content
-  },
-
-  generateHtml: (array, ele) => {
-    let result = ''
-
-    if (array.length) {
-      for (let i = 0; i < array.length; i++) {
-        result += '<div class="aside-list-item">'
-
-        if (true && array[i].avatar) {
-          const imgAttr = 'data-lazy-src'
-          const lazyloadNative = ''
-          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
-        }
-
-        result += `<div class="content">
-        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
-        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
-        </div></div>`
-      }
-    } else {
-      result += '暂无评论'
-    }
-
-    ele.innerHTML = result
-    window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh(ele)
-  },
-
-  newestCommentInit: (name, getComment) => {
-    const $dom = document.querySelector('#card-newest-comments .aside-list')
-    if ($dom) {
-      const data = btf.saveToLocal.get(name)
-      if (data) {
-        newestComments.generateHtml(JSON.parse(data), $dom)
-      } else {
-        getComment($dom)
-      }
-    }
-  },
-
-  run: (name, getComment) => {
-    newestComments.newestCommentInit(name, getComment)
-    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
-  }
-}</script><script>window.addEventListener('load', () => {
-  const keyName = 'artalk-newest-comments'
-  const { changeContent, generateHtml, run } = window.newestComments
-
-  const getAvatarValue = async () => {
-    const predefinedAvatarCdn = ''
-    const predefinedAvatarDefault = ''
-
-    const avatarDefaultFormat = e => e.startsWith('d=') ? e : `d=${e}`
-
-    if (predefinedAvatarCdn && predefinedAvatarDefault) {
-      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
-    }
-
-    try {
-      const res = await fetch('https://blog.yww52.com/api/v2/conf')
-      const result = await res.json()
-      const { mirror, params, default: defaults } = result.frontend_conf.gravatar
-      const avatarCdn = predefinedAvatarCdn || mirror
-      let avatarDefault = avatarDefaultFormat(predefinedAvatarDefault || params || defaults)
-      return { avatarCdn, avatarDefault}
-    } catch (e) {
-      console.error(e)
-      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
-    }
-  }
-
-  const searchParams = new URLSearchParams({
-    'site_name': 'yw的博客',
-    'limit': '12', // Fetch more comments to filter pending comments
-  })
-
-  const getComment = async (ele) => {
-    try {
-      const res = await fetch(`https://blog.yww52.com/api/v2/stats/latest_comments?${searchParams}`)
-      const result = await res.json()
-      const { avatarCdn, avatarDefault } = await getAvatarValue()
-      const artalk = result.data
-        .filter(e => !e.is_pending) // Filter pending comments
-        .slice(0, 6) // Limit the number of comments
-        .map(e => {
-          const avatar = avatarCdn && e.email_encrypted ? `${avatarCdn}${e.email_encrypted}?${avatarDefault}` : ''
-          return {
-            'avatar': avatar,
-            'content': changeContent(e.content_marked),
-            'nick': e.nick,
-            'url': e.page_url,
-            'date': e.date,
-          }
-        })
-      btf.saveToLocal.set(keyName, JSON.stringify(artalk), 10/(60*24))
-      generateHtml(artalk, ele)
-    } catch (e) {
-      console.log(e)
-      ele.textContent= "无法获取评论，请确认相关配置是否正确"
-    }
-  }
-
-  run(keyName, getComment)
-})</script><link rel="stylesheet" href="/yww/optimize.css"><link rel="stylesheet" href="https://img.yww52.com/source/iconfont/iconfont.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>(() => {
-  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-  window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"])',
-    selectors: pjaxSelectors,
-    cacheBust: false,
-    analytics: false,
-    scrollRestoration: false
-  })
-
-  const triggerPjaxFn = (val) => {
-    if (!val) return
-    Object.values(val).forEach(fn => {
-      try {
-        fn()
-      } catch (err) {
-        console.debug('Pjax callback failed:', err)
-      }
-    })
-  }
-
-  document.addEventListener('pjax:send', () => {
-    // removeEventListener
-    btf.removeGlobalFnEvent('pjaxSendOnce')
-    btf.removeGlobalFnEvent('themeChange')
-
-    // reset readmode
-    const $bodyClassList = document.body.classList
-    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
-
-    triggerPjaxFn(window.globalFn.pjaxSend)
-  })
-
-  document.addEventListener('pjax:complete', () => {
-    btf.removeGlobalFnEvent('pjaxCompleteOnce')
-    document.querySelectorAll('script[data-pjax]').forEach(item => {
-      const newScript = document.createElement('script')
-      const content = item.text || item.textContent || item.innerHTML || ""
-      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-      newScript.appendChild(document.createTextNode(content))
-      item.parentNode.replaceChild(newScript, item)
-    })
-
-    triggerPjaxFn(window.globalFn.pjaxComplete)
-  })
-
-  document.addEventListener('pjax:error', e => {
-    if (e.request.status === 404) {
-      const usePjax = true
-      true
-        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
-        : window.location.href = e.request.responseURL
-    }
-  })
-})()</script><script async data-pjax src="https://img.yww52.com/source/scripts/busuanzi.min.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+<!DOCTYPE html><html lang="zh-CN" data-overlayscrollbars-initialize> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v6.1.5"><title>分类: 个人总结</title><meta name="title" content="分类: 个人总结"><meta name="description" content="查看 个人总结 分类的文章"><link rel="canonical" href="https://yww52.com/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"><link rel="icon" type="image/svg+xml" href="/favicon.png"><link rel="icon" href="/favicon.png"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="yww" href="https://yww52.com/rss2.xml"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.j56hQv-j.js"></script><meta property="og:type" content="website"><meta property="og:url" content="https://yww52.com/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"><meta property="og:title" content="分类: 个人总结"><meta property="og:description" content="查看 个人总结 分类的文章"><meta property="og:image" content="https://yww52.com/default_cover.jpg"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yww52.com/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"><meta property="twitter:title" content="分类: 个人总结"><meta property="twitter:description" content="查看 个人总结 分类的文章"><meta property="twitter:image" content="https://yww52.com/default_cover.jpg"><link rel="stylesheet" href="/_astro/BlogLayout.C2EqdoDp.css">
+<link rel="stylesheet" href="/_astro/ArticleCardTemplate.CV3YuxBR.css">
+<link rel="stylesheet" href="/_astro/_..B-e8S90h.css"><style>[data-astro-transition-scope="astro-uk7qqvmr-1"] { view-transition-name: astro-uk7qqvmr-1; }@layer astro { ::view-transition-old(astro-uk7qqvmr-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(astro-uk7qqvmr-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(astro-uk7qqvmr-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(astro-uk7qqvmr-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-uk7qqvmr-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-uk7qqvmr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-uk7qqvmr-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-uk7qqvmr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-uk7qqvmr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-uk7qqvmr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-uk7qqvmr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-uk7qqvmr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body class="layout-body" data-overlayscrollbars-initialize> <main id="main-content" class="layout-main">  <nav class="site-bar" aria-label="快捷导航" data-site-bar data-astro-transition-persist="site-bar" data-astro-cid-d7zsxddp> <div class="site-bar__panel" data-astro-cid-d7zsxddp> <ul class="site-bar__group" aria-label="主导航" data-astro-cid-d7zsxddp> <li class="site-bar__item" data-site-bar-nav-item="首页" data-astro-cid-d7zsxddp> <a href="/" class="site-bar__control" aria-label="首页" data-site-bar-nav-href="/" data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-heart-icon lucide-house-heart" data-astro-cid-d7zsxddp="true"><path d="M8.62 13.8A2.25 2.25 0 1 1 12 10.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>首页</span> </a> </li><li class="site-bar__item" data-site-bar-nav-item="分类" data-astro-cid-d7zsxddp>  <div class="site-bar__category-menu" id="site-bar-category-menu" aria-hidden="true" data-astro-cid-d7zsxddp> <div class="site-bar__category-menu-list" data-astro-cid-d7zsxddp> <a href="/categories/读书笔记/" class="site-bar__category-link" data-site-bar-nav-href="/categories/读书笔记/" data-astro-cid-d7zsxddp> 读书笔记 </a><a href="/categories/个人总结/" class="site-bar__category-link is-active" data-site-bar-nav-href="/categories/个人总结/" data-astro-cid-d7zsxddp> 个人总结 </a><a href="/categories/我的技术学习物语果然有问题/" class="site-bar__category-link" data-site-bar-nav-href="/categories/我的技术学习物语果然有问题/" data-astro-cid-d7zsxddp> 我的技术学习物语果然有问题 </a><a href="/categories/瞎折腾/" class="site-bar__category-link" data-site-bar-nav-href="/categories/瞎折腾/" data-astro-cid-d7zsxddp> 瞎折腾 </a> </div> </div> <button type="button" class="site-bar__control is-active" aria-label="展开分类" aria-expanded="false" aria-controls="site-bar-category-menu" data-site-bar-category-trigger data-site-bar-nav-href="/categories" data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-panel-left-icon lucide-layout-panel-left" data-astro-cid-d7zsxddp="true"><rect width="7" height="18" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>分类</span> </button>  </li><li class="site-bar__item" data-site-bar-nav-item="友链" data-astro-cid-d7zsxddp> <a href="/link" class="site-bar__control" aria-label="友链" data-site-bar-nav-href="/link" data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact-round-icon lucide-contact-round" data-astro-cid-d7zsxddp="true"><path d="M16 2v2" /><path d="M17.915 22a6 6 0 0 0-12 0" /><path d="M8 2v2" /><circle cx="12" cy="12" r="4" /><rect x="3" y="4" width="18" height="18" rx="2" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>友链</span> </a> </li><li class="site-bar__item" data-site-bar-nav-item="关于" data-astro-cid-d7zsxddp> <a href="/about" class="site-bar__control" aria-label="关于" data-site-bar-nav-href="/about" data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart" data-astro-cid-d7zsxddp="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>关于</span> </a> </li> </ul> <div class="site-bar__separator" data-astro-cid-d7zsxddp></div> <div class="site-bar__group" role="group" aria-label="辅助功能" data-astro-cid-d7zsxddp> <button type="button" class="site-bar__control" aria-label="搜索" data-site-bar-search-trigger data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search" data-astro-cid-d7zsxddp="true"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>搜索</span> </button> <button type="button" class="site-bar__control" aria-label="网站信息" data-site-info-trigger data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info-icon lucide-info" data-astro-cid-d7zsxddp="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>信息</span> </button> <a href="#artalk-comments" class="site-bar__control site-bar__control--comments" aria-label="前往评论区" aria-hidden="true" tabindex="-1" data-site-bar-comments-link data-astro-cid-d7zsxddp data-astro-transition-scope="astro-uk7qqvmr-1"> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-more-icon lucide-message-circle-more" data-astro-cid-d7zsxddp="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /><path d="M8 12h.01" /><path d="M12 12h.01" /><path d="M16 12h.01" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>评论区</span> </a> <a href="#main-content" class="site-bar__control site-bar__control--top" aria-label="回到顶部" data-site-bar-scroll-top data-astro-cid-d7zsxddp> <span class="site-bar__icon site-bar__icon--back-to-top" aria-hidden="true" data-astro-cid-d7zsxddp> <span class="site-bar__scroll-icon" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-icon lucide-arrow-up" data-astro-cid-d7zsxddp="true"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg> </span> <span class="site-bar__scroll-text" data-scroll-percent data-astro-cid-d7zsxddp>0</span> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>回到顶部</span> </a> </div> </div> </nav> <script type="module" src="/_astro/SiteBar.astro_astro_type_script_index_0_lang.DAigh9mc.js"></script> <div class="mobile-bar" data-mobile-bar data-astro-cid-4h3iukot> <div class="mobile-bar__actions-stack" data-astro-cid-4h3iukot> <button type="button" class="mobile-bar__action-btn" data-site-bar-search-trigger aria-label="搜索" data-astro-cid-4h3iukot> <span class="mobile-bar__action-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search" data-astro-cid-4h3iukot="true"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg></span> </button> <button type="button" class="mobile-bar__action-btn" data-site-info-trigger aria-label="网站信息" data-astro-cid-4h3iukot> <span class="mobile-bar__action-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info-icon lucide-info" data-astro-cid-4h3iukot="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg></span> </button>  <button type="button" class="mobile-bar__action-btn" data-mobile-top-trigger aria-label="回到顶部" data-astro-cid-4h3iukot> <span class="mobile-bar__action-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-icon lucide-arrow-up" data-astro-cid-4h3iukot="true"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></span> <span class="mobile-bar__scroll-percent" data-mobile-scroll-percent data-astro-cid-4h3iukot>0</span> </button> <button type="button" class="mobile-bar__trigger" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-mobile-trigger data-astro-cid-4h3iukot> <span class="mobile-bar__icon" data-astro-cid-4h3iukot> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu" data-astro-cid-4h3iukot="true"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg> </span> </button> </div> <div class="mobile-bar__overlay" data-mobile-overlay aria-hidden="true" data-astro-cid-4h3iukot> <div class="mobile-bar__menu" id="mobile-nav-menu" data-astro-cid-4h3iukot> <div class="mobile-bar__header" data-astro-cid-4h3iukot> <h2 class="mobile-bar__title" data-astro-cid-4h3iukot>导航</h2> <button type="button" class="mobile-bar__close" aria-label="关闭菜单" data-mobile-close data-astro-cid-4h3iukot> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-4h3iukot><line x1="18" y1="6" x2="6" y2="18" data-astro-cid-4h3iukot></line><line x1="6" y1="6" x2="18" y2="18" data-astro-cid-4h3iukot></line></svg> </button> </div> <div class="mobile-bar__content" data-astro-cid-4h3iukot> <nav class="mobile-bar__nav" data-astro-cid-4h3iukot> <ul class="mobile-bar__nav-list" data-astro-cid-4h3iukot> <li class="mobile-bar__nav-item" data-astro-cid-4h3iukot> <a href="/" class="mobile-bar__nav-link" data-astro-cid-4h3iukot> <span class="mobile-bar__nav-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-heart-icon lucide-house-heart" data-astro-cid-4h3iukot="true"><path d="M8.62 13.8A2.25 2.25 0 1 1 12 10.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg></span> <span class="mobile-bar__nav-label" data-astro-cid-4h3iukot>首页</span> </a>  </li><li class="mobile-bar__nav-item" data-astro-cid-4h3iukot> <div class="mobile-bar__nav-link is-header" data-astro-cid-4h3iukot> <span class="mobile-bar__nav-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-panel-left-icon lucide-layout-panel-left" data-astro-cid-4h3iukot="true"><rect width="7" height="18" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /></svg></span> <span class="mobile-bar__nav-label" data-astro-cid-4h3iukot>分类</span> </div> <ul class="mobile-bar__sub-nav" data-astro-cid-4h3iukot> <li data-astro-cid-4h3iukot> <a href="/categories/读书笔记/" class="mobile-bar__sub-link" data-astro-cid-4h3iukot> 读书笔记 </a> </li><li data-astro-cid-4h3iukot> <a href="/categories/个人总结/" class="mobile-bar__sub-link is-active" data-astro-cid-4h3iukot> 个人总结 </a> </li><li data-astro-cid-4h3iukot> <a href="/categories/我的技术学习物语果然有问题/" class="mobile-bar__sub-link" data-astro-cid-4h3iukot> 我的技术学习物语果然有问题 </a> </li><li data-astro-cid-4h3iukot> <a href="/categories/瞎折腾/" class="mobile-bar__sub-link" data-astro-cid-4h3iukot> 瞎折腾 </a> </li> </ul> </li><li class="mobile-bar__nav-item" data-astro-cid-4h3iukot> <a href="/link" class="mobile-bar__nav-link" data-astro-cid-4h3iukot> <span class="mobile-bar__nav-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact-round-icon lucide-contact-round" data-astro-cid-4h3iukot="true"><path d="M16 2v2" /><path d="M17.915 22a6 6 0 0 0-12 0" /><path d="M8 2v2" /><circle cx="12" cy="12" r="4" /><rect x="3" y="4" width="18" height="18" rx="2" /></svg></span> <span class="mobile-bar__nav-label" data-astro-cid-4h3iukot>友链</span> </a>  </li><li class="mobile-bar__nav-item" data-astro-cid-4h3iukot> <a href="/about" class="mobile-bar__nav-link" data-astro-cid-4h3iukot> <span class="mobile-bar__nav-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart" data-astro-cid-4h3iukot="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></span> <span class="mobile-bar__nav-label" data-astro-cid-4h3iukot>关于</span> </a>  </li> </ul> </nav> </div> </div> </div>  </div> <script type="module" src="/_astro/MobileBar.astro_astro_type_script_index_0_lang.ski4aMy4.js"></script> <div class="site-bar__search" id="site-bar-search" aria-hidden="true" data-astro-cid-otpdt6jm> <div class="site-bar__search-container" data-astro-cid-otpdt6jm> <div class="site-bar__search-box" data-astro-cid-otpdt6jm> <div class="site-bar__search-header" data-astro-cid-otpdt6jm> <div class="site-bar__search-icon-wrapper" data-astro-cid-otpdt6jm> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search" data-astro-cid-otpdt6jm="true"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg> </div> <input type="text" class="site-bar__search-input" placeholder="搜索文章标题、内容或关键词..." aria-label="搜索文章" data-site-bar-search-input data-astro-cid-otpdt6jm> <button type="button" class="site-bar__search-clear" aria-label="关闭" data-site-bar-search-close data-astro-cid-otpdt6jm> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-otpdt6jm><line x1="18" y1="6" x2="6" y2="18" data-astro-cid-otpdt6jm></line><line x1="6" y1="6" x2="18" y2="18" data-astro-cid-otpdt6jm></line></svg> </button> </div> <div class="site-bar__search-body is-empty" data-site-bar-search-body data-astro-cid-otpdt6jm> <div class="site-bar__search-empty" data-astro-cid-otpdt6jm> <p data-astro-cid-otpdt6jm>输入关键词以开始搜索</p> <div class="site-bar__search-hints" data-astro-cid-otpdt6jm> <span data-astro-cid-otpdt6jm>按 <kbd data-astro-cid-otpdt6jm>ESC</kbd> 关闭</span> </div> </div> </div> </div> </div> </div> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dy7tAigq.js"></script> <div class="site-info-modal" id="site-info-modal" aria-hidden="true" data-site-info-modal data-astro-cid-7xvx6y6l> <div class="site-info-modal__overlay" data-site-info-close data-astro-cid-7xvx6y6l></div> <div class="site-info-modal__container" data-astro-cid-7xvx6y6l> <div class="site-info-modal__card" data-astro-cid-7xvx6y6l> <header class="site-info-modal__header" data-astro-cid-7xvx6y6l> <div class="site-info-modal__tabs" role="tablist" data-astro-cid-7xvx6y6l> <button class="site-info-modal__tab is-active" role="tab" aria-selected="true" aria-controls="content-blogger" data-site-info-tab="blogger" data-astro-cid-7xvx6y6l>
+博主
+</button> <button class="site-info-modal__tab" role="tab" aria-selected="false" aria-controls="content-stats" data-site-info-tab="stats" data-astro-cid-7xvx6y6l>
+数据
+</button> <button class="site-info-modal__tab" role="tab" aria-selected="false" aria-controls="content-site" data-site-info-tab="site" data-astro-cid-7xvx6y6l>
+网站
+</button> <div class="site-info-modal__tab-indicator" data-astro-cid-7xvx6y6l></div> </div> <button class="site-info-modal__close" aria-label="关闭" data-site-info-close data-astro-cid-7xvx6y6l> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-7xvx6y6l><line x1="18" y1="6" x2="6" y2="18" data-astro-cid-7xvx6y6l></line><line x1="6" y1="6" x2="18" y2="18" data-astro-cid-7xvx6y6l></line></svg> </button> </header> <div class="site-info-modal__body" data-astro-cid-7xvx6y6l> <div class="site-info-modal__content is-active" id="content-blogger" role="tabpanel" data-site-info-content="blogger" data-astro-cid-7xvx6y6l> <div class="blogger-info-section" data-astro-cid-7xvx6y6l> <div class="blogger-header" data-astro-cid-7xvx6y6l> <div class="blogger-avatar-wrapper" data-astro-cid-7xvx6y6l> <img src="https://img.yww52.com/avatar.jpg" alt="yw's Avatar" class="blogger-avatar" data-astro-cid-7xvx6y6l> </div> <div class="blogger-intro" data-astro-cid-7xvx6y6l> <h3 class="blogger-name" data-astro-cid-7xvx6y6l>yw</h3> <p class="blogger-bio" data-astro-cid-7xvx6y6l>debug myself</p> </div> </div> <div class="blogger-socials" data-astro-cid-7xvx6y6l> <a href="https://github.com/whyneh" target="_blank" rel="noopener noreferrer" class="social-link" data-astro-cid-7xvx6y6l> GitHub </a><a href="mailto:1141950370@qq.com" class="social-link" data-astro-cid-7xvx6y6l> Email </a><a href="https://wpa.qq.com/msgrd?v=3&#38;uin=1141950370&#38;site=qq&#38;menu=yes" target="_blank" rel="noopener noreferrer" class="social-link" data-astro-cid-7xvx6y6l> QQ </a><a href="https://space.bilibili.com/35327819" target="_blank" rel="noopener noreferrer" class="social-link" data-astro-cid-7xvx6y6l> bilibili </a> </div> </div> </div> <div class="site-info-modal__content" id="content-stats" role="tabpanel" aria-hidden="true" data-site-info-content="stats" data-astro-cid-7xvx6y6l> <div class="stats-info-section" data-astro-cid-7xvx6y6l> <div class="stats-grid stats-grid--full" data-astro-cid-7xvx6y6l> <div class="stat-card" data-astro-cid-7xvx6y6l> <span class="stat-label" data-astro-cid-7xvx6y6l>全站访问 (PV)</span> <span class="stat-value" data-busuanzi-value="site_pv" data-astro-cid-7xvx6y6l>0</span> </div> <div class="stat-card" data-astro-cid-7xvx6y6l> <span class="stat-label" data-astro-cid-7xvx6y6l>全站访客 (UV)</span> <span class="stat-value" data-busuanzi-value="site_uv" data-astro-cid-7xvx6y6l>0</span> </div> <div class="stat-card" data-astro-cid-7xvx6y6l> <span class="stat-label" data-astro-cid-7xvx6y6l>建站时间</span> <span class="stat-value" data-astro-cid-7xvx6y6l>2019-09-23</span> </div> <div class="stat-card" data-astro-cid-7xvx6y6l> <span class="stat-label" data-astro-cid-7xvx6y6l>运行时间</span> <span class="stat-value" data-site-runtime data-astro-cid-7xvx6y6l>0 天</span> </div> </div> <p class="stats-note" data-astro-cid-7xvx6y6l>数据由后台服务统计驱动</p> </div> </div> <div class="site-info-modal__content" id="content-site" role="tabpanel" aria-hidden="true" data-site-info-content="site" data-astro-cid-7xvx6y6l> <div class="site-info-section" data-astro-cid-7xvx6y6l> <div class="site-info-grid" data-astro-cid-7xvx6y6l> <div class="info-item" data-astro-cid-7xvx6y6l> <span class="info-label" data-astro-cid-7xvx6y6l>驱动核心</span> <span class="info-value" data-astro-cid-7xvx6y6l>Astro</span> </div> <div class="info-item" data-astro-cid-7xvx6y6l> <span class="info-label" data-astro-cid-7xvx6y6l>服务部署</span> <span class="info-value" data-astro-cid-7xvx6y6l>GitHub</span> </div> <div class="info-item" data-astro-cid-7xvx6y6l> <span class="info-label" data-astro-cid-7xvx6y6l>文件管理</span> <span class="info-value" data-astro-cid-7xvx6y6l>又拍云</span> </div> <div class="info-item" data-astro-cid-7xvx6y6l> <span class="info-label" data-astro-cid-7xvx6y6l>CDN</span> <span class="info-value" data-astro-cid-7xvx6y6l>又拍云</span> </div> </div> </div> </div> </div> </div> </div> </div> <script type="module" src="/_astro/SiteInfoModal.astro_astro_type_script_index_0_lang.DgzdKcJk.js"></script> <section class="blog-layout__content" data-astro-cid-4dqtj3le>  <div class="category-page content-frame" data-astro-cid-74xw7yl2> <header class="category-header" data-astro-cid-74xw7yl2> <div class="category-header__content" data-astro-cid-74xw7yl2> <h1 class="category-title" data-astro-cid-74xw7yl2> <span class="category-title__main" data-astro-cid-74xw7yl2>个人总结</span> </h1> </div> <nav class="category-nav" aria-label="分类导航" data-astro-cid-74xw7yl2> <ul class="category-list" data-astro-cid-74xw7yl2> <li class="category-item" data-astro-cid-74xw7yl2> <a href="/categories/" class="category-chip" data-astro-cid-74xw7yl2> <span class="category-chip__name" data-astro-cid-74xw7yl2>全部</span> <span class="category-chip__count" data-astro-cid-74xw7yl2>73</span> </a> </li><li class="category-item" data-astro-cid-74xw7yl2> <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chip" data-astro-cid-74xw7yl2> <span class="category-chip__name" data-astro-cid-74xw7yl2>读书笔记</span> <span class="category-chip__count" data-astro-cid-74xw7yl2>3</span> </a> </li><li class="category-item" data-astro-cid-74xw7yl2> <a href="/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="category-chip is-active" aria-current="page" data-astro-cid-74xw7yl2> <span class="category-chip__name" data-astro-cid-74xw7yl2>个人总结</span> <span class="category-chip__count" data-astro-cid-74xw7yl2>2</span> </a> </li><li class="category-item" data-astro-cid-74xw7yl2> <a href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/" class="category-chip" data-astro-cid-74xw7yl2> <span class="category-chip__name" data-astro-cid-74xw7yl2>我的技术学习物语果然有问题</span> <span class="category-chip__count" data-astro-cid-74xw7yl2>66</span> </a> </li><li class="category-item" data-astro-cid-74xw7yl2> <a href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/" class="category-chip" data-astro-cid-74xw7yl2> <span class="category-chip__name" data-astro-cid-74xw7yl2>瞎折腾</span> <span class="category-chip__count" data-astro-cid-74xw7yl2>2</span> </a> </li> </ul> </nav> </header> <div class="post-list" data-category-feed data-post-source="/categories/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93.json" data-page-size="10" data-hide-category="true" data-astro-cid-74xw7yl2> <article class="article-card" data-article-card data-astro-cid-di2nlc57> <a class="article-card__image-link" href="/posts/622a5765/" aria-label="阅读文章：2022年度总结" data-article-card-image-link data-astro-cid-di2nlc57> <div class="article-card__image" data-astro-cid-di2nlc57> <img src="https://img.yww52.com/2023/1/2023-1-1/top_img.jpg" alt loading="eager" data-article-card-image="true" data-astro-cid-di2nlc57="true" decoding="async" width="840" height="472"> </div> </a> <div class="article-card__content" data-astro-cid-di2nlc57> <div class="article-card__meta" data-astro-cid-di2nlc57>  <div class="article-card__dates" aria-label="文章日期" data-astro-cid-di2nlc57> <span class="article-card__date-item" data-astro-cid-di2nlc57> <time datetime="2023-01-01T00:00:00.000Z" data-article-card-date data-astro-cid-di2nlc57>2023.01.01</time> </span> </div> </div> <h2 data-astro-cid-di2nlc57> <a href="/posts/622a5765/" data-article-card-title data-astro-cid-di2nlc57>2022年度总结</a> </h2> <p class="article-card__description" data-article-card-description data-astro-cid-di2nlc57> 2022年度总结 </p> </div> </article><article class="article-card is-reversed" data-article-card data-astro-cid-di2nlc57> <a class="article-card__image-link" href="/posts/276e22e/" aria-label="阅读文章：2020年度总结" data-article-card-image-link data-astro-cid-di2nlc57> <div class="article-card__image" data-astro-cid-di2nlc57> <img src="https://img.yww52.com/2020/2020%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/top_img.jpg" alt loading="lazy" data-article-card-image="true" data-astro-cid-di2nlc57="true" decoding="async" width="840" height="472"> </div> </a> <div class="article-card__content" data-astro-cid-di2nlc57> <div class="article-card__meta" data-astro-cid-di2nlc57>  <div class="article-card__dates" aria-label="文章日期" data-astro-cid-di2nlc57> <span class="article-card__date-item" data-astro-cid-di2nlc57> <time datetime="2021-01-08T00:00:00.000Z" data-article-card-date data-astro-cid-di2nlc57>2021.01.08</time> </span> </div> </div> <h2 data-astro-cid-di2nlc57> <a href="/posts/276e22e/" data-article-card-title data-astro-cid-di2nlc57>2020年度总结</a> </h2> <p class="article-card__description" data-article-card-description data-astro-cid-di2nlc57> 2020年度总结 </p> </div> </article> </div> <template id="category-article-card-template" data-article-card-template><article class="article-card" data-article-card data-astro-cid-di2nlc57> <a class="article-card__image-link" href="/posts/622a5765/" aria-label="阅读文章：2022年度总结" data-article-card-image-link data-astro-cid-di2nlc57> <div class="article-card__image" data-astro-cid-di2nlc57> <img src="https://img.yww52.com/2023/1/2023-1-1/top_img.jpg" alt loading="lazy" data-article-card-image="true" data-astro-cid-di2nlc57="true" decoding="async" width="840" height="472"> </div> </a> <div class="article-card__content" data-astro-cid-di2nlc57> <div class="article-card__meta" data-astro-cid-di2nlc57>  <div class="article-card__dates" aria-label="文章日期" data-astro-cid-di2nlc57> <span class="article-card__date-item" data-astro-cid-di2nlc57> <time datetime="2023-01-01T00:00:00.000Z" data-article-card-date data-astro-cid-di2nlc57>2023.01.01</time> </span> </div> </div> <h2 data-astro-cid-di2nlc57> <a href="/posts/622a5765/" data-article-card-title data-astro-cid-di2nlc57>2022年度总结</a> </h2> <p class="article-card__description" data-article-card-description data-astro-cid-di2nlc57> 2022年度总结 </p> </div> </article></template>  </div> <script type="module" src="/_astro/_...path_.astro_astro_type_script_index_0_lang.jteDu44Q.js"></script>  </section>  </main> <script type="module" src="/_astro/Layout.astro_astro_type_script_index_0_lang.Dw-WO-RF.js"></script> </body> </html> <script type="module" src="/_astro/BlogLayout.astro_astro_type_script_index_0_lang.DbpDq748.js"></script>

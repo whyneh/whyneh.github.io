@@ -1,392 +1,426 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>前后端分离demo | yw</title><meta name="author" content="yw"><meta name="copyright" content="yw"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="简单的体验一下前后端分离。"><meta property="og:type" content="article"><meta property="og:title" content="前后端分离demo"><meta property="og:url" content="https://yww52.com/posts/ee7e4b9/index.html"><meta property="og:site_name" content="yw"><meta property="og:description" content="简单的体验一下前后端分离。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://img.yww52.com/2021/1/2021-1-20top_img.jpg"><meta property="article:published_time" content="2021-01-19T16:00:00.000Z"><meta property="article:modified_time" content="2026-01-26T08:15:14.827Z"><meta property="article:author" content="yw"><meta property="article:tag" content="yw"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://img.yww52.com/2021/1/2021-1-20top_img.jpg"><script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "前后端分离demo",
-  "url": "https://yww52.com/posts/ee7e4b9/",
-  "image": "https://img.yww52.com/2021/1/2021-1-20top_img.jpg",
-  "datePublished": "2021-01-19T16:00:00.000Z",
-  "dateModified": "2026-01-26T08:15:14.827Z",
-  "author": [
-    {
-      "@type": "Person",
-      "name": "yw",
-      "url": "https://yww52.com"
-    }
-  ]
-}</script><link rel="shortcut icon" href="/favicon.jpg"><link rel="canonical" href="https://yww52.com/posts/ee7e4b9/index.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"><link rel="preconnect" href="//hm.baidu.com"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.29/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>(() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!true && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
-  
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-  
-    })()</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?136a6aeed7736be835cf2e59b702bfd6";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-btf.addGlobalFn('pjaxComplete', () => {
-  _hmt.push(['_trackPageview',window.location.pathname])
-}, 'baidu_analytics')</script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300,"highlightFullpage":false,"highlightMacStyle":true},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '天',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#8EC5FC","bgDark":"#1f1f1f","position":"top-center"},
-  infinitegrid: {
-    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.12.0/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: true,
-  islazyloadPlugin: true,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: true,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"前后端分离demo",isHighlightShrink:!1,isToc:!0,pageType:"post"}</script><script data-pjax charset="UTF-8" id="LA_COLLECT" src="https://img.yww52.com/source/scripts/js-sdk-pro.min.js"></script><script data-pjax>LA.init({id:"3H0GBfojNsZxwWln",ck:"3H0GBfojNsZxwWln"})</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="yw" type="application/rss+xml"></head><body><div id="web_bg" style="background-color:#efefef"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/loading.gif" data-lazy-src="https://img.yww52.com/avatar.jpg" onerror='this.onerror=null,this.src="https://img.yww52.com/source/image/404.jpg"' alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-categories"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw iconfont icon-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw iconfont icon-comment"></i><span> 留言页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw iconfont icon-site"></i><span> 站点相关</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-archives"></i><span> 文章归档</span></a></li><li><a class="site-page child" href="/site/"><i class="fa-fw iconfont icon-sitelog"></i><span> 站点日志</span></a></li><li><a class="site-page child" href="/rss2.xml"><i class="fa-fw iconfont icon-rss"></i><span> RSS</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-about"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image:url(https://img.yww52.com/2021/1/2021-1-20top_img.jpg)"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">yw</span></a><a class="nav-page-title" href="/"><span class="site-name">前后端分离demo</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span> 返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-categories"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw iconfont icon-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw iconfont icon-comment"></i><span> 留言页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw iconfont icon-site"></i><span> 站点相关</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-archives"></i><span> 文章归档</span></a></li><li><a class="site-page child" href="/site/"><i class="fa-fw iconfont icon-sitelog"></i><span> 站点日志</span></a></li><li><a class="site-page child" href="/rss2.xml"><i class="fa-fw iconfont icon-rss"></i><span> RSS</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-about"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">前后端分离demo</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-19T16:00:00.000Z" title="发表于 2021-01-20 00:00:00">2021-01-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-26T08:15:14.827Z" title="更新于 2026-01-26 16:15:14">2026-01-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/">我的技术学习物语果然有问题</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%89%A9%E8%AF%AD%E6%9E%9C%E7%84%B6%E6%9C%89%E9%97%AE%E9%A2%98/Spring/">Spring</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h1><p>当下前后端分离的趋势很明显，的确这也是很有必要的。前后端分离让前端专注于前端，后端专注于后端，而不是哪一方都要学习前后端。学习过JSP的都知道，前后端之前都是套模板，这会让项目很繁琐，而且也提高了项目的耦合性，不利于二次开发，所以现在来通过一个简单的demo来简单的体验一下前后端分离。</p><h1 id="涉及技术"><a href="#涉及技术" class="headerlink" title="涉及技术"></a>涉及技术</h1><ul><li><p>Vue</p></li><li><p>SprtingBoot</p></li><li><p>Mybatis-plus</p></li></ul><h1 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h1><p>这里的数据我就使用<code>Mybatis-plus</code>官方提供样例的数据了。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE IF NOT EXISTS Company;</span><br><span class="line"></span><br><span class="line">USE `Company`;</span><br><span class="line"></span><br><span class="line">DROP TABLE IF EXISTS user;</span><br><span class="line"></span><br><span class="line">CREATE TABLE user</span><br><span class="line">(</span><br><span class="line">	id BIGINT(20) NOT NULL COMMENT &#x27;主键ID&#x27;,</span><br><span class="line">	name VARCHAR(30) NULL DEFAULT NULL COMMENT &#x27;姓名&#x27;,</span><br><span class="line">	age INT(11) NULL DEFAULT NULL COMMENT &#x27;年龄&#x27;,</span><br><span class="line">	email VARCHAR(50) NULL DEFAULT NULL COMMENT &#x27;邮箱&#x27;,</span><br><span class="line">	PRIMARY KEY (id)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">DELETE FROM user;</span><br><span class="line"></span><br><span class="line">INSERT INTO user (id, name, age, email) VALUES</span><br><span class="line">(1, &#x27;Jone&#x27;, 18, &#x27;test1@baomidou.com&#x27;),</span><br><span class="line">(2, &#x27;Jack&#x27;, 20, &#x27;test2@baomidou.com&#x27;),</span><br><span class="line">(3, &#x27;Tom&#x27;, 28, &#x27;test3@baomidou.com&#x27;),</span><br><span class="line">(4, &#x27;Sandy&#x27;, 21, &#x27;test4@baomidou.com&#x27;),</span><br><span class="line">(5, &#x27;Billie&#x27;, 24, &#x27;test5@baomidou.com&#x27;);</span><br></pre></td></tr></table></figure><h1 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h1><blockquote><p>前端就随便展示一下好了。</p></blockquote><ol><li><p>创建一个Vue的项目</p></li><li><p>在项目的<code>views</code>的文件夹下编写<code>test.vue</code>页面用来展示数据</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      &lt;table&gt;</span><br><span class="line">          &lt;tr&gt;</span><br><span class="line">              &lt;td&gt;主键ID&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;姓名&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;年龄&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;邮箱&lt;/td&gt;</span><br><span class="line">          &lt;/tr&gt;</span><br><span class="line">          &lt;tr v-for=&quot;item in user&quot; :key=&quot;item.id&quot;&gt;</span><br><span class="line">              &lt;td&gt;&#123;&#123;item.id&#125;&#125;&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;&#123;&#123;item.name&#125;&#125;&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;&#123;&#123;item.age&#125;&#125;&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;&#123;&#123;item.email&#125;&#125;&lt;/td&gt;</span><br><span class="line">          &lt;/tr&gt;</span><br><span class="line">      &lt;/table&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &quot;test&quot;,</span><br><span class="line">    data()&#123;</span><br><span class="line">        return&#123;</span><br><span class="line">            user: [&#123;</span><br><span class="line">                id : 1,</span><br><span class="line">                name : &#x27;yww&#x27;,</span><br><span class="line">                age : 10,</span><br><span class="line">                email : &#x27;1141@qq.com&#x27;</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure><blockquote><p>前端开始主要注重页面，所以先用假数据。</p></blockquote></li><li><p>编写路由，在<code>router</code>的文件下编写index.js文件</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VueRouter</span> <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&#x27;../views/Home.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">VueRouter</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">Home</span></span><br><span class="line">  &#125;,</span><br><span class="line"><span class="comment">// 添加test的路由</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/test&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Test&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../views/test.vue&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">    <span class="comment">// route level code-splitting</span></span><br><span class="line">    <span class="comment">// this generates a separate chunk (about.[hash].js) for this route</span></span><br><span class="line">    <span class="comment">// which is lazy-loaded when the route is visited.</span></span><br><span class="line">    <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="comment">/* webpackChunkName: &quot;about&quot; */</span> <span class="string">&#x27;../views/About.vue&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">  <span class="attr">base</span>: process.<span class="property">env</span>.<span class="property">BASE_URL</span>,</span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure></li><li><p>在页面上添加路由跳转，编写<code>App.vue</code></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;nav&quot;&gt;</span><br><span class="line">      &lt;router-link to=&quot;/&quot;&gt;Home&lt;/router-link&gt; |</span><br><span class="line">      &lt;router-link to=&quot;/about&quot;&gt;About&lt;/router-link&gt; |</span><br><span class="line">      &lt;router-link to=&quot;/test&quot;&gt;Test&lt;/router-link&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;router-view/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></li><li><p>运行vue项目，查看<a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8080/test">http://localhost:8080/test</a>是否出现假数据，出现则为成功</p></li></ol><h1 id="后端部分"><a href="#后端部分" class="headerlink" title="后端部分"></a>后端部分</h1><ol><li><p>首先先创建一个SpringBoot的项目，我的版本是<code>2.4.2</code>。</p></li><li><p>然后在<code>pom.xml</code>导入依赖</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--web启动器--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--数据库驱动--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--lombok--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--mybatis-plus--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--单元测试--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>创建一个实体类，该类在<code>pojo</code>的包下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yww.springboottest.pojo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>创建一个Mapper接口，该接口在<code>Mapper</code>的包下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yww.springboottest.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> com.yww.springboottest.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Repository;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里只需要基础BaseMapper接口，泛型放入实体类就好了</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;&#125;</span><br></pre></td></tr></table></figure></li><li><p>配置SpringBoot，这里使用的配置文件是<code>application.yaml</code></p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置MySQL</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">password</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/Company?userUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="comment"># 配置日志，以便更好查看结果 </span></span><br><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">configuration:</span></span><br><span class="line">    <span class="attr">log-impl:</span> <span class="string">org.apache.ibatis.logging.stdout.StdOutImpl</span></span><br><span class="line"><span class="comment"># 端口自定义，注意和Vue的端口分开，Vue使用了8080，这里就使用8081好了</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br></pre></td></tr></table></figure></li><li><p>扫描注册Mapper接口</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yww.springboottest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.mybatis.spring.annotation.MapperScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;com.yww.springboottest.Mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringboottestApplication</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		SpringApplication.run(SpringboottestApplication.class, args);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li><li><p>查询测试</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yww.springboottest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.yww.springboottest.Mapper.UserMapper;</span><br><span class="line"><span class="keyword">import</span> com.yww.springboottest.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SpringboottestApplicationTests</span> &#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">FindAll</span><span class="params">()</span> &#123;</span><br><span class="line">		List&lt;User&gt; userList = userMapper.selectList(<span class="literal">null</span>);</span><br><span class="line">		System.out.println(userList);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>得到结果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">==&gt;  Preparing: SELECT id,name,age,email FROM user</span><br><span class="line">==&gt; Parameters: </span><br><span class="line">&lt;==    Columns: id, name, age, email</span><br><span class="line">&lt;==        Row: 1, Jone, 18, test1@baomidou.com</span><br><span class="line">&lt;==        Row: 2, Jack, 20, test2@baomidou.com</span><br><span class="line">&lt;==        Row: 3, Tom, 28, test3@baomidou.com</span><br><span class="line">&lt;==        Row: 4, Sandy, 21, test4@baomidou.com</span><br><span class="line">&lt;==        Row: 5, Billie, 24, test5@baomidou.com</span><br><span class="line">&lt;==        Row: 1327829723124920321, lili, 10, sssss</span><br><span class="line">&lt;==        Row: 1327839061415620609, lili, 10, sssss</span><br><span class="line">&lt;==        Row: 1327839257776095234, yww, 20, 1141950370@qq.com</span><br><span class="line">&lt;==      Total: 8</span><br></pre></td></tr></table></figure><p>由此可以看到查询结果没有什么问题，然后就可以写接口返回数据了。</p></li><li><p>编写接口，该接口在<code>Controller</code>的包下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yww.springboottest.Controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.yww.springboottest.Mapper.UserMapper;</span><br><span class="line"><span class="keyword">import</span> com.yww.springboottest.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/findall&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">FindAll</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.selectList(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>访问<a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8081/findall">http://localhost:8081/findall</a>即可查询到查询返回的数据。</p></li></ol><h1 id="前后端交互"><a href="#前后端交互" class="headerlink" title="前后端交互"></a>前后端交互</h1><ol><li><p>在vue项目里添加<code>axios</code>插件，用来请求接口</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue add axios</span><br></pre></td></tr></table></figure></li><li><p>修改<code>test.vue</code>里的数据</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      &lt;table&gt;</span><br><span class="line">          &lt;tr&gt;</span><br><span class="line">              &lt;td&gt;主键ID&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;姓名&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;年龄&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;邮箱&lt;/td&gt;</span><br><span class="line">          &lt;/tr&gt;</span><br><span class="line">          &lt;tr v-<span class="keyword">for</span>=<span class="string">&quot;item in user&quot;</span> :key=<span class="string">&quot;item.id&quot;</span>&gt;</span><br><span class="line">              &lt;td&gt;&#123;&#123;item.id&#125;&#125;&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;&#123;&#123;item.name&#125;&#125;&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;&#123;&#123;item.age&#125;&#125;&lt;/td&gt;</span><br><span class="line">              &lt;td&gt;&#123;&#123;item.email&#125;&#125;&lt;/td&gt;</span><br><span class="line">          &lt;/tr&gt;</span><br><span class="line">      &lt;/table&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">    name: <span class="string">&quot;test&quot;</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            user: []</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created() &#123;</span><br><span class="line">        <span class="comment">//	请求端口数据，并将数据赋值给user数组</span></span><br><span class="line">        axios.get(<span class="string">&#x27;http://localhost:8081/findall&#x27;</span>).then(response =&gt; (<span class="built_in">this</span>.user = response.data))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></li><li><p>在后端部分增加一个工具类，用于解决跨域问题（因为是不同端口的请求），该类在<code>config</code>包下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yww.springboottest.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.CorsRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CrosConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> &#123;</span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                .allowCredentials(<span class="literal">false</span>)</span><br><span class="line">                .allowedMethods(<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;GET&quot;</span>, <span class="string">&quot;PUT&quot;</span>, <span class="string">&quot;OPTIONS&quot;</span>, <span class="string">&quot;DELETE&quot;</span>)</span><br><span class="line">                .allowedOrigins(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>然后访问前端项目的页面<a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8080/test">http://localhost:8080/test</a>，就能看到后端查询并返回的数据了</p></li></ol><h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>这次是一个简单的demo，实际项目还要复杂很多，这个demo虽然简单，但是也是能让你简单了解一下前后端分离的开发流程。</p></article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://img.yww52.com/2021/1/2021-1-20top_img.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.6/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/f1601c3e/" title="单例模式"><img class="cover" src="/loading.gif" data-lazy-src="https://img.yww52.com/2021/1/2021-1-23top_img.jpg" onerror='onerror=null,src="https://img.yww52.com/source/image/404.jpg"' alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">单例模式</div></div><div class="info-2"><div class="info-item-1">单例模式是设计模式中十分经典的一个模式。</div></div></div></a><a class="pagination-related" href="/posts/edea11bc/" title="synchronized"><img class="cover" src="/loading.gif" data-lazy-src="https://img.yww52.com/2021/1/2021-1-11/top_img.jpg" onerror='onerror=null,src="https://img.yww52.com/source/image/404.jpg"' alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">synchronized</div></div><div class="info-2"><div class="info-item-1">synchronized是Java提供的一个关键字，是一种同步锁。</div></div></div></a></nav><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="artalk-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">开篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E6%8A%80%E6%9C%AF"><span class="toc-number">2.</span> <span class="toc-text">涉及技术</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E6%95%B0%E6%8D%AE"><span class="toc-number">3.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%83%A8%E5%88%86"><span class="toc-number">4.</span> <span class="toc-text">前端部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%83%A8%E5%88%86"><span class="toc-number">5.</span> <span class="toc-text">后端部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92"><span class="toc-number">6.</span> <span class="toc-text">前后端交互</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E5%B0%BE"><span class="toc-number">7.</span> <span class="toc-text">结尾</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image:url(https://img.yww52.com/source/index_img/footer.jpg)"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2019 - 2026 By yw</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.0</a></span></div><div class="footer_custom_text"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.upyun.com/?utm_source=lianmeng&amp;utm_medium=referra">又拍云</a><span>提供加速服务</span><br><a id="yww-beian" target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn"><span>桂ICP备20005765号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/6.0.29/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
-  let artalkItem = null
-  const option = null
-  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
-
-  const destroyArtalk = () => {
-    if (artalkItem) {
-      artalkItem.destroy()
-      artalkItem = null
-    }
-  }
-
-  const artalkChangeMode = theme => artalkItem && artalkItem.setDarkMode(theme === 'dark')
-
-  const initArtalk = (el = document, pageKey = location.pathname) => {
-    artalkItem = Artalk.init({
-      el: el.querySelector('#artalk-wrap'),
-      server: 'https://blog.yww52.com',
-      site: 'yw的博客',
-      darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
-      ...option,
-      pageKey: isShuoshuo ? pageKey : (option && option.pageKey) || pageKey
-    })
-
-    if (GLOBAL_CONFIG.lightbox === 'null') return
-    artalkItem.on('list-loaded', () => {
-      artalkItem.ctx.get('list').getCommentNodes().forEach(comment => {
-        const $content = comment.getRender().$content
-        btf.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
-      })
-    })
-
-    if (isShuoshuo) {
-      window.shuoshuoComment.destroyArtalk = () => {
-        destroyArtalk()
-        if (el.children.length) {
-          el.innerHTML = ''
-          el.classList.add('no-comment')
-        }
-      }
-    }
-
-    btf.addGlobalFn('pjaxSendOnce', destroyArtalk, 'destroyArtalk')
-    btf.addGlobalFn('themeChange', artalkChangeMode, 'artalk')
-  }
-
-  const loadArtalk = async (el, pageKey) => {
-    if (typeof Artalk === 'object') initArtalk(el, pageKey)
-    else {
-      await btf.getCSS('https://img.yww52.com/source/css/artalk.min.css')
-      await btf.getScript('https://img.yww52.com/source/scripts/artalk.min.js')
-      initArtalk(el, pageKey)
-    }
-  }
-
-  if (isShuoshuo) {
-    'Artalk' === 'Artalk'
-      ? window.shuoshuoComment = { loadComment: loadArtalk }
-      : window.loadOtherComment = loadArtalk
-    return
-  }
-
-  if ('Artalk' === 'Artalk' || !true) {
-    if (true) btf.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
-    else setTimeout(loadArtalk, 100)
-  } else {
-    window.loadOtherComment = loadArtalk
-  }
-})()</script></div><script>window.newestComments = {
-  changeContent: content => {
-    if (content === '') return content
-
-    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g, "") // remove html tag
-
-    if (content.length > 150) {
-      content = content.substring(0, 150) + '...'
-    }
-    return content
-  },
-
-  generateHtml: (array, ele) => {
-    let result = ''
-
-    if (array.length) {
-      for (let i = 0; i < array.length; i++) {
-        result += '<div class="aside-list-item">'
-
-        if (true && array[i].avatar) {
-          const imgAttr = 'data-lazy-src'
-          const lazyloadNative = ''
-          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
-        }
-
-        result += `<div class="content">
-        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
-        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
-        </div></div>`
-      }
-    } else {
-      result += '暂无评论'
-    }
-
-    ele.innerHTML = result
-    window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh(ele)
-  },
-
-  newestCommentInit: (name, getComment) => {
-    const $dom = document.querySelector('#card-newest-comments .aside-list')
-    if ($dom) {
-      const data = btf.saveToLocal.get(name)
-      if (data) {
-        newestComments.generateHtml(JSON.parse(data), $dom)
-      } else {
-        getComment($dom)
-      }
-    }
-  },
-
-  run: (name, getComment) => {
-    newestComments.newestCommentInit(name, getComment)
-    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
-  }
-}</script><script>window.addEventListener('load', () => {
-  const keyName = 'artalk-newest-comments'
-  const { changeContent, generateHtml, run } = window.newestComments
-
-  const getAvatarValue = async () => {
-    const predefinedAvatarCdn = ''
-    const predefinedAvatarDefault = ''
-
-    const avatarDefaultFormat = e => e.startsWith('d=') ? e : `d=${e}`
-
-    if (predefinedAvatarCdn && predefinedAvatarDefault) {
-      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
-    }
-
-    try {
-      const res = await fetch('https://blog.yww52.com/api/v2/conf')
-      const result = await res.json()
-      const { mirror, params, default: defaults } = result.frontend_conf.gravatar
-      const avatarCdn = predefinedAvatarCdn || mirror
-      let avatarDefault = avatarDefaultFormat(predefinedAvatarDefault || params || defaults)
-      return { avatarCdn, avatarDefault}
-    } catch (e) {
-      console.error(e)
-      return { avatarCdn: predefinedAvatarCdn, avatarDefault: avatarDefaultFormat(predefinedAvatarDefault) }
-    }
-  }
-
-  const searchParams = new URLSearchParams({
-    'site_name': 'yw的博客',
-    'limit': '12', // Fetch more comments to filter pending comments
-  })
-
-  const getComment = async (ele) => {
-    try {
-      const res = await fetch(`https://blog.yww52.com/api/v2/stats/latest_comments?${searchParams}`)
-      const result = await res.json()
-      const { avatarCdn, avatarDefault } = await getAvatarValue()
-      const artalk = result.data
-        .filter(e => !e.is_pending) // Filter pending comments
-        .slice(0, 6) // Limit the number of comments
-        .map(e => {
-          const avatar = avatarCdn && e.email_encrypted ? `${avatarCdn}${e.email_encrypted}?${avatarDefault}` : ''
-          return {
-            'avatar': avatar,
-            'content': changeContent(e.content_marked),
-            'nick': e.nick,
-            'url': e.page_url,
-            'date': e.date,
-          }
-        })
-      btf.saveToLocal.set(keyName, JSON.stringify(artalk), 10/(60*24))
-      generateHtml(artalk, ele)
-    } catch (e) {
-      console.log(e)
-      ele.textContent= "无法获取评论，请确认相关配置是否正确"
-    }
-  }
-
-  run(keyName, getComment)
-})</script><link rel="stylesheet" href="/yww/optimize.css"><link rel="stylesheet" href="https://img.yww52.com/source/iconfont/iconfont.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>(() => {
-  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-  window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"])',
-    selectors: pjaxSelectors,
-    cacheBust: false,
-    analytics: false,
-    scrollRestoration: false
-  })
-
-  const triggerPjaxFn = (val) => {
-    if (!val) return
-    Object.values(val).forEach(fn => {
-      try {
-        fn()
-      } catch (err) {
-        console.debug('Pjax callback failed:', err)
-      }
-    })
-  }
-
-  document.addEventListener('pjax:send', () => {
-    // removeEventListener
-    btf.removeGlobalFnEvent('pjaxSendOnce')
-    btf.removeGlobalFnEvent('themeChange')
-
-    // reset readmode
-    const $bodyClassList = document.body.classList
-    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
-
-    triggerPjaxFn(window.globalFn.pjaxSend)
-  })
-
-  document.addEventListener('pjax:complete', () => {
-    btf.removeGlobalFnEvent('pjaxCompleteOnce')
-    document.querySelectorAll('script[data-pjax]').forEach(item => {
-      const newScript = document.createElement('script')
-      const content = item.text || item.textContent || item.innerHTML || ""
-      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-      newScript.appendChild(document.createTextNode(content))
-      item.parentNode.replaceChild(newScript, item)
-    })
-
-    triggerPjaxFn(window.globalFn.pjaxComplete)
-  })
-
-  document.addEventListener('pjax:error', e => {
-    if (e.request.status === 404) {
-      const usePjax = true
-      true
-        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
-        : window.location.href = e.request.responseURL
-    }
-  })
-})()</script><script async data-pjax src="https://img.yww52.com/source/scripts/busuanzi.min.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"></div><hr><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+<!DOCTYPE html><html lang="zh-CN" data-overlayscrollbars-initialize> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Astro v6.1.5"><title>前后端分离demo</title><meta name="title" content="前后端分离demo"><meta name="description" content="简单的体验一下前后端分离。"><link rel="canonical" href="https://yww52.com/posts/ee7e4b9/"><link rel="icon" type="image/svg+xml" href="/favicon.png"><link rel="icon" href="/favicon.png"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="yww" href="https://yww52.com/rss2.xml"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.j56hQv-j.js"></script><meta property="og:type" content="website"><meta property="og:url" content="https://yww52.com/posts/ee7e4b9/"><meta property="og:title" content="前后端分离demo"><meta property="og:description" content="简单的体验一下前后端分离。"><meta property="og:image" content="https://yww52.com/default_cover.jpg"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://yww52.com/posts/ee7e4b9/"><meta property="twitter:title" content="前后端分离demo"><meta property="twitter:description" content="简单的体验一下前后端分离。"><meta property="twitter:image" content="https://yww52.com/default_cover.jpg"><style>.custom-banner[data-astro-cid-kggsjsm4]{position:relative;width:100%;height:var(--banner-height);background-image:var(--banner-image);background-attachment:fixed;background-position:center var(--banner-position-y);background-repeat:no-repeat;background-size:cover;overflow:hidden;transition:height .4s ease-in-out}.banner-overlay[data-astro-cid-kggsjsm4]{position:absolute;top:0;left:0;width:100%;height:100%;background-color:#0000004d;pointer-events:none}@media(max-width:1024px){.custom-banner[data-astro-cid-kggsjsm4]{height:var(--banner-mobile-height);background-image:var(--banner-mobile-image);background-attachment:fixed;background-position:center -10vh}}
+</style>
+<link rel="stylesheet" href="/_astro/BlogLayout.C2EqdoDp.css">
+<style>.artalk{--at-color-main: var(--theme-primary);--at-color-border: oklch(var(--theme-primary) / .15);--at-color-bg: var(--panel-background);--at-color-bg-grey: oklch(var(--theme-primary) / .05);--at-color-font: var(--text-primary);--at-color-deep: var(--text-primary);--at-color-sub: var(--text-muted);--at-color-meta: var(--text-muted);--at-color-bg-light: oklch(var(--theme-primary) / .08);--at-color-yellow: var(--theme-secondary);--at-color-light: oklch(var(--theme-primary) / .12);--at-color-bg-transl: var(--panel-background)}.artalk-loading{padding:2rem 0}.artalk-skeleton-editor,.artalk-skeleton-list-header,.artalk-skeleton-comment{background:oklch(var(--theme-primary) / .05);border-radius:8px;margin-bottom:1.5rem;animation:artalk-pulse 2s infinite ease-in-out}.artalk-skeleton-editor{height:120px}.artalk-skeleton-list-header{height:40px;width:30%}.artalk-skeleton-comment{height:80px}@keyframes artalk-pulse{0%,to{opacity:.6}50%{opacity:1}}.atk-list-comments .atk-comment-wrap:hover{background:oklch(var(--theme-primary) / .02)!important;border-radius:12px}.atk-comment-wrap{border-bottom:1px solid var(--panel-border)!important;padding:1rem 0;transition:all .3s ease}.atk-comment .atk-avatar img{border:0;border-radius:50%;box-shadow:var(--box-shadow);object-fit:cover;transition:transform .5s cubic-bezier(.2,1,.3,1)}.atk-comment .atk-avatar img:hover{transform:scale(1.08) rotate(5deg)}.atk-badge{background:var(--theme-primary)!important;color:#fff!important;border-radius:4px!important}.atk-pagination .atk-item{border-radius:6px!important;transition:all .2s ease!important}.atk-pagination .atk-item:hover{background:oklch(var(--theme-primary) / .1)!important;color:var(--theme-primary)!important}.atk-pagination .atk-item.atk-cur{background:var(--theme-primary)!important;color:#fff!important}
+</style>
+<link rel="stylesheet" href="/_astro/_..CtnzHNSB.css"><style>[data-astro-transition-scope="astro-uk7qqvmr-1"] { view-transition-name: astro-uk7qqvmr-1; }@layer astro { ::view-transition-old(astro-uk7qqvmr-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(astro-uk7qqvmr-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(astro-uk7qqvmr-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(astro-uk7qqvmr-1) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-uk7qqvmr-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-uk7qqvmr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-uk7qqvmr-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-uk7qqvmr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-uk7qqvmr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-uk7qqvmr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-uk7qqvmr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-uk7qqvmr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body class="layout-body" data-overlayscrollbars-initialize> <main id="main-content" class="layout-main">  <nav class="site-bar has-comments-link" aria-label="快捷导航" data-site-bar data-astro-transition-persist="site-bar" data-astro-cid-d7zsxddp> <div class="site-bar__panel" data-astro-cid-d7zsxddp> <ul class="site-bar__group" aria-label="主导航" data-astro-cid-d7zsxddp> <li class="site-bar__item" data-site-bar-nav-item="首页" data-astro-cid-d7zsxddp> <a href="/" class="site-bar__control" aria-label="首页" data-site-bar-nav-href="/" data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-heart-icon lucide-house-heart" data-astro-cid-d7zsxddp="true"><path d="M8.62 13.8A2.25 2.25 0 1 1 12 10.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>首页</span> </a> </li><li class="site-bar__item" data-site-bar-nav-item="分类" data-astro-cid-d7zsxddp>  <div class="site-bar__category-menu" id="site-bar-category-menu" aria-hidden="true" data-astro-cid-d7zsxddp> <div class="site-bar__category-menu-list" data-astro-cid-d7zsxddp> <a href="/categories/读书笔记/" class="site-bar__category-link" data-site-bar-nav-href="/categories/读书笔记/" data-astro-cid-d7zsxddp> 读书笔记 </a><a href="/categories/个人总结/" class="site-bar__category-link" data-site-bar-nav-href="/categories/个人总结/" data-astro-cid-d7zsxddp> 个人总结 </a><a href="/categories/我的技术学习物语果然有问题/" class="site-bar__category-link" data-site-bar-nav-href="/categories/我的技术学习物语果然有问题/" data-astro-cid-d7zsxddp> 我的技术学习物语果然有问题 </a><a href="/categories/瞎折腾/" class="site-bar__category-link" data-site-bar-nav-href="/categories/瞎折腾/" data-astro-cid-d7zsxddp> 瞎折腾 </a> </div> </div> <button type="button" class="site-bar__control" aria-label="展开分类" aria-expanded="false" aria-controls="site-bar-category-menu" data-site-bar-category-trigger data-site-bar-nav-href="/categories" data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-panel-left-icon lucide-layout-panel-left" data-astro-cid-d7zsxddp="true"><rect width="7" height="18" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>分类</span> </button>  </li><li class="site-bar__item" data-site-bar-nav-item="友链" data-astro-cid-d7zsxddp> <a href="/link" class="site-bar__control" aria-label="友链" data-site-bar-nav-href="/link" data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact-round-icon lucide-contact-round" data-astro-cid-d7zsxddp="true"><path d="M16 2v2" /><path d="M17.915 22a6 6 0 0 0-12 0" /><path d="M8 2v2" /><circle cx="12" cy="12" r="4" /><rect x="3" y="4" width="18" height="18" rx="2" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>友链</span> </a> </li><li class="site-bar__item" data-site-bar-nav-item="关于" data-astro-cid-d7zsxddp> <a href="/about" class="site-bar__control" aria-label="关于" data-site-bar-nav-href="/about" data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart" data-astro-cid-d7zsxddp="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>关于</span> </a> </li> </ul> <div class="site-bar__separator" data-astro-cid-d7zsxddp></div> <div class="site-bar__group" role="group" aria-label="辅助功能" data-astro-cid-d7zsxddp> <button type="button" class="site-bar__control" aria-label="搜索" data-site-bar-search-trigger data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search" data-astro-cid-d7zsxddp="true"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>搜索</span> </button> <button type="button" class="site-bar__control" aria-label="网站信息" data-site-info-trigger data-astro-cid-d7zsxddp> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info-icon lucide-info" data-astro-cid-d7zsxddp="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>信息</span> </button> <a href="#artalk-comments" class="site-bar__control site-bar__control--comments is-visible" aria-label="前往评论区" aria-hidden="false" data-site-bar-comments-link data-astro-cid-d7zsxddp data-astro-transition-scope="astro-uk7qqvmr-1"> <span class="site-bar__icon" aria-hidden="true" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-more-icon lucide-message-circle-more" data-astro-cid-d7zsxddp="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /><path d="M8 12h.01" /><path d="M12 12h.01" /><path d="M16 12h.01" /></svg> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>评论区</span> </a> <a href="#main-content" class="site-bar__control site-bar__control--top" aria-label="回到顶部" data-site-bar-scroll-top data-astro-cid-d7zsxddp> <span class="site-bar__icon site-bar__icon--back-to-top" aria-hidden="true" data-astro-cid-d7zsxddp> <span class="site-bar__scroll-icon" data-astro-cid-d7zsxddp> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-icon lucide-arrow-up" data-astro-cid-d7zsxddp="true"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg> </span> <span class="site-bar__scroll-text" data-scroll-percent data-astro-cid-d7zsxddp>0</span> </span> <span class="site-bar__tooltip" data-astro-cid-d7zsxddp>回到顶部</span> </a> </div> </div> </nav> <script type="module" src="/_astro/SiteBar.astro_astro_type_script_index_0_lang.DAigh9mc.js"></script> <div class="mobile-bar" data-mobile-bar data-astro-cid-4h3iukot> <div class="mobile-bar__actions-stack" data-astro-cid-4h3iukot> <button type="button" class="mobile-bar__action-btn" data-site-bar-search-trigger aria-label="搜索" data-astro-cid-4h3iukot> <span class="mobile-bar__action-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search" data-astro-cid-4h3iukot="true"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg></span> </button> <button type="button" class="mobile-bar__action-btn" data-site-info-trigger aria-label="网站信息" data-astro-cid-4h3iukot> <span class="mobile-bar__action-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info-icon lucide-info" data-astro-cid-4h3iukot="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg></span> </button> <button type="button" class="mobile-bar__action-btn" data-mobile-toc-trigger aria-label="文章目录" data-astro-cid-4h3iukot> <span class="mobile-bar__action-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-horizontal-justify-center-icon lucide-align-horizontal-justify-center" data-astro-cid-4h3iukot="true"><rect width="6" height="14" x="2" y="5" rx="2" /><rect width="6" height="10" x="16" y="7" rx="2" /><path d="M12 2v20" /></svg></span> </button> <button type="button" class="mobile-bar__action-btn" data-mobile-top-trigger aria-label="回到顶部" data-astro-cid-4h3iukot> <span class="mobile-bar__action-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-icon lucide-arrow-up" data-astro-cid-4h3iukot="true"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></span> <span class="mobile-bar__scroll-percent" data-mobile-scroll-percent data-astro-cid-4h3iukot>0</span> </button> <button type="button" class="mobile-bar__trigger" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-nav-menu" data-mobile-trigger data-astro-cid-4h3iukot> <span class="mobile-bar__icon" data-astro-cid-4h3iukot> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu" data-astro-cid-4h3iukot="true"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg> </span> </button> </div> <div class="mobile-bar__overlay" data-mobile-overlay aria-hidden="true" data-astro-cid-4h3iukot> <div class="mobile-bar__menu" id="mobile-nav-menu" data-astro-cid-4h3iukot> <div class="mobile-bar__header" data-astro-cid-4h3iukot> <h2 class="mobile-bar__title" data-astro-cid-4h3iukot>导航</h2> <button type="button" class="mobile-bar__close" aria-label="关闭菜单" data-mobile-close data-astro-cid-4h3iukot> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-4h3iukot><line x1="18" y1="6" x2="6" y2="18" data-astro-cid-4h3iukot></line><line x1="6" y1="6" x2="18" y2="18" data-astro-cid-4h3iukot></line></svg> </button> </div> <div class="mobile-bar__content" data-astro-cid-4h3iukot> <nav class="mobile-bar__nav" data-astro-cid-4h3iukot> <ul class="mobile-bar__nav-list" data-astro-cid-4h3iukot> <li class="mobile-bar__nav-item" data-astro-cid-4h3iukot> <a href="/" class="mobile-bar__nav-link" data-astro-cid-4h3iukot> <span class="mobile-bar__nav-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-heart-icon lucide-house-heart" data-astro-cid-4h3iukot="true"><path d="M8.62 13.8A2.25 2.25 0 1 1 12 10.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg></span> <span class="mobile-bar__nav-label" data-astro-cid-4h3iukot>首页</span> </a>  </li><li class="mobile-bar__nav-item" data-astro-cid-4h3iukot> <div class="mobile-bar__nav-link is-header" data-astro-cid-4h3iukot> <span class="mobile-bar__nav-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-panel-left-icon lucide-layout-panel-left" data-astro-cid-4h3iukot="true"><rect width="7" height="18" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /></svg></span> <span class="mobile-bar__nav-label" data-astro-cid-4h3iukot>分类</span> </div> <ul class="mobile-bar__sub-nav" data-astro-cid-4h3iukot> <li data-astro-cid-4h3iukot> <a href="/categories/读书笔记/" class="mobile-bar__sub-link" data-astro-cid-4h3iukot> 读书笔记 </a> </li><li data-astro-cid-4h3iukot> <a href="/categories/个人总结/" class="mobile-bar__sub-link" data-astro-cid-4h3iukot> 个人总结 </a> </li><li data-astro-cid-4h3iukot> <a href="/categories/我的技术学习物语果然有问题/" class="mobile-bar__sub-link" data-astro-cid-4h3iukot> 我的技术学习物语果然有问题 </a> </li><li data-astro-cid-4h3iukot> <a href="/categories/瞎折腾/" class="mobile-bar__sub-link" data-astro-cid-4h3iukot> 瞎折腾 </a> </li> </ul> </li><li class="mobile-bar__nav-item" data-astro-cid-4h3iukot> <a href="/link" class="mobile-bar__nav-link" data-astro-cid-4h3iukot> <span class="mobile-bar__nav-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-contact-round-icon lucide-contact-round" data-astro-cid-4h3iukot="true"><path d="M16 2v2" /><path d="M17.915 22a6 6 0 0 0-12 0" /><path d="M8 2v2" /><circle cx="12" cy="12" r="4" /><rect x="3" y="4" width="18" height="18" rx="2" /></svg></span> <span class="mobile-bar__nav-label" data-astro-cid-4h3iukot>友链</span> </a>  </li><li class="mobile-bar__nav-item" data-astro-cid-4h3iukot> <a href="/about" class="mobile-bar__nav-link" data-astro-cid-4h3iukot> <span class="mobile-bar__nav-icon" data-astro-cid-4h3iukot><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart" data-astro-cid-4h3iukot="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></span> <span class="mobile-bar__nav-label" data-astro-cid-4h3iukot>关于</span> </a>  </li> </ul> </nav> </div> </div> </div> <div class="mobile-bar__toc-overlay" data-mobile-toc-overlay aria-hidden="true" data-astro-cid-4h3iukot> <div class="mobile-bar__toc-container" data-astro-cid-4h3iukot> <div class="mobile-bar__toc-header" data-astro-cid-4h3iukot> <h2 class="mobile-bar__toc-title" data-astro-cid-4h3iukot>目录</h2> <button type="button" class="mobile-bar__toc-close" aria-label="关闭目录" data-mobile-toc-close data-astro-cid-4h3iukot> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-4h3iukot><line x1="18" y1="6" x2="6" y2="18" data-astro-cid-4h3iukot></line><line x1="6" y1="6" x2="18" y2="18" data-astro-cid-4h3iukot></line></svg> </button> </div> <div class="mobile-bar__toc-content" data-astro-cid-4h3iukot> <nav class="toc-container" aria-label="文章目录" data-astro-cid-6t6zfk7k><div class="toc-header" data-astro-cid-6t6zfk7k>目录</div><ul class="toc-list" data-astro-cid-6t6zfk7k><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#开篇" class="toc-link" data-toc-id="开篇" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>开篇</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#涉及技术" class="toc-link" data-toc-id="涉及技术" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>涉及技术</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#准备数据" class="toc-link" data-toc-id="准备数据" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>准备数据</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#前端部分" class="toc-link" data-toc-id="前端部分" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>前端部分</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#后端部分" class="toc-link" data-toc-id="后端部分" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>后端部分</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#前后端交互" class="toc-link" data-toc-id="前后端交互" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>前后端交互</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#结尾" class="toc-link" data-toc-id="结尾" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>结尾</span></a></li></ul></nav><script type="module" src="/_astro/Toc.astro_astro_type_script_index_0_lang.BFSvnGFZ.js"></script> </div> </div> </div> </div> <script type="module" src="/_astro/MobileBar.astro_astro_type_script_index_0_lang.ski4aMy4.js"></script> <div class="site-bar__search" id="site-bar-search" aria-hidden="true" data-astro-cid-otpdt6jm> <div class="site-bar__search-container" data-astro-cid-otpdt6jm> <div class="site-bar__search-box" data-astro-cid-otpdt6jm> <div class="site-bar__search-header" data-astro-cid-otpdt6jm> <div class="site-bar__search-icon-wrapper" data-astro-cid-otpdt6jm> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search" data-astro-cid-otpdt6jm="true"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg> </div> <input type="text" class="site-bar__search-input" placeholder="搜索文章标题、内容或关键词..." aria-label="搜索文章" data-site-bar-search-input data-astro-cid-otpdt6jm> <button type="button" class="site-bar__search-clear" aria-label="关闭" data-site-bar-search-close data-astro-cid-otpdt6jm> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-otpdt6jm><line x1="18" y1="6" x2="6" y2="18" data-astro-cid-otpdt6jm></line><line x1="6" y1="6" x2="18" y2="18" data-astro-cid-otpdt6jm></line></svg> </button> </div> <div class="site-bar__search-body is-empty" data-site-bar-search-body data-astro-cid-otpdt6jm> <div class="site-bar__search-empty" data-astro-cid-otpdt6jm> <p data-astro-cid-otpdt6jm>输入关键词以开始搜索</p> <div class="site-bar__search-hints" data-astro-cid-otpdt6jm> <span data-astro-cid-otpdt6jm>按 <kbd data-astro-cid-otpdt6jm>ESC</kbd> 关闭</span> </div> </div> </div> </div> </div> </div> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dy7tAigq.js"></script> <div class="site-info-modal" id="site-info-modal" aria-hidden="true" data-site-info-modal data-astro-cid-7xvx6y6l> <div class="site-info-modal__overlay" data-site-info-close data-astro-cid-7xvx6y6l></div> <div class="site-info-modal__container" data-astro-cid-7xvx6y6l> <div class="site-info-modal__card" data-astro-cid-7xvx6y6l> <header class="site-info-modal__header" data-astro-cid-7xvx6y6l> <div class="site-info-modal__tabs" role="tablist" data-astro-cid-7xvx6y6l> <button class="site-info-modal__tab is-active" role="tab" aria-selected="true" aria-controls="content-blogger" data-site-info-tab="blogger" data-astro-cid-7xvx6y6l>
+博主
+</button> <button class="site-info-modal__tab" role="tab" aria-selected="false" aria-controls="content-stats" data-site-info-tab="stats" data-astro-cid-7xvx6y6l>
+数据
+</button> <button class="site-info-modal__tab" role="tab" aria-selected="false" aria-controls="content-site" data-site-info-tab="site" data-astro-cid-7xvx6y6l>
+网站
+</button> <div class="site-info-modal__tab-indicator" data-astro-cid-7xvx6y6l></div> </div> <button class="site-info-modal__close" aria-label="关闭" data-site-info-close data-astro-cid-7xvx6y6l> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-7xvx6y6l><line x1="18" y1="6" x2="6" y2="18" data-astro-cid-7xvx6y6l></line><line x1="6" y1="6" x2="18" y2="18" data-astro-cid-7xvx6y6l></line></svg> </button> </header> <div class="site-info-modal__body" data-astro-cid-7xvx6y6l> <div class="site-info-modal__content is-active" id="content-blogger" role="tabpanel" data-site-info-content="blogger" data-astro-cid-7xvx6y6l> <div class="blogger-info-section" data-astro-cid-7xvx6y6l> <div class="blogger-header" data-astro-cid-7xvx6y6l> <div class="blogger-avatar-wrapper" data-astro-cid-7xvx6y6l> <img src="https://img.yww52.com/avatar.jpg" alt="yw's Avatar" class="blogger-avatar" data-astro-cid-7xvx6y6l> </div> <div class="blogger-intro" data-astro-cid-7xvx6y6l> <h3 class="blogger-name" data-astro-cid-7xvx6y6l>yw</h3> <p class="blogger-bio" data-astro-cid-7xvx6y6l>debug myself</p> </div> </div> <div class="blogger-socials" data-astro-cid-7xvx6y6l> <a href="https://github.com/whyneh" target="_blank" rel="noopener noreferrer" class="social-link" data-astro-cid-7xvx6y6l> GitHub </a><a href="mailto:1141950370@qq.com" class="social-link" data-astro-cid-7xvx6y6l> Email </a><a href="https://wpa.qq.com/msgrd?v=3&#38;uin=1141950370&#38;site=qq&#38;menu=yes" target="_blank" rel="noopener noreferrer" class="social-link" data-astro-cid-7xvx6y6l> QQ </a><a href="https://space.bilibili.com/35327819" target="_blank" rel="noopener noreferrer" class="social-link" data-astro-cid-7xvx6y6l> bilibili </a> </div> </div> </div> <div class="site-info-modal__content" id="content-stats" role="tabpanel" aria-hidden="true" data-site-info-content="stats" data-astro-cid-7xvx6y6l> <div class="stats-info-section" data-astro-cid-7xvx6y6l> <div class="stats-grid stats-grid--full" data-astro-cid-7xvx6y6l> <div class="stat-card" data-astro-cid-7xvx6y6l> <span class="stat-label" data-astro-cid-7xvx6y6l>全站访问 (PV)</span> <span class="stat-value" data-busuanzi-value="site_pv" data-astro-cid-7xvx6y6l>0</span> </div> <div class="stat-card" data-astro-cid-7xvx6y6l> <span class="stat-label" data-astro-cid-7xvx6y6l>全站访客 (UV)</span> <span class="stat-value" data-busuanzi-value="site_uv" data-astro-cid-7xvx6y6l>0</span> </div> <div class="stat-card" data-astro-cid-7xvx6y6l> <span class="stat-label" data-astro-cid-7xvx6y6l>建站时间</span> <span class="stat-value" data-astro-cid-7xvx6y6l>2019-09-23</span> </div> <div class="stat-card" data-astro-cid-7xvx6y6l> <span class="stat-label" data-astro-cid-7xvx6y6l>运行时间</span> <span class="stat-value" data-site-runtime data-astro-cid-7xvx6y6l>0 天</span> </div> </div> <p class="stats-note" data-astro-cid-7xvx6y6l>数据由后台服务统计驱动</p> </div> </div> <div class="site-info-modal__content" id="content-site" role="tabpanel" aria-hidden="true" data-site-info-content="site" data-astro-cid-7xvx6y6l> <div class="site-info-section" data-astro-cid-7xvx6y6l> <div class="site-info-grid" data-astro-cid-7xvx6y6l> <div class="info-item" data-astro-cid-7xvx6y6l> <span class="info-label" data-astro-cid-7xvx6y6l>驱动核心</span> <span class="info-value" data-astro-cid-7xvx6y6l>Astro</span> </div> <div class="info-item" data-astro-cid-7xvx6y6l> <span class="info-label" data-astro-cid-7xvx6y6l>服务部署</span> <span class="info-value" data-astro-cid-7xvx6y6l>GitHub</span> </div> <div class="info-item" data-astro-cid-7xvx6y6l> <span class="info-label" data-astro-cid-7xvx6y6l>文件管理</span> <span class="info-value" data-astro-cid-7xvx6y6l>又拍云</span> </div> <div class="info-item" data-astro-cid-7xvx6y6l> <span class="info-label" data-astro-cid-7xvx6y6l>CDN</span> <span class="info-value" data-astro-cid-7xvx6y6l>又拍云</span> </div> </div> </div> </div> </div> </div> </div> </div> <script type="module" src="/_astro/SiteInfoModal.astro_astro_type_script_index_0_lang.DgzdKcJk.js"></script> <section class="blog-layout__content" data-astro-cid-4dqtj3le>  <div class="post-header-container" data-astro-cid-egg7nqdx> <div class="custom-banner" style="--banner-height: 25vh; --banner-mobile-height: 30vh; --banner-image: url('https://img.yww52.com/2021/1/2021-1-20top_img.jpg'); --banner-mobile-image: url('https://img.yww52.com/2021/1/2021-1-20top_img.jpg'); --banner-position-y: -30vh;" data-astro-cid-kggsjsm4> <div class="banner-overlay" data-astro-cid-kggsjsm4></div> </div> <div class="post-header content-frame" data-astro-cid-egg7nqdx> <div class="post-header__inner" data-astro-cid-egg7nqdx> <div class="post-header__meta" data-astro-cid-egg7nqdx> <span class="post-header__category" data-astro-cid-egg7nqdx>我的技术学习物语果然有问题</span> <div class="post-header__date-group" data-astro-cid-egg7nqdx> <time datetime="2021-01-20T00:00:00.000Z" data-astro-cid-egg7nqdx>2021.01.20</time> <span class="post-header__updated" data-astro-cid-egg7nqdx>
+(最后更新 <time datetime="2021-01-20T00:00:00.000Z" data-astro-cid-egg7nqdx>2021.01.20</time>)
+</span> </div> <div class="post-header__stats" data-astro-cid-egg7nqdx> <span class="stat-item" data-busuanzi-container="page_pv" style="display: none;" data-astro-cid-egg7nqdx> <span class="stat-item__label" data-astro-cid-egg7nqdx>阅读</span> <span class="stat-item__value" data-busuanzi-value="page_pv" data-astro-cid-egg7nqdx>-</span> </span> <span class="stat-item" data-busuanzi-container="page_uv" style="display: none;" data-astro-cid-egg7nqdx> <span class="stat-item__label" data-astro-cid-egg7nqdx>访客</span> <span class="stat-item__value" data-busuanzi-value="page_uv" data-astro-cid-egg7nqdx>-</span> </span> </div> </div> <h1 class="post-header__title" data-astro-cid-egg7nqdx>前后端分离demo</h1> <p class="post-header__desc" data-astro-cid-egg7nqdx>简单的体验一下前后端分离。</p> </div> </div> </div> <div class="post-page content-frame content-frame--wide" data-astro-cid-egg7nqdx> <aside class="post-toc-panel" data-astro-cid-egg7nqdx> <div class="post-toc-panel__inner" data-astro-cid-egg7nqdx> <nav class="toc-container" aria-label="文章目录" data-astro-cid-6t6zfk7k><div class="toc-header" data-astro-cid-6t6zfk7k>目录</div><ul class="toc-list" data-astro-cid-6t6zfk7k><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#开篇" class="toc-link" data-toc-id="开篇" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>开篇</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#涉及技术" class="toc-link" data-toc-id="涉及技术" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>涉及技术</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#准备数据" class="toc-link" data-toc-id="准备数据" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>准备数据</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#前端部分" class="toc-link" data-toc-id="前端部分" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>前端部分</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#后端部分" class="toc-link" data-toc-id="后端部分" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>后端部分</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#前后端交互" class="toc-link" data-toc-id="前后端交互" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>前后端交互</span></a></li><li class="toc-item depth-1" data-astro-cid-6t6zfk7k><a href="#结尾" class="toc-link" data-toc-id="结尾" data-astro-cid-6t6zfk7k><span class="toc-text" data-astro-cid-6t6zfk7k>结尾</span></a></li></ul></nav> </div> </aside> <article class="blog-post content-frame" data-astro-cid-egg7nqdx> <div class="blog-post__body" data-astro-cid-egg7nqdx> <div class="blog-post__content" data-astro-cid-egg7nqdx> <div class="blog-post__article-content whyneh" data-post-content data-astro-cid-egg7nqdx> <h1 id="开篇">开篇</h1>
+<p>当下前后端分离的趋势很明显，的确这也是很有必要的。前后端分离让前端专注于前端，后端专注于后端，而不是哪一方都要学习前后端。学习过JSP的都知道，前后端之前都是套模板，这会让项目很繁琐，而且也提高了项目的耦合性，不利于二次开发，所以现在来通过一个简单的demo来简单的体验一下前后端分离。</p>
+<h1 id="涉及技术">涉及技术</h1>
+<ul>
+<li>
+<p>Vue</p>
+</li>
+<li>
+<p>SprtingBoot</p>
+</li>
+<li>
+<p>Mybatis-plus</p>
+</li>
+</ul>
+<h1 id="准备数据">准备数据</h1>
+<p>这里的数据我就使用<code>Mybatis-plus</code>官方提供样例的数据了。</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="mysql"><code><span class="line"><span style="color:#C6A0F6">CREATE</span><span style="color:#C6A0F6"> DATABASE</span><span style="color:#8AADF4;font-style:italic"> IF</span><span style="color:#C6A0F6"> NOT</span><span style="color:#C6A0F6"> EXISTS</span><span style="color:#CAD3F5"> Company;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">USE</span><span style="color:#A6DA95"> `Company`</span><span style="color:#CAD3F5">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">DROP</span><span style="color:#C6A0F6"> TABLE</span><span style="color:#C6A0F6"> IF</span><span style="color:#C6A0F6"> EXISTS</span><span style="color:#CAD3F5"> user;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">CREATE</span><span style="color:#C6A0F6"> TABLE</span><span style="color:#8AADF4;font-style:italic"> user</span></span>
+<span class="line"><span style="color:#CAD3F5">(</span></span>
+<span class="line"><span style="color:#CAD3F5">	id </span><span style="color:#C6A0F6">BIGINT</span><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">20</span><span style="color:#CAD3F5">) </span><span style="color:#C6A0F6">NOT NULL</span><span style="color:#CAD3F5"> COMMENT </span><span style="color:#A6DA95">'主键ID'</span><span style="color:#CAD3F5">,</span></span>
+<span class="line"><span style="color:#C6A0F6">	name</span><span style="color:#C6A0F6"> VARCHAR</span><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">30</span><span style="color:#CAD3F5">) </span><span style="color:#C6A0F6">NULL</span><span style="color:#C6A0F6"> DEFAULT</span><span style="color:#C6A0F6"> NULL</span><span style="color:#CAD3F5"> COMMENT </span><span style="color:#A6DA95">'姓名'</span><span style="color:#CAD3F5">,</span></span>
+<span class="line"><span style="color:#CAD3F5">	age </span><span style="color:#C6A0F6">INT</span><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">11</span><span style="color:#CAD3F5">) </span><span style="color:#C6A0F6">NULL</span><span style="color:#C6A0F6"> DEFAULT</span><span style="color:#C6A0F6"> NULL</span><span style="color:#CAD3F5"> COMMENT </span><span style="color:#A6DA95">'年龄'</span><span style="color:#CAD3F5">,</span></span>
+<span class="line"><span style="color:#CAD3F5">	email </span><span style="color:#C6A0F6">VARCHAR</span><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">50</span><span style="color:#CAD3F5">) </span><span style="color:#C6A0F6">NULL</span><span style="color:#C6A0F6"> DEFAULT</span><span style="color:#C6A0F6"> NULL</span><span style="color:#CAD3F5"> COMMENT </span><span style="color:#A6DA95">'邮箱'</span><span style="color:#CAD3F5">,</span></span>
+<span class="line"><span style="color:#C6A0F6">	PRIMARY KEY</span><span style="color:#CAD3F5"> (id)</span></span>
+<span class="line"><span style="color:#CAD3F5">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">DELETE</span><span style="color:#C6A0F6"> FROM</span><span style="color:#CAD3F5"> user;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">INSERT INTO</span><span style="color:#CAD3F5"> user (id, </span><span style="color:#C6A0F6">name</span><span style="color:#CAD3F5">, age, email) </span><span style="color:#C6A0F6">VALUES</span></span>
+<span class="line"><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">1</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'Jone'</span><span style="color:#CAD3F5">, </span><span style="color:#F5A97F">18</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'test1@baomidou.com'</span><span style="color:#CAD3F5">),</span></span>
+<span class="line"><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">2</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'Jack'</span><span style="color:#CAD3F5">, </span><span style="color:#F5A97F">20</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'test2@baomidou.com'</span><span style="color:#CAD3F5">),</span></span>
+<span class="line"><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">3</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'Tom'</span><span style="color:#CAD3F5">, </span><span style="color:#F5A97F">28</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'test3@baomidou.com'</span><span style="color:#CAD3F5">),</span></span>
+<span class="line"><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">4</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'Sandy'</span><span style="color:#CAD3F5">, </span><span style="color:#F5A97F">21</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'test4@baomidou.com'</span><span style="color:#CAD3F5">),</span></span>
+<span class="line"><span style="color:#CAD3F5">(</span><span style="color:#F5A97F">5</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'Billie'</span><span style="color:#CAD3F5">, </span><span style="color:#F5A97F">24</span><span style="color:#CAD3F5">, </span><span style="color:#A6DA95">'test5@baomidou.com'</span><span style="color:#CAD3F5">);</span></span></code></pre>
+<h1 id="前端部分">前端部分</h1>
+<blockquote>
+<p>前端就随便展示一下好了。</p>
+</blockquote>
+<ol>
+<li>
+<p>创建一个Vue的项目</p>
+</li>
+<li>
+<p>在项目的<code>views</code>的文件夹下编写<code>test.vue</code>页面用来展示数据</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;template></span></span>
+<span class="line"><span>  &#x3C;div></span></span>
+<span class="line"><span>      &#x3C;table></span></span>
+<span class="line"><span>          &#x3C;tr></span></span>
+<span class="line"><span>              &#x3C;td>主键ID&#x3C;/td></span></span>
+<span class="line"><span>              &#x3C;td>姓名&#x3C;/td></span></span>
+<span class="line"><span>              &#x3C;td>年龄&#x3C;/td></span></span>
+<span class="line"><span>              &#x3C;td>邮箱&#x3C;/td></span></span>
+<span class="line"><span>          &#x3C;/tr></span></span>
+<span class="line"><span>          &#x3C;tr v-for="item in user" :key="item.id"></span></span>
+<span class="line"><span>              &#x3C;td>{{item.id}}&#x3C;/td></span></span>
+<span class="line"><span>              &#x3C;td>{{item.name}}&#x3C;/td></span></span>
+<span class="line"><span>              &#x3C;td>{{item.age}}&#x3C;/td></span></span>
+<span class="line"><span>              &#x3C;td>{{item.email}}&#x3C;/td></span></span>
+<span class="line"><span>          &#x3C;/tr></span></span>
+<span class="line"><span>      &#x3C;/table></span></span>
+<span class="line"><span>  &#x3C;/div></span></span>
+<span class="line"><span>&#x3C;/template></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&#x3C;script></span></span>
+<span class="line"><span>export default {</span></span>
+<span class="line"><span>    name: "test",</span></span>
+<span class="line"><span>    data(){</span></span>
+<span class="line"><span>        return{</span></span>
+<span class="line"><span>            user: [{</span></span>
+<span class="line"><span>                id : 1,</span></span>
+<span class="line"><span>                name : 'yww',</span></span>
+<span class="line"><span>                age : 10,</span></span>
+<span class="line"><span>                email : '1141@qq.com'</span></span>
+<span class="line"><span>            }]</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>&#x3C;/script></span></span>
+<span class="line"><span>&#x3C;style></span></span>
+<span class="line"><span>&#x3C;/style></span></span></code></pre>
+<blockquote>
+<p>前端开始主要注重页面，所以先用假数据。</p>
+</blockquote>
+</li>
+<li>
+<p>编写路由，在<code>router</code>的文件下编写index.js文件</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> Vue </span><span style="color:#C6A0F6">from</span><span style="color:#A6DA95"> 'vue'</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> VueRouter </span><span style="color:#C6A0F6">from</span><span style="color:#A6DA95"> 'vue-router'</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> Home </span><span style="color:#C6A0F6">from</span><span style="color:#A6DA95"> '../views/Home.vue'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CAD3F5">Vue</span><span style="color:#8BD5CA">.</span><span style="color:#8AADF4;font-style:italic">use</span><span style="color:#CAD3F5">(VueRouter)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">const</span><span style="color:#CAD3F5"> routes </span><span style="color:#8BD5CA">=</span><span style="color:#CAD3F5"> [</span></span>
+<span class="line"><span style="color:#939AB7">  {</span></span>
+<span class="line"><span style="color:#CAD3F5">    path</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> '/'</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#CAD3F5">    name</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> 'Home'</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#CAD3F5">    component</span><span style="color:#8BD5CA">:</span><span style="color:#CAD3F5"> Home</span></span>
+<span class="line"><span style="color:#939AB7">  },</span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">// 添加test的路由</span></span>
+<span class="line"><span style="color:#939AB7">  {</span></span>
+<span class="line"><span style="color:#CAD3F5">    path</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> '/test'</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#CAD3F5">    name</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> 'Test'</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#8AADF4;font-style:italic">    component</span><span style="color:#8BD5CA">:</span><span style="color:#939AB7"> ()</span><span style="color:#C6A0F6"> =></span><span style="color:#8BD5CA"> import</span><span style="color:#CAD3F5">(</span><span style="color:#A6DA95">'../views/test.vue'</span><span style="color:#CAD3F5">)</span></span>
+<span class="line"><span style="color:#939AB7">  },</span></span>
+<span class="line"><span style="color:#939AB7">  {</span></span>
+<span class="line"><span style="color:#CAD3F5">    path</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> '/about'</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#CAD3F5">    name</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> 'About'</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">    // route level code-splitting</span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">    // this generates a separate chunk (about.[hash].js) for this route</span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">    // which is lazy-loaded when the route is visited.</span></span>
+<span class="line"><span style="color:#8AADF4;font-style:italic">    component</span><span style="color:#8BD5CA">:</span><span style="color:#939AB7"> ()</span><span style="color:#C6A0F6"> =></span><span style="color:#8AADF4;font-style:italic"> import</span><span style="color:#CAD3F5">(</span><span style="color:#939AB7;font-style:italic">/* webpackChunkName: "about" */</span><span style="color:#A6DA95"> '../views/About.vue'</span><span style="color:#CAD3F5">)</span></span>
+<span class="line"><span style="color:#939AB7">  }</span></span>
+<span class="line"><span style="color:#CAD3F5">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">const</span><span style="color:#CAD3F5"> router </span><span style="color:#8BD5CA">=</span><span style="color:#C6A0F6;font-weight:bold"> new</span><span style="color:#8AADF4;font-style:italic"> VueRouter</span><span style="color:#CAD3F5">(</span><span style="color:#939AB7">{</span></span>
+<span class="line"><span style="color:#CAD3F5">  mode</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> 'history'</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#CAD3F5">  base</span><span style="color:#8BD5CA">:</span><span style="color:#CAD3F5"> process</span><span style="color:#8BD5CA">.</span><span style="color:#CAD3F5">env</span><span style="color:#8BD5CA">.</span><span style="color:#F5A97F">BASE_URL</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#CAD3F5">  routes</span></span>
+<span class="line"><span style="color:#939AB7">}</span><span style="color:#CAD3F5">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">export</span><span style="color:#C6A0F6"> default</span><span style="color:#EE99A0"> router</span></span></code></pre>
+</li>
+<li>
+<p>在页面上添加路由跳转，编写<code>App.vue</code></p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="vue"><code><span class="line"><span style="color:#8BD5CA">&#x3C;</span><span style="color:#8AADF4">template</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">  &#x3C;</span><span style="color:#8AADF4">div</span><span style="color:#EED49F"> id</span><span style="color:#8BD5CA">=</span><span style="color:#A6DA95">"app"</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">    &#x3C;</span><span style="color:#8AADF4">div</span><span style="color:#EED49F"> id</span><span style="color:#8BD5CA">=</span><span style="color:#A6DA95">"nav"</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">      &#x3C;</span><span style="color:#8AADF4">router-link</span><span style="color:#EED49F"> to</span><span style="color:#8BD5CA">=</span><span style="color:#A6DA95">"/"</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">Home</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">router-link</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5"> |</span></span>
+<span class="line"><span style="color:#8BD5CA">      &#x3C;</span><span style="color:#8AADF4">router-link</span><span style="color:#EED49F"> to</span><span style="color:#8BD5CA">=</span><span style="color:#A6DA95">"/about"</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">About</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">router-link</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5"> |</span></span>
+<span class="line"><span style="color:#8BD5CA">      &#x3C;</span><span style="color:#8AADF4">router-link</span><span style="color:#EED49F"> to</span><span style="color:#8BD5CA">=</span><span style="color:#A6DA95">"/test"</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">Test</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">router-link</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">    &#x3C;/</span><span style="color:#8AADF4">div</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">    &#x3C;</span><span style="color:#8AADF4">router-view</span><span style="color:#8BD5CA">/></span></span>
+<span class="line"><span style="color:#8BD5CA">  &#x3C;/</span><span style="color:#8AADF4">div</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">template</span><span style="color:#8BD5CA">></span></span></code></pre>
+</li>
+<li>
+<p>运行vue项目，查看<a href="http://localhost:8080/test">http://localhost:8080/test</a>是否出现假数据，出现则为成功</p>
+</li>
+</ol>
+<h1 id="后端部分">后端部分</h1>
+<ol>
+<li>
+<p>首先先创建一个SpringBoot的项目，我的版本是<code>2.4.2</code>。</p>
+</li>
+<li>
+<p>然后在<code>pom.xml</code>导入依赖</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="xml"><code><span class="line"><span style="color:#8BD5CA">&#x3C;</span><span style="color:#8AADF4">dependencies</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">        &#x3C;!--web启动器--></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">org.springframework.boot</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">spring-boot-starter-web</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;/</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">        &#x3C;!--数据库驱动--></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">mysql</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">mysql-connector-java</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">scope</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">runtime</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">scope</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;/</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">        &#x3C;!--lombok--></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">org.projectlombok</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">lombok</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">optional</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">true</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">optional</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;/</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">        &#x3C;!--mybatis-plus--></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">com.baomidou</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">mybatis-plus-boot-starter</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">version</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">3.4.1</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">version</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;/</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">        &#x3C;!--单元测试--></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">org.springframework.boot</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">groupId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">spring-boot-starter-test</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">artifactId</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">            &#x3C;</span><span style="color:#8AADF4">scope</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">test</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">scope</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">        &#x3C;/</span><span style="color:#8AADF4">dependency</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#8AADF4">dependencies</span><span style="color:#8BD5CA">></span></span></code></pre>
+</li>
+<li>
+<p>创建一个实体类，该类在<code>pojo</code>的包下</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="Java"><code><span class="line"><span style="color:#C6A0F6">package</span><span style="color:#C6A0F6"> com</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">yww</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">springboottest</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">pojo</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> lombok</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">Data</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F5A97F">@Data</span></span>
+<span class="line"><span style="color:#C6A0F6">public</span><span style="color:#C6A0F6"> class</span><span style="color:#EED49F;font-style:italic"> User</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#C6A0F6">    private</span><span style="color:#C6A0F6"> Long</span><span style="color:#CAD3F5"> id</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">    private</span><span style="color:#C6A0F6"> String</span><span style="color:#CAD3F5"> name</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">    private</span><span style="color:#C6A0F6"> Integer</span><span style="color:#CAD3F5"> age</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">    private</span><span style="color:#C6A0F6"> String</span><span style="color:#CAD3F5"> email</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#939AB7">}</span></span></code></pre>
+</li>
+<li>
+<p>创建一个Mapper接口，该接口在<code>Mapper</code>的包下</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="Java"><code><span class="line"><span style="color:#C6A0F6">package</span><span style="color:#C6A0F6"> com</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">yww</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">springboottest</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">Mapper</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> com</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">baomidou</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">mybatisplus</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">core</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">mapper</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">BaseMapper</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> com</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">yww</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springboottest</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">pojo</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">User</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">stereotype</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">Repository</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">// 这里只需要基础BaseMapper接口，泛型放入实体类就好了</span></span>
+<span class="line"><span style="color:#F5A97F">@Repository</span></span>
+<span class="line"><span style="color:#C6A0F6">public</span><span style="color:#C6A0F6"> interface</span><span style="color:#EED49F;font-style:italic"> UserMapper</span><span style="color:#C6A0F6"> extends</span><span style="color:#EED49F;font-style:italic"> BaseMapper</span><span style="color:#939AB7">&#x3C;</span><span style="color:#C6A0F6">User</span><span style="color:#939AB7">></span><span style="color:#939AB7"> {}</span></span></code></pre>
+</li>
+<li>
+<p>配置SpringBoot，这里使用的配置文件是<code>application.yaml</code></p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#939AB7;font-style:italic"># 配置MySQL</span></span>
+<span class="line"><span style="color:#8AADF4">spring</span><span style="color:#8BD5CA">:</span></span>
+<span class="line"><span style="color:#8AADF4">  datasource</span><span style="color:#8BD5CA">:</span></span>
+<span class="line"><span style="color:#8AADF4">    username</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> root</span></span>
+<span class="line"><span style="color:#8AADF4">    password</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> password</span></span>
+<span class="line"><span style="color:#8AADF4">    url</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> jdbc:mysql://localhost:3306/Company?userUnicode=true&#x26;characterEncoding=utf-8&#x26;serverTimezone=UTC</span></span>
+<span class="line"><span style="color:#8AADF4">    driver-class-name</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> com.mysql.cj.jdbc.Driver</span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic"># 配置日志，以便更好查看结果 </span></span>
+<span class="line"><span style="color:#8AADF4">mybatis-plus</span><span style="color:#8BD5CA">:</span></span>
+<span class="line"><span style="color:#8AADF4">  configuration</span><span style="color:#8BD5CA">:</span></span>
+<span class="line"><span style="color:#8AADF4">    log-impl</span><span style="color:#8BD5CA">:</span><span style="color:#A6DA95"> org.apache.ibatis.logging.stdout.StdOutImpl</span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic"># 端口自定义，注意和Vue的端口分开，Vue使用了8080，这里就使用8081好了</span></span>
+<span class="line"><span style="color:#8AADF4">server</span><span style="color:#8BD5CA">:</span></span>
+<span class="line"><span style="color:#8AADF4">  port</span><span style="color:#8BD5CA">:</span><span style="color:#F5A97F"> 8081</span></span></code></pre>
+</li>
+<li>
+<p>扫描注册Mapper接口</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="Java"><code><span class="line"><span style="color:#C6A0F6">package</span><span style="color:#C6A0F6"> com</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">yww</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">springboottest</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">mybatis</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">spring</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">annotation</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">MapperScan</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">boot</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">SpringApplication</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">boot</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">autoconfigure</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">SpringBootApplication</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F5A97F">@SpringBootApplication</span></span>
+<span class="line"><span style="color:#F5A97F">@MapperScan</span><span style="color:#939AB7">(</span><span style="color:#A6DA95">"com.yww.springboottest.Mapper"</span><span style="color:#939AB7">)</span></span>
+<span class="line"><span style="color:#C6A0F6">public</span><span style="color:#C6A0F6"> class</span><span style="color:#EED49F;font-style:italic"> SpringboottestApplication</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#C6A0F6">	public</span><span style="color:#C6A0F6"> static</span><span style="color:#C6A0F6"> void</span><span style="color:#8AADF4;font-style:italic"> main</span><span style="color:#939AB7">(</span><span style="color:#C6A0F6">String</span><span style="color:#939AB7">[]</span><span style="color:#EE99A0;font-style:italic"> args</span><span style="color:#939AB7">)</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#CAD3F5">		SpringApplication</span><span style="color:#939AB7">.</span><span style="color:#8AADF4;font-style:italic">run</span><span style="color:#939AB7">(</span><span style="color:#CAD3F5">SpringboottestApplication</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">class</span><span style="color:#939AB7">,</span><span style="color:#CAD3F5"> args</span><span style="color:#939AB7">);</span></span>
+<span class="line"><span style="color:#939AB7">	}</span></span></code></pre>
+</li>
+<li>
+<p>查询测试</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="Java"><code><span class="line"><span style="color:#C6A0F6">package</span><span style="color:#C6A0F6"> com</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">yww</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">springboottest</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> com</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">yww</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springboottest</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">Mapper</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">UserMapper</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> com</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">yww</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springboottest</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">pojo</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">User</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">junit</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">jupiter</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">api</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">Test</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">beans</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">factory</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">annotation</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">Autowired</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">boot</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">test</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">context</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">SpringBootTest</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> java</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">util</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">List</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F5A97F">@SpringBootTest</span></span>
+<span class="line"><span style="color:#C6A0F6">class</span><span style="color:#EED49F;font-style:italic"> SpringboottestApplicationTests</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#F5A97F">	@Autowired</span></span>
+<span class="line"><span style="color:#C6A0F6">	private</span><span style="color:#C6A0F6"> UserMapper</span><span style="color:#CAD3F5"> userMapper</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F5A97F">	@Test</span></span>
+<span class="line"><span style="color:#C6A0F6">	public</span><span style="color:#C6A0F6"> void</span><span style="color:#8AADF4;font-style:italic"> FindAll</span><span style="color:#939AB7">()</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#C6A0F6">		List</span><span style="color:#939AB7">&#x3C;</span><span style="color:#C6A0F6">User</span><span style="color:#939AB7">></span><span style="color:#CAD3F5"> userList </span><span style="color:#8BD5CA">=</span><span style="color:#CAD3F5"> userMapper</span><span style="color:#939AB7">.</span><span style="color:#8AADF4;font-style:italic">selectList</span><span style="color:#939AB7">(</span><span style="color:#ED8796">null</span><span style="color:#939AB7">);</span></span>
+<span class="line"><span style="color:#CAD3F5">		System</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">out</span><span style="color:#939AB7">.</span><span style="color:#8AADF4;font-style:italic">println</span><span style="color:#939AB7">(</span><span style="color:#CAD3F5">userList</span><span style="color:#939AB7">);</span></span>
+<span class="line"><span style="color:#939AB7">	}</span></span>
+<span class="line"><span style="color:#939AB7">}</span></span></code></pre>
+</li>
+<li>
+<p>得到结果</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>==>  Preparing: SELECT id,name,age,email FROM user</span></span>
+<span class="line"><span>==> Parameters: </span></span>
+<span class="line"><span>&#x3C;==    Columns: id, name, age, email</span></span>
+<span class="line"><span>&#x3C;==        Row: 1, Jone, 18, test1@baomidou.com</span></span>
+<span class="line"><span>&#x3C;==        Row: 2, Jack, 20, test2@baomidou.com</span></span>
+<span class="line"><span>&#x3C;==        Row: 3, Tom, 28, test3@baomidou.com</span></span>
+<span class="line"><span>&#x3C;==        Row: 4, Sandy, 21, test4@baomidou.com</span></span>
+<span class="line"><span>&#x3C;==        Row: 5, Billie, 24, test5@baomidou.com</span></span>
+<span class="line"><span>&#x3C;==        Row: 1327829723124920321, lili, 10, sssss</span></span>
+<span class="line"><span>&#x3C;==        Row: 1327839061415620609, lili, 10, sssss</span></span>
+<span class="line"><span>&#x3C;==        Row: 1327839257776095234, yww, 20, 1141950370@qq.com</span></span>
+<span class="line"><span>&#x3C;==      Total: 8</span></span></code></pre>
+<p>由此可以看到查询结果没有什么问题，然后就可以写接口返回数据了。</p>
+</li>
+<li>
+<p>编写接口，该接口在<code>Controller</code>的包下</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="Java"><code><span class="line"><span style="color:#C6A0F6">package</span><span style="color:#C6A0F6"> com</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">yww</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">springboottest</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">Controller</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> com</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">yww</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springboottest</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">Mapper</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">UserMapper</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> com</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">yww</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springboottest</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">pojo</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">User</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">beans</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">factory</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">annotation</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">Autowired</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">web</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">bind</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">annotation</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">GetMapping</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">web</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">bind</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">annotation</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">RestController</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> java</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">util</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">List</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F5A97F">@RestController</span></span>
+<span class="line"><span style="color:#C6A0F6">public</span><span style="color:#C6A0F6"> class</span><span style="color:#EED49F;font-style:italic"> UserController</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#F5A97F">    @Autowired</span></span>
+<span class="line"><span style="color:#C6A0F6">    private</span><span style="color:#C6A0F6"> UserMapper</span><span style="color:#CAD3F5"> userMapper</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F5A97F">    @GetMapping</span><span style="color:#939AB7">(</span><span style="color:#A6DA95">"/findall"</span><span style="color:#939AB7">)</span></span>
+<span class="line"><span style="color:#C6A0F6">    public</span><span style="color:#C6A0F6"> List</span><span style="color:#939AB7">&#x3C;</span><span style="color:#C6A0F6">User</span><span style="color:#939AB7">></span><span style="color:#8AADF4;font-style:italic"> FindAll</span><span style="color:#939AB7">()</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#C6A0F6">        return</span><span style="color:#CAD3F5"> userMapper</span><span style="color:#939AB7">.</span><span style="color:#8AADF4;font-style:italic">selectList</span><span style="color:#939AB7">(</span><span style="color:#ED8796">null</span><span style="color:#939AB7">);</span></span>
+<span class="line"><span style="color:#939AB7">    }</span></span>
+<span class="line"><span style="color:#939AB7">}</span></span></code></pre>
+<p>访问<a href="http://localhost:8081/findall">http://localhost:8081/findall</a>即可查询到查询返回的数据。</p>
+</li>
+</ol>
+<h1 id="前后端交互">前后端交互</h1>
+<ol>
+<li>
+<p>在vue项目里添加<code>axios</code>插件，用来请求接口</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#8AADF4;font-style:italic">	vue</span><span style="color:#A6DA95"> add</span><span style="color:#A6DA95"> axios</span></span></code></pre>
+</li>
+<li>
+<p>修改<code>test.vue</code>里的数据</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="Java"><code><span class="line"><span style="color:#8BD5CA">&#x3C;</span><span style="color:#CAD3F5">template</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">  &#x3C;</span><span style="color:#CAD3F5">div</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">      &#x3C;</span><span style="color:#CAD3F5">table</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">          &#x3C;</span><span style="color:#CAD3F5">tr</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">              &#x3C;</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">主键ID</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">              &#x3C;</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">姓名</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">              &#x3C;</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">年龄</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">              &#x3C;</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span><span style="color:#CAD3F5">邮箱</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">          &#x3C;/</span><span style="color:#CAD3F5">tr</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">          &#x3C;</span><span style="color:#CAD3F5">tr v</span><span style="color:#8BD5CA">-</span><span style="color:#C6A0F6">for</span><span style="color:#8BD5CA">=</span><span style="color:#A6DA95">"item in user"</span><span style="color:#C6A0F6"> :</span><span style="color:#CAD3F5">key</span><span style="color:#8BD5CA">=</span><span style="color:#A6DA95">"item.id"</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">              &#x3C;</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span><span style="color:#939AB7">{{</span><span style="color:#CAD3F5">item</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">id</span><span style="color:#939AB7">}}</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">              &#x3C;</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span><span style="color:#939AB7">{{</span><span style="color:#CAD3F5">item</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">name</span><span style="color:#939AB7">}}</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">              &#x3C;</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span><span style="color:#939AB7">{{</span><span style="color:#CAD3F5">item</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">age</span><span style="color:#939AB7">}}</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">              &#x3C;</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span><span style="color:#939AB7">{{</span><span style="color:#CAD3F5">item</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">email</span><span style="color:#939AB7">}}</span><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">td</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">          &#x3C;/</span><span style="color:#CAD3F5">tr</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">      &#x3C;/</span><span style="color:#CAD3F5">table</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">  &#x3C;/</span><span style="color:#CAD3F5">div</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">template</span><span style="color:#8BD5CA">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8BD5CA">&#x3C;</span><span style="color:#CAD3F5">script</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#CAD3F5">export </span><span style="color:#C6A0F6">default</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#CAD3F5">    name</span><span style="color:#C6A0F6">:</span><span style="color:#A6DA95"> "test"</span><span style="color:#939AB7">,</span></span>
+<span class="line"><span style="color:#8AADF4;font-style:italic">    data</span><span style="color:#939AB7">(){</span></span>
+<span class="line"><span style="color:#C6A0F6">        return</span><span style="color:#939AB7">{</span></span>
+<span class="line"><span style="color:#CAD3F5">            user</span><span style="color:#C6A0F6">:</span><span style="color:#939AB7"> []</span></span>
+<span class="line"><span style="color:#939AB7">        }</span></span>
+<span class="line"><span style="color:#939AB7">    },</span></span>
+<span class="line"><span style="color:#8AADF4;font-style:italic">    created</span><span style="color:#939AB7">()</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#939AB7;font-style:italic">        //	请求端口数据，并将数据赋值给user数组</span></span>
+<span class="line"><span style="color:#CAD3F5">        axios</span><span style="color:#939AB7">.</span><span style="color:#8AADF4;font-style:italic">get</span><span style="color:#939AB7">(</span><span style="color:#A6DA95">'http://localhost:8081/findall'</span><span style="color:#939AB7">).</span><span style="color:#8AADF4;font-style:italic">then</span><span style="color:#939AB7">(</span><span style="color:#CAD3F5">response </span><span style="color:#8BD5CA">=></span><span style="color:#939AB7"> (</span><span style="color:#ED8796">this</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">user </span><span style="color:#8BD5CA">=</span><span style="color:#CAD3F5"> response</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">data</span><span style="color:#939AB7">))</span></span>
+<span class="line"><span style="color:#939AB7">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#939AB7">}</span></span>
+<span class="line"><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">script</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">&#x3C;</span><span style="color:#CAD3F5">style</span><span style="color:#8BD5CA">></span></span>
+<span class="line"><span style="color:#8BD5CA">&#x3C;/</span><span style="color:#CAD3F5">style</span><span style="color:#8BD5CA">></span></span></code></pre>
+</li>
+<li>
+<p>在后端部分增加一个工具类，用于解决跨域问题（因为是不同端口的请求），该类在<code>config</code>包下</p>
+<pre class="astro-code catppuccin-macchiato" style="background-color:#24273a;color:#cad3f5; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="Java"><code><span class="line"><span style="color:#C6A0F6">package</span><span style="color:#C6A0F6"> com</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">yww</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">springboottest</span><span style="color:#939AB7">.</span><span style="color:#C6A0F6">config</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">context</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">annotation</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">Configuration</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">web</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">servlet</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">config</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">annotation</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">CorsRegistry</span><span style="color:#939AB7">;</span></span>
+<span class="line"><span style="color:#C6A0F6">import</span><span style="color:#CAD3F5"> org</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">springframework</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">web</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">servlet</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">config</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">annotation</span><span style="color:#939AB7">.</span><span style="color:#CAD3F5">WebMvcConfigurer</span><span style="color:#939AB7">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F5A97F">@Configuration</span></span>
+<span class="line"><span style="color:#C6A0F6">public</span><span style="color:#C6A0F6"> class</span><span style="color:#EED49F;font-style:italic"> CrosConfig</span><span style="color:#C6A0F6"> implements</span><span style="color:#EED49F;font-style:italic"> WebMvcConfigurer</span><span style="color:#939AB7"> {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F5A97F">    @Override</span></span>
+<span class="line"><span style="color:#C6A0F6">    public</span><span style="color:#C6A0F6"> void</span><span style="color:#8AADF4;font-style:italic"> addCorsMappings</span><span style="color:#939AB7">(</span><span style="color:#C6A0F6">CorsRegistry</span><span style="color:#EE99A0;font-style:italic"> registry</span><span style="color:#939AB7">)</span><span style="color:#939AB7"> {</span></span>
+<span class="line"><span style="color:#CAD3F5">        registry</span><span style="color:#939AB7">.</span><span style="color:#8AADF4;font-style:italic">addMapping</span><span style="color:#939AB7">(</span><span style="color:#A6DA95">"/**"</span><span style="color:#939AB7">)</span></span>
+<span class="line"><span style="color:#939AB7">                .</span><span style="color:#8AADF4;font-style:italic">allowCredentials</span><span style="color:#939AB7">(</span><span style="color:#ED8796">false</span><span style="color:#939AB7">)</span></span>
+<span class="line"><span style="color:#939AB7">                .</span><span style="color:#8AADF4;font-style:italic">allowedMethods</span><span style="color:#939AB7">(</span><span style="color:#A6DA95">"POST"</span><span style="color:#939AB7">,</span><span style="color:#A6DA95"> "GET"</span><span style="color:#939AB7">,</span><span style="color:#A6DA95"> "PUT"</span><span style="color:#939AB7">,</span><span style="color:#A6DA95"> "OPTIONS"</span><span style="color:#939AB7">,</span><span style="color:#A6DA95"> "DELETE"</span><span style="color:#939AB7">)</span></span>
+<span class="line"><span style="color:#939AB7">                .</span><span style="color:#8AADF4;font-style:italic">allowedOrigins</span><span style="color:#939AB7">(</span><span style="color:#A6DA95">"*"</span><span style="color:#939AB7">);</span></span>
+<span class="line"><span style="color:#939AB7">    }</span></span>
+<span class="line"><span style="color:#939AB7">}</span></span></code></pre>
+</li>
+<li>
+<p>然后访问前端项目的页面<a href="http://localhost:8080/test">http://localhost:8080/test</a>，就能看到后端查询并返回的数据了</p>
+</li>
+</ol>
+<h1 id="结尾">结尾</h1>
+<p>这次是一个简单的demo，实际项目还要复杂很多，这个demo虽然简单，但是也是能让你简单了解一下前后端分离的开发流程。</p> </div> </div> </div> <section id="artalk-comments" class="artalk-comments" aria-label="评论区"> <link rel="stylesheet" href="/artalk/artalk.css"> <div class="artalk-comments__container" data-artalk-comments data-artalk-server="https://blog.yww52.com" data-artalk-site="yw的博客" data-artalk-script-url="/artalk/artalk.js" data-artalk-page-key="/posts/ee7e4b9/" data-artalk-page-title="前后端分离demo"> <div class="artalk-loading"> <div class="artalk-skeleton-editor"></div> <div class="artalk-skeleton-list-header"></div> <div class="artalk-skeleton-comment"></div> <div class="artalk-skeleton-comment"></div> </div> </div> </section>  <script type="module" src="/_astro/Artalk.astro_astro_type_script_index_0_lang.BN_P42zy.js"></script> </article> </div>  </section>  </main> <script type="module" src="/_astro/Layout.astro_astro_type_script_index_0_lang.Dw-WO-RF.js"></script> </body> </html> <script type="module" src="/_astro/BlogLayout.astro_astro_type_script_index_0_lang.DbpDq748.js"></script> <script type="module" src="/_astro/_...slug_.astro_astro_type_script_index_0_lang.jI_NbQYt.js"></script>
