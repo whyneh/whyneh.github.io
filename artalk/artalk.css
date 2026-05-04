@@ -1502,7 +1502,7 @@ img[atk-emoticon] {
 	
 	/* 动作色 */
 	--artalk-accent: var(--theme-primary);
-	--artalk-accent-strong: var(--accent-dark);
+	--artalk-accent-strong: var(--theme-primary);
 	--artalk-orange: oklch(75% 0.15 50);
 
 	/* 映射至 Artalk 原生变量 */
@@ -1634,6 +1634,7 @@ img[atk-emoticon] {
 
 .artalk .atk-send-btn {
 	background: var(--artalk-accent) !important;
+	color: #fff !important;
 	border-radius: 10px !important;
 	font-weight: 700 !important;
 	padding: 0.5rem 1.25rem !important;
@@ -1644,8 +1645,16 @@ img[atk-emoticon] {
 
 .artalk .atk-send-btn:hover {
 	background: var(--artalk-accent-strong) !important;
+	color: #fff !important;
 	transform: translateY(-1px) !important;
 	box-shadow: 0 6px 16px var(--artalk-accent-shadow) !important;
+}
+
+.artalk .atk-send-btn:focus-visible,
+.artalk .atk-send-btn:active {
+	background: var(--artalk-accent-strong) !important;
+	color: #fff !important;
+	opacity: 1 !important;
 }
 
 .artalk .atk-plug-btn {
