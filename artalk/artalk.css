@@ -351,12 +351,12 @@
     scroll;
 }
 .atk-comment-children > .atk-comment-wrap {
-  margin-top: 10px;
+  margin-top: 0;
   border-left: 1px dashed transparent;
   border-bottom-color: transparent;
 }
 .atk-comment-children > .atk-comment-wrap:not(:last-child) {
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 .atk-comment-children > .atk-comment-wrap > .atk-comment {
   padding: 0;
@@ -1670,7 +1670,7 @@ img[atk-emoticon] {
 }
 
 .artalk .atk-comment-wrap {
-	margin-bottom: 1.5rem !important;
+	margin-bottom: 10px !important;
 	animation: artalk-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
