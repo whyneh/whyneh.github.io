@@ -1498,11 +1498,11 @@ img[atk-emoticon] {
 	--artalk-line: oklch(90% 0.01 260);
 	--artalk-line-strong: oklch(80% 0.03 300);
 	--artalk-shadow: oklch(25% 0.02 260 / 0.04);
-	--artalk-accent-shadow: oklch(var(--theme-primary) / 0.15);
+	--artalk-accent-shadow: oklch(from var(--color-primary) l c h / 0.15);
 	
 	/* 动作色 */
-	--artalk-accent: var(--theme-primary);
-	--artalk-accent-strong: var(--theme-primary);
+	--artalk-accent: var(--color-primary);
+	--artalk-accent-strong: var(--color-primary);
 	--artalk-orange: oklch(75% 0.15 50);
 
 	/* 映射至 Artalk 原生变量 */
@@ -1532,7 +1532,7 @@ img[atk-emoticon] {
 	--artalk-line: oklch(30% 0.03 260);
 	--artalk-line-strong: oklch(45% 0.08 300);
 	--artalk-shadow: oklch(0% 0 0 / 0.4);
-	--artalk-accent-shadow: oklch(var(--theme-primary) / 0.25);
+	--artalk-accent-shadow: oklch(from var(--color-primary) l c h / 0.25);
 }
 
 .artalk {
@@ -1704,7 +1704,7 @@ img[atk-emoticon] {
 .artalk .atk-avatar img {
 	border: 0 !important;
 	border-radius: 50% !important;
-	box-shadow: var(--box-shadow) !important;
+	box-shadow: 0 12px 40px -12px oklch(from var(--color-shadow) l c h / 0.12) !important;
 	object-fit: cover !important;
 	transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1) !important;
 }
