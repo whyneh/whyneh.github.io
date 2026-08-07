@@ -1483,66 +1483,52 @@ img[atk-emoticon] {
 .artalk,
 .atk-layer-wrap,
 .artalk-comments {
-	/* 核心调色盘 - 基于 OKLCH 确保感知均匀性 */
-	--artalk-ink: oklch(25% 0.02 260);
-	--artalk-muted: oklch(55% 0.02 260);
-	--artalk-surface: oklch(99.5% 0.005 260);
-	--artalk-soft: oklch(98% 0.01 260);
-	
-	/* 品牌粉彩体系 */
-	--artalk-petal: oklch(96% 0.025 340);
-	--artalk-lilac: oklch(95% 0.035 300);
-	--artalk-peach: oklch(96% 0.03 50);
-	
-	/* 线条与投影 */
-	--artalk-line: oklch(90% 0.01 260);
-	--artalk-line-strong: oklch(80% 0.03 300);
-	--artalk-shadow: oklch(25% 0.02 260 / 0.04);
-	--artalk-accent-shadow: oklch(from var(--color-primary) l c h / 0.15);
-	
-	/* 动作色 */
+	/* 纸面调色盘 —— 全部指向博客全局 token，不引入新的色相 */
+	--artalk-ink: var(--color-text);
+	--artalk-muted: var(--color-text-muted);
+	--artalk-surface: var(--color-paper-page);
+	--artalk-soft: oklch(from var(--color-primary) l c h / 0.05);
+	--artalk-line: var(--color-frame-hairline);
+	--artalk-line-strong: oklch(from var(--color-primary) l c h / 0.35);
+	--artalk-shadow: oklch(from var(--color-shadow-tint) l c h / 0.07);
 	--artalk-accent: var(--color-primary);
-	--artalk-accent-strong: var(--color-primary);
-	--artalk-orange: oklch(75% 0.15 50);
+	--artalk-accent-strong: var(--color-active);
+	--artalk-orange: var(--color-seal);
 
 	/* 映射至 Artalk 原生变量 */
-	--at-color-font: var(--artalk-ink);
-	--at-color-deep: var(--artalk-ink);
-	--at-color-sub: var(--artalk-muted);
-	--at-color-grey: var(--artalk-muted);
-	--at-color-meta: var(--artalk-muted);
-	--at-color-border: var(--artalk-line);
-	--at-color-main: var(--artalk-accent);
-	--at-color-bg: var(--artalk-surface);
-	--at-color-bg-transl: oklch(100% 0 / 0.95);
-	--at-color-bg-grey: var(--artalk-soft);
-	--at-color-bg-light: var(--artalk-petal);
-	--at-color-gradient: linear-gradient(transparent, var(--artalk-surface));
-}
-
-.artalk.atk-dark-mode,
-.atk-layer-wrap.atk-dark-mode {
-	--artalk-ink: oklch(90% 0.02 260);
-	--artalk-muted: oklch(70% 0.03 260);
-	--artalk-surface: oklch(18% 0.02 260);
-	--artalk-soft: oklch(22% 0.025 260);
-	--artalk-petal: oklch(28% 0.04 340 / 0.3);
-	--artalk-lilac: oklch(28% 0.05 300 / 0.3);
-	--artalk-peach: oklch(30% 0.04 50 / 0.3);
-	--artalk-line: oklch(30% 0.03 260);
-	--artalk-line-strong: oklch(45% 0.08 300);
-	--artalk-shadow: oklch(0% 0 0 / 0.4);
-	--artalk-accent-shadow: oklch(from var(--color-primary) l c h / 0.25);
+	--at-color-font: var(--color-text);
+	--at-color-deep: var(--color-text);
+	--at-color-sub: var(--color-text-muted);
+	--at-color-grey: var(--color-text-muted);
+	--at-color-meta: var(--color-text-subtle);
+	--at-color-border: var(--color-frame-hairline);
+	--at-color-main: var(--color-primary);
+	--at-color-bg: var(--color-paper-page);
+	--at-color-bg-transl: oklch(98.8% 0.014 230 / 0.92);
+	--at-color-bg-grey: oklch(from var(--color-primary) l c h / 0.05);
+	--at-color-bg-grey-transl: oklch(from var(--color-primary) l c h / 0.045);
+	--at-color-bg-light: oklch(from var(--color-primary) l c h / 0.08);
+	--at-color-red: var(--color-error);
+	--at-color-pink: var(--color-error);
+	--at-color-yellow: var(--color-seal);
+	--at-color-green: var(--color-success);
+	--at-color-gradient: linear-gradient(transparent, var(--color-paper-page));
 }
 
 .artalk {
 	container-type: inline-size;
-	font-family: var(--font-atkinson, sans-serif) !important;
+	font-family: var(--font-body) !important;
 	font-size: 16px !important;
 	margin-top: 1rem !important;
 }
 
-/* --- 标题栏设计 --- */
+/* 触摸无高光：纸片物件不响应点击发光 */
+.artalk,
+.artalk * {
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* --- 评论区标题：朱砂笔点 + 手写体感 --- */
 .artalk-comments__header {
 	display: flex;
 	align-items: center;
@@ -1552,197 +1538,598 @@ img[atk-emoticon] {
 .artalk-comments__title {
 	font-size: 1.5rem !important;
 	font-weight: 800 !important;
-	color: var(--artalk-ink) !important;
+	color: var(--color-text) !important;
 	display: flex !important;
 	align-items: center !important;
 	gap: 0.75rem !important;
+	letter-spacing: 0.02em;
 }
 
 .artalk-comments__title::before {
 	content: "";
-	width: 1rem;
-	height: 1rem;
-	background: var(--artalk-accent);
-	border-radius: 4px;
-	box-shadow: 
-		0.4rem 0.4rem 0 var(--artalk-peach),
-		-0.2rem -0.2rem 0 var(--artalk-lilac);
-	transform: rotate(15deg);
+	width: 0.55em;
+	height: 0.55em;
+	background: var(--color-seal);
+	border-radius: 45% 60% 50% 55%;
+	transform: rotate(12deg);
+	flex: none;
 }
 
-/* --- 编辑器设计：数字纸张 --- */
+/* --- 编辑器设计：手写留言纸条 --- */
 .artalk .atk-main-editor {
-	border: 1px solid var(--artalk-line) !important;
-	border-radius: 16px !important;
-	background: var(--artalk-surface) !important;
-	padding: 0.75rem 1rem !important; /* 减小上下外边距 */
-	box-shadow: 
-		0 2px 4px var(--artalk-shadow),
-		0 12px 24px -8px var(--artalk-shadow) !important;
-	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-	position: relative !important;
+	background: var(--color-paper-page) !important;
+	border: 1.5px dashed var(--color-dashed-line) !important;
+	border-radius: 24px 16px 26px 14px / 16px 26px 14px 24px !important;
+	padding: 1rem 1.25rem 0.85rem !important;
+	box-shadow:
+		0 6px 18px oklch(from var(--color-shadow-tint) l c h / 0.07),
+		inset 0 1px 1px oklch(100% 0 0 / 0.55) !important;
+	transition: box-shadow 0.3s ease !important;
 }
 
 .artalk .atk-main-editor:focus-within {
-	border-color: var(--artalk-line-strong) !important;
-	box-shadow: 
-		0 4px 8px var(--artalk-shadow),
-		0 20px 40px -12px var(--artalk-shadow),
-		0 0 0 4px var(--artalk-lilac) !important;
-	transform: translateY(-1px) !important;
+	border-color: oklch(from var(--color-primary) l c h / 0.45) !important;
+	box-shadow:
+		0 8px 24px oklch(from var(--color-shadow-tint) l c h / 0.1),
+		inset 0 1px 1px oklch(100% 0 0 / 0.55),
+		0 0 0 3px oklch(from var(--color-primary) l c h / 0.1) !important;
 }
 
+/* 手写表单：三格横线输入 */
 .artalk .atk-main-editor .atk-header {
 	display: grid !important;
 	grid-template-columns: repeat(3, 1fr) !important;
-	gap: 0.65rem !important; /* 适中的间距 */
-	padding: 0 0 0.75rem 0 !important; /* 减小底部间距 */
-	border-bottom: 1px dashed var(--artalk-line) !important;
+	gap: 0.75rem !important;
+	padding: 0 0 0.4rem !important;
+	border-bottom: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
 }
 
 .artalk .atk-main-editor .atk-header input {
-	background: var(--artalk-soft) !important;
-	border: 1px solid transparent !important;
-	border-radius: 8px !important;
-	padding: 0.4rem 0.65rem !important; /* 减小纵向 Padding */
-	font-size: 0.9rem !important;
-	transition: all 0.2s ease !important;
+	background: transparent !important;
+	border: 0 !important;
+	border-bottom: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.45) !important;
+	border-radius: 0 !important;
+	padding: 0.45rem 0.1rem 0.35rem !important;
+	font-size: var(--text-sm) !important;
+	font-family: var(--font-body);
+	color: var(--color-text);
+	transition: border-color 0.2s ease !important;
+}
+
+.artalk .atk-main-editor .atk-header input::placeholder {
+	color: var(--color-text-subtle);
+}
+
+.artalk .atk-main-editor .atk-header input:hover {
+	border-bottom-width: 1.5px !important;
+	border-bottom-style: dashed !important;
+	border-bottom-color: oklch(from var(--color-primary) l c h / 0.3) !important;
 }
 
 .artalk .atk-main-editor .atk-header input:focus {
-	background: var(--artalk-surface) !important;
-	border-color: var(--artalk-accent) !important;
-	box-shadow: 0 0 0 3px var(--artalk-lilac) !important;
+	background: transparent !important;
+	border-bottom-style: solid !important;
+	border-bottom-color: var(--color-primary) !important;
+	box-shadow: none !important;
 }
 
 .artalk .atk-textarea-wrap {
-	padding: 0.5rem 0 !important; /* 减小纵向间距 */
+	padding: 0.75rem 0 0.5rem !important;
 }
 
 .artalk .atk-textarea {
-	min-height: 150px !important; /* 增加最小高度以突出主体 */
+	min-height: 140px !important;
 	line-height: 1.8 !important;
-	font-size: 1rem !important;
+	font-size: var(--text-md) !important;
+	font-family: var(--font-body);
 	background: transparent !important;
+	border: 0 !important;
+	padding: 0.25rem 0.1rem !important;
+}
+
+.artalk .atk-textarea::placeholder {
+	color: var(--color-text-subtle);
+}
+
+.artalk .atk-main-editor > .atk-textarea-wrap > .atk-comment-closed {
+	background: transparent !important;
+	border-top: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
+	color: var(--color-text-subtle) !important;
+	font-size: var(--text-xs) !important;
 }
 
 .artalk .atk-bottom {
-	border-top: 1px solid var(--artalk-line) !important;
-	padding-top: 0.65rem !important; /* 收窄底部高度 */
+	border-top: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
+	padding: 0.6rem 0 0 !important;
 	align-items: center !important;
 }
 
+/* 工具栏：奶白小纸片，轮换微倾 */
+.artalk .atk-plug-btn {
+	width: 2.1rem !important;
+	height: 2.1rem !important;
+	padding: 0 !important;
+	line-height: 1 !important;
+	margin-right: 0.45rem !important;
+	background: var(--color-slip-btn) !important;
+	border: 1px solid var(--color-frame-hairline) !important;
+	border-radius: 10px 6px 12px 7px / 7px 11px 6px 12px !important;
+	box-shadow: 0 2px 6px oklch(from var(--color-shadow-tint) l c h / 0.06);
+	transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1), background 0.2s ease, color 0.2s ease !important;
+}
+
+.artalk .atk-plug-btn:hover {
+	background: oklch(from var(--color-primary) l c h / 0.08) !important;
+	color: var(--color-primary) !important;
+}
+
+.artalk .atk-plug-btn.active {
+	color: var(--color-primary) !important;
+	background: var(--color-tint-active) !important;
+	border-color: oklch(from var(--color-primary) l c h / 0.45) !important;
+}
+
+.artalk .atk-plug-btn.active svg.markdown path {
+	fill: var(--color-primary) !important;
+}
+
+.artalk .atk-state-btn {
+	background: oklch(from var(--color-primary) l c h / 0.06) !important;
+	border: 1px solid var(--color-frame-hairline) !important;
+	border-radius: 12px 7px 13px 8px / 8px 13px 7px 12px !important;
+	font-size: var(--text-xs) !important;
+	color: var(--color-text-muted) !important;
+}
+
+.artalk .atk-state-btn:hover .atk-cancel {
+	background: oklch(from var(--color-primary) l c h / 0.08) !important;
+}
+
+/* 发送：湖青染纸片 + 朱砂印角（提交即盖印） */
 .artalk .atk-send-btn {
-	background: var(--artalk-accent) !important;
-	color: #fff !important;
-	border-radius: 10px !important;
+	position: relative;
+	background: var(--color-tint-active) !important;
+	color: var(--color-active) !important;
+	border: 1px solid oklch(from var(--color-primary) l c h / 0.4) !important;
+	border-radius: 14px 8px 16px 9px / 9px 15px 8px 16px !important;
 	font-weight: 700 !important;
-	padding: 0.5rem 1.25rem !important;
-	height: auto !important;
-	box-shadow: 0 4px 12px var(--artalk-accent-shadow) !important;
-	transition: all 0.2s ease !important;
+	font-size: var(--text-sm) !important;
+	letter-spacing: 0.04em;
+	height: 2.3rem !important;
+	min-width: 7.3em;
+	padding: 0 1.2rem !important;
+	box-shadow:
+		0 3px 8px oklch(from var(--color-shadow-tint) l c h / 0.08),
+		inset 0 1px 1px oklch(100% 0 0 / 0.6) !important;
+	transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1), background 0.2s ease, color 0.2s ease !important;
+}
+
+.artalk .atk-send-btn::after {
+	content: "";
+	position: absolute;
+	right: 0.45rem;
+	top: 0.32rem;
+	width: 5px;
+	height: 5px;
+	background: var(--color-seal);
+	border-radius: 45% 60% 50% 55%;
+	opacity: 0.85;
+	pointer-events: none;
 }
 
 .artalk .atk-send-btn:hover {
-	background: var(--artalk-accent-strong) !important;
-	color: #fff !important;
-	transform: translateY(-1px) !important;
-	box-shadow: 0 6px 16px var(--artalk-accent-shadow) !important;
+	background: oklch(from var(--color-primary) l c h / 0.16) !important;
+	box-shadow:
+		0 5px 12px oklch(from var(--color-shadow-tint) l c h / 0.12),
+		inset 0 1px 1px oklch(100% 0 0 / 0.6) !important;
 }
 
 .artalk .atk-send-btn:focus-visible,
 .artalk .atk-send-btn:active {
-	background: var(--artalk-accent-strong) !important;
-	color: #fff !important;
+	background: oklch(from var(--color-primary) l c h / 0.2) !important;
+	color: var(--color-active) !important;
 	opacity: 1 !important;
 }
 
-.artalk .atk-plug-btn {
-	width: 2.25rem !important;
-	height: 2.25rem !important;
+.artalk .atk-send-btn:disabled {
+	opacity: 0.6 !important;
 }
 
-/* --- 评论列表设计 --- */
+.artalk .atk-main-editor > .atk-notify-wrap {
+	opacity: 1;
+}
+
+/* --- 评论列表设计：纸页上的手贴纸片 --- */
 .artalk .atk-list-header {
-	margin: 2rem 0 1rem 0 !important;
-	border-bottom: 1px solid var(--artalk-line) !important;
+	margin: 2.5rem 0 1.2rem !important;
+	padding: 0 0 0.75rem !important;
+	border-bottom: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
+}
+
+.artalk .atk-list-header .atk-text {
+	color: var(--color-seal) !important;
+	font-weight: 700;
+	font-size: var(--text-md) !important;
+	letter-spacing: 0.04em;
 }
 
 .artalk .atk-comment-count {
-	font-size: 1.1rem !important;
+	display: inline-flex !important;
+	align-items: baseline !important;
+	gap: 0.4rem !important;
+	font-size: var(--text-md) !important;
 	font-weight: 700 !important;
+	color: var(--color-text) !important;
 }
 
 .artalk .atk-comment-count-num {
-	color: var(--artalk-accent) !important;
-	font-size: 1.5rem !important;
+	color: var(--color-primary) !important;
+	font-size: 1.35em !important;
+	font-weight: 800 !important;
+	font-family: var(--font-mono);
 }
 
+/* 排序与操作：墨迹小字 + 纸色便签 */
+.artalk .atk-dropdown-wrap {
+	font-size: var(--text-sm) !important;
+	color: var(--color-text-muted) !important;
+}
+
+.artalk .atk-dropdown-wrap .atk-arrow-down-icon {
+	border-top-color: var(--color-text-subtle) !important;
+}
+
+.artalk .atk-dropdown-wrap .atk-dropdown {
+	background: var(--color-slip-btn) !important;
+	border: 1.5px dashed var(--color-dashed-line) !important;
+	border-radius: 14px 8px 16px 9px / 9px 15px 8px 16px !important;
+	box-shadow:
+		0 6px 18px oklch(from var(--color-shadow-tint) l c h / 0.1),
+		inset 0 1px 1px oklch(100% 0 0 / 0.55);
+	padding: 0.5rem 0 !important;
+	margin-top: 6px !important;
+	width: max-content !important;
+	min-width: 100%;
+	text-align: left !important;
+}
+
+.artalk .atk-dropdown-item span,
+.artalk .atk-dropdown-item a {
+	color: var(--color-text-muted) !important;
+	font-size: var(--text-sm) !important;
+	line-height: 2.2rem !important;
+	padding: 0 1.2rem !important;
+	transition: color 0.2s ease, background 0.2s ease;
+}
+
+.artalk .atk-dropdown-item span:hover,
+.artalk .atk-dropdown-item a:hover {
+	color: var(--color-primary) !important;
+	background: oklch(from var(--color-primary) l c h / 0.05);
+}
+
+.artalk .atk-dropdown-item.active span {
+	color: var(--color-primary) !important;
+	font-weight: 700;
+}
+
+.artalk .atk-right-action > span {
+	font-size: var(--text-xs) !important;
+	font-weight: 600;
+	color: var(--color-text-muted) !important;
+	transition: color 0.2s ease;
+}
+
+.artalk .atk-right-action > span:hover {
+	color: var(--color-seal) !important;
+}
+
+.artalk .atk-right-action > span.atk-on,
+.artalk .atk-right-action > span.atk-on * {
+	color: var(--color-primary) !important;
+}
+
+.artalk .atk-right-action > span .atk-unread-badge {
+	background: var(--color-seal) !important;
+	color: var(--color-white) !important;
+	border-radius: 45% 60% 50% 55% !important;
+	font-size: var(--text-2xs) !important;
+}
+
+/* 评论纸片：错落微倾，hover 回正上浮 */
 .artalk .atk-comment-wrap {
-	margin-bottom: 10px !important;
-	animation: artalk-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-@keyframes artalk-in {
-	from { opacity: 0; transform: translateY(10px); }
-	to { opacity: 1; transform: translateY(0); }
+	margin-bottom: 0.85rem !important;
+	animation: artalk-in 0.5s cubic-bezier(0.33, 1, 0.68, 1) both;
 }
 
 .artalk .atk-comment {
-	background: var(--artalk-surface) !important;
-	border: 1px solid var(--artalk-line) !important;
-	border-radius: 12px !important;
-	padding: 1.25rem !important;
-	transition: all 0.2s ease !important;
+	background: var(--color-paper-page) !important;
+	border: 1px solid var(--color-frame-hairline) !important;
+	border-radius: 16px 26px 14px 24px / 22px 14px 26px 16px !important;
+	padding: 1rem 1.1rem 0.8rem !important;
+	box-shadow:
+		0 3px 8px oklch(from var(--color-shadow-tint) l c h / 0.06),
+		inset 0 1px 1px oklch(100% 0 0 / 0.55) !important;
+	transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.3s ease, background 0.2s ease !important;
 }
 
-.artalk .atk-comment:hover {
-	border-color: var(--artalk-line-strong) !important;
-	box-shadow: 0 8px 20px -8px var(--artalk-shadow) !important;
+/* 头像：拍立得小相框，椭圆歪角 */
+.artalk .atk-comment > .atk-avatar {
+	float: left;
+	margin: 0.15rem 0.75rem 0 0 !important;
+	padding: 0.3rem 0.3rem 0.45rem !important;
+	background: var(--color-frame-milk) !important;
+	border: 1px solid var(--color-frame-hairline) !important;
+	border-radius: 38% 55% 42% 58% / 52% 40% 58% 45% !important;
+	box-shadow: 0 8px 16px oklch(from var(--color-shadow-tint) l c h / 0.1) !important;
+	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.artalk .atk-avatar img {
+.artalk .atk-comment > .atk-avatar img {
+	display: block;
+	width: 44px !important;
+	height: 44px !important;
 	border: 0 !important;
 	border-radius: 50% !important;
-	box-shadow: 0 12px 40px -12px oklch(from var(--color-shadow) l c h / 0.12) !important;
 	object-fit: cover !important;
 	transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1) !important;
 }
 
-.artalk .atk-avatar img:hover {
-	transform: scale(1.08) rotate(5deg) !important;
+.artalk .atk-comment > .atk-main {
+	margin-left: 4.3rem !important;
 }
 
-.artalk .atk-nick {
+/* meta 区：墨色昵称 + 退墨时间 + 朱砂徽标 */
+.artalk .atk-comment > .atk-main > .atk-header .atk-item {
+	font-size: var(--text-xs) !important;
+	color: var(--color-text-subtle) !important;
+}
+
+.artalk .atk-comment > .atk-main > .atk-header .atk-item.atk-nick,
+.artalk .atk-comment > .atk-main > .atk-header .atk-item.atk-nick a {
+	font-size: var(--text-sm) !important;
 	font-weight: 700 !important;
-	font-size: 1rem !important;
+	color: var(--color-text) !important;
+	text-decoration: none;
 }
 
-.artalk .atk-badge {
-	background: var(--artalk-peach) !important;
-	color: var(--artalk-ink) !important;
-	font-size: 0.75rem !important;
-	padding: 2px 8px !important;
+.artalk .atk-comment > .atk-main > .atk-header .atk-item.atk-nick a:hover {
+	color: var(--color-primary) !important;
 }
 
+.artalk .atk-comment > .atk-main > .atk-header .atk-badge {
+	background: var(--color-seal) !important;
+	color: var(--color-white) !important;
+	font-size: var(--text-2xs) !important;
+	font-weight: 600 !important;
+	padding: 0 7px !important;
+	line-height: 17px !important;
+	border-radius: 45% 60% 50% 55% / 55% 45% 60% 50% !important;
+}
+
+.artalk .atk-comment > .atk-main > .atk-header .atk-pinned-badge {
+	background: var(--color-seal) !important;
+	color: var(--color-white) !important;
+	font-size: var(--text-2xs) !important;
+	padding: 0 7px !important;
+	line-height: 17px !important;
+	border-radius: 45% 60% 50% 55% / 55% 45% 60% 50% !important;
+}
+
+.artalk .atk-comment > .atk-main > .atk-header .atk-ua {
+	background: oklch(from var(--color-primary) l c h / 0.06) !important;
+	color: var(--color-text-subtle) !important;
+	font-size: var(--text-2xs) !important;
+	line-height: 17px !important;
+	padding: 0 6px !important;
+	border-radius: 45% 60% 50% 55% !important;
+}
+
+.artalk .atk-comment > .atk-main > .atk-header .atk-verified-icon {
+	filter: hue-rotate(20deg) saturate(0.85);
+}
+
+/* 内容：与正文同排版的墨迹 */
 .artalk .atk-content {
 	line-height: 1.75 !important;
+	font-size: var(--text-md) !important;
+	color: var(--color-text) !important;
 	margin-top: 0.5rem !important;
 }
 
+.artalk .atk-content a {
+	color: var(--color-link);
+}
+
+.artalk .atk-content a:hover {
+	color: var(--color-link-hover);
+}
+
+/* 评论头部回复指示：@昵称朱砂批注 */
+.artalk .atk-comment > .atk-main > .atk-header .atk-item.atk-reply-at > .atk-nick {
+	color: var(--color-seal) !important;
+	font-weight: 700 !important;
+}
+
+.artalk .atk-comment > .atk-main > .atk-header .atk-item.atk-reply-at > .atk-arrow:before {
+	border-bottom-color: oklch(from var(--color-seal) l c h / 0.6) !important;
+}
+
+.artalk .atk-content blockquote {
+	position: relative;
+	margin: 0.75rem 0 !important;
+	padding: 0.6rem 0.95rem 0.7rem 1.15rem !important;
+	background: oklch(from var(--color-primary) l c h / 0.035) !important;
+	border: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
+	border-radius: 12px 7px 14px 8px / 8px 13px 7px 14px !important;
+	color: var(--color-text-muted) !important;
+}
+
+.artalk .atk-content blockquote::before {
+	content: "";
+	position: absolute;
+	left: 0.6rem;
+	top: 0.7rem;
+	width: 0.4rem;
+	height: 0.4rem;
+	background: var(--color-seal);
+	border-radius: 45% 60% 50% 55%;
+	transform: rotate(-10deg);
+}
+
+.artalk .atk-content :not(pre) > code {
+	padding: 0.12em 0.4em;
+	background: oklch(from var(--color-primary) l c h / 0.07);
+	border: 1px solid oklch(from var(--color-primary) l c h / 0.16);
+	border-radius: 4px 2px 5px 3px / 3px 5px 2px 4px;
+	color: var(--color-text);
+	font-family: var(--font-code);
+	font-size: 0.88em;
+	font-weight: 500;
+}
+
+.artalk .atk-content pre {
+	margin: 0.75rem 0 !important;
+	padding: 0.9rem 1rem !important;
+	background: oklch(from var(--color-primary) l c h / 0.04) !important;
+	border: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.45) !important;
+	border-radius: 14px 8px 16px 9px / 9px 15px 8px 16px !important;
+	overflow-x: auto;
+}
+
+.artalk .atk-content pre code {
+	background: transparent !important;
+	border: 0 !important;
+	padding: 0 !important;
+	font-family: var(--font-code);
+	font-size: var(--text-sm);
+	line-height: 1.7;
+}
+
+/* 回复引用 */
+.artalk .atk-reply-to {
+	position: relative;
+	margin: 0.75rem 0 0.4rem !important;
+	padding: 0.55rem 0.9rem 0.6rem 1.1rem !important;
+	background: oklch(from var(--color-primary) l c h / 0.03) !important;
+	border: 0 !important;
+	border-left: 2px dashed oklch(from var(--color-pen-line) l c h / 0.6) !important;
+	border-radius: 10px 6px 12px 7px / 7px 11px 6px 12px !important;
+}
+
+.artalk .atk-reply-to .atk-meta {
+	font-size: var(--text-xs) !important;
+	color: var(--color-text-subtle) !important;
+}
+
+.artalk .atk-reply-to .atk-meta .atk-nick {
+	color: var(--color-seal) !important;
+	font-weight: 700 !important;
+}
+
+.artalk .atk-reply-to .atk-content {
+	margin-top: 0.2rem !important;
+	font-size: var(--text-sm) !important;
+	color: var(--color-text-muted) !important;
+}
+
+/* 待审核 / 折叠 */
+.artalk .atk-pending {
+	margin: 0.6rem 0 !important;
+	padding: 0.5rem 0.9rem !important;
+	background: var(--color-warning-surface) !important;
+	border: 0 !important;
+	border-left: 2px dashed oklch(from var(--color-seal) l c h / 0.4) !important;
+	border-radius: 10px 6px 12px 7px / 7px 11px 6px 12px !important;
+	color: var(--color-warning-deep) !important;
+	font-size: var(--text-xs) !important;
+}
+
+.artalk .atk-collapsed {
+	margin: 0.6rem 0 !important;
+	padding: 0.5rem 0.9rem !important;
+	background: oklch(from var(--color-primary) l c h / 0.05) !important;
+	border-radius: 10px 6px 12px 7px / 7px 11px 6px 12px !important;
+	font-size: var(--text-xs) !important;
+}
+
+/* 长评论展开 */
+.artalk .atk-height-limit-btn {
+	border: 1.5px dashed var(--color-dashed-line) !important;
+	border-radius: 12px 7px 13px 8px / 8px 13px 7px 12px !important;
+	background: var(--color-slip-btn) !important;
+	color: var(--color-text-muted) !important;
+	font-size: var(--text-xs) !important;
+	font-weight: 600;
+	padding: 0.15rem 1.1rem !important;
+	box-shadow: 0 2px 6px oklch(from var(--color-shadow-tint) l c h / 0.06);
+	transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1), background 0.2s ease, color 0.2s ease !important;
+}
+
+.artalk .atk-height-limit-btn:hover {
+	background: oklch(from var(--color-primary) l c h / 0.08) !important;
+	color: var(--color-primary) !important;
+}
+
+/* 子评论：虚线裁切缩进 */
 .artalk .atk-comment-children {
-	margin-top: 1rem !important;
-	border-left: 2px solid var(--artalk-line) !important;
-	padding-left: 1.5rem !important;
+	margin: 0.85rem 0 0 0.6rem !important;
+	padding-left: 1.1rem !important;
+	border-left: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
 }
 
 .artalk .atk-comment-children .atk-comment {
-	background: var(--artalk-soft) !important;
-	border: none !important;
-	padding: 1rem !important;
+	background: var(--color-paper-page) !important;
+	border-color: oklch(from var(--color-pen-line) l c h / 0.4) !important;
+	padding: 0.85rem 0.95rem 0.7rem !important;
 }
 
-/* --- 骨架屏设计 --- */
+.artalk .atk-comment-children .atk-comment > .atk-avatar {
+	margin-right: 0.6rem !important;
+	padding: 0.25rem 0.25rem 0.38rem !important;
+}
+
+.artalk .atk-comment-children .atk-comment > .atk-avatar img {
+	width: 34px !important;
+	height: 34px !important;
+}
+
+.artalk .atk-comment-children .atk-comment > .atk-main {
+	margin-left: 3.6rem !important;
+}
+
+/* 操作：墨迹小字 */
+.artalk .atk-actions > span {
+	font-size: var(--text-xs) !important;
+	font-weight: 600;
+	color: var(--color-text-subtle) !important;
+	transition: color 0.2s ease;
+}
+
+.artalk .atk-actions > span:hover {
+	color: var(--color-primary) !important;
+}
+
+.artalk .atk-actions > span.atk-error,
+.artalk .atk-actions > span.atk-error:hover {
+	color: var(--color-error) !important;
+}
+
+/* 未读新评论：左侧朱砂墨迹 */
+.artalk .atk-comment-wrap.atk-unread:before {
+	background: var(--color-seal) !important;
+	width: 3px !important;
+	left: -1px !important;
+	border-radius: 45% 60% 50% 55%;
+}
+
+/* 新评论闪现 */
+@keyframes atkFlashOnce {
+	0% { background: oklch(from var(--color-primary) l c h / 0.12); }
+	to { background: transparent; }
+}
+
+/* --- 骨架屏设计：纸片轮廓 + 墨迹呼吸 --- */
 .artalk-loading {
 	gap: 1.5rem !important;
 }
@@ -1750,82 +2137,377 @@ img[atk-emoticon] {
 .artalk-skeleton-editor,
 .artalk-skeleton-comment,
 .artalk-skeleton-list-header {
-	background: var(--artalk-soft) !important;
-	border: 1px solid var(--artalk-line) !important;
-	border-radius: 12px !important;
+	background: var(--color-paper-page) !important;
+	border: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.4) !important;
 	position: relative;
-	overflow: hidden;
+	animation: artalk-skeleton-breathe 1.8s ease-in-out infinite;
 }
 
-.artalk-skeleton-editor { height: 180px !important; }
-.artalk-skeleton-list-header { height: 40px !important; border: none !important; width: 30% !important; }
-.artalk-skeleton-comment { height: 120px !important; }
+.artalk-skeleton-editor {
+	height: 180px !important;
+	border-radius: 24px 16px 26px 14px / 16px 26px 14px 24px !important;
+}
 
-.artalk-skeleton-editor::after,
-.artalk-skeleton-comment::after,
-.artalk-skeleton-list-header::after {
+.artalk-skeleton-list-header {
+	height: 40px !important;
+	width: 30% !important;
+	border-radius: 12px 7px 13px 8px / 8px 13px 7px 12px !important;
+}
+
+.artalk-skeleton-comment {
+	height: 96px !important;
+	border-radius: 16px 26px 14px 24px / 22px 14px 26px 16px !important;
+}
+
+@keyframes artalk-skeleton-breathe {
+	0%, 100% { opacity: 0.55; }
+	50% { opacity: 1; }
+}
+
+/* --- 分页：纸条导航 --- */
+.artalk .atk-pagination {
+	padding: 1.4rem 0 0.5rem !important;
+}
+
+.artalk .atk-pagination > .atk-btn {
+	background: var(--color-slip-btn) !important;
+	border: 1px solid var(--color-frame-hairline) !important;
+	border-radius: 12px 7px 13px 8px / 8px 13px 7px 12px !important;
+	height: 2rem !important;
+	width: auto !important;
+	min-width: 3.6rem;
+	padding: 0 0.8rem !important;
+	font-size: var(--text-xs) !important;
+	font-weight: 600;
+	color: var(--color-text-muted) !important;
+	box-shadow: 0 2px 6px oklch(from var(--color-shadow-tint) l c h / 0.05);
+	transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1), color 0.2s ease, background 0.2s ease !important;
+}
+
+.artalk .atk-pagination > .atk-btn:hover {
+	background: oklch(from var(--color-primary) l c h / 0.08) !important;
+	color: var(--color-primary) !important;
+}
+
+.artalk .atk-pagination > .atk-btn.atk-disabled,
+.artalk .atk-pagination > .atk-btn.atk-disabled:hover {
+	background: var(--color-slip-btn) !important;
+	color: var(--color-text-subtle) !important;
+	opacity: 0.45 !important;
+	cursor: default !important;
+}
+
+.artalk .atk-pagination > .atk-input {
+	background: transparent !important;
+	border: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
+	border-radius: 12px 7px 13px 8px / 8px 13px 7px 12px !important;
+	height: 2rem !important;
+	width: 3.6rem !important;
+	font-family: var(--font-mono) !important;
+	font-size: var(--text-sm) !important;
+	color: var(--color-text) !important;
+}
+
+.artalk .atk-pagination > .atk-input:focus {
+	border-style: solid !important;
+	border-color: var(--color-primary) !important;
+}
+
+/* --- 加载更多：待补空位纸条 --- */
+.artalk .atk-list-read-more {
+	border-top: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
+	margin-top: 1.75rem !important;
+	padding-bottom: 1.6rem !important;
+}
+
+.artalk .atk-list-read-more .atk-list-read-more-inner {
+	background: var(--color-slip-btn) !important;
+	border: 1.5px dashed var(--color-dashed-line) !important;
+	border-radius: 22px 10px 26px 12px / 12px 24px 10px 26px !important;
+	width: 8.5rem !important;
+	height: 2.4rem !important;
+	margin-top: -1.25rem !important;
+	padding: 0 0.6rem !important;
+	box-shadow:
+		0 4px 10px oklch(from var(--color-shadow-tint) l c h / 0.07),
+		inset 0 1px 1px oklch(100% 0 0 / 0.55);
+	transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1), background 0.2s ease !important;
+}
+
+.artalk .atk-list-read-more .atk-list-read-more-inner:hover {
+	background: oklch(from var(--color-primary) l c h / 0.06) !important;
+}
+
+.artalk .atk-list-read-more .atk-text {
+	color: var(--color-text-muted) !important;
+	font-size: var(--text-xs) !important;
+	font-weight: 600;
+}
+
+/* --- 无评论：留白待写 --- */
+.artalk .atk-list-no-comment {
+	height: 9rem !important;
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	font-size: var(--text-sm) !important;
+	color: var(--color-text-subtle) !important;
+	border: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
+	border-radius: 16px 26px 14px 24px / 22px 14px 26px 16px !important;
+}
+
+/* --- 版权 --- */
+.artalk .atk-copyright {
+	font-size: var(--text-2xs) !important;
+	color: var(--color-text-subtle) !important;
+	opacity: 0.85;
+	padding-right: 0 !important;
+}
+
+.artalk .atk-copyright a {
+	color: var(--color-seal) !important;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.artalk .atk-copyright a:hover {
+	color: color-mix(in oklch, var(--color-seal) 78%, var(--color-text)) !important;
+}
+
+/* --- 加载状态 --- */
+.artalk .atk-loading {
+	background: transparent !important;
+}
+
+.atk-loading-spinner svg circle {
+	stroke: var(--color-primary) !important;
+}
+
+@keyframes atkColor {
+	0%, 100% { stroke: var(--color-primary); }
+	50% { stroke: var(--color-active); }
+}
+
+.artalk .atk-error-layer {
+	background: var(--color-paper-page) !important;
+}
+
+/* --- 弹层：纸卡 + 遮罩幕布 --- */
+.atk-layer-wrap .atk-layer-mask {
+	background: oklch(22% 0.03 230 / 0.12) !important;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+.atk-sidebar-layer {
+	background: var(--color-paper-page) !important;
+	border-left: 1.5px dashed var(--color-dashed-line) !important;
+	box-shadow: -8px 0 24px oklch(from var(--color-shadow-tint) l c h / 0.1);
+}
+
+.atk-sidebar-layer .atk-sidebar-header .atk-sidebar-close {
+	color: var(--color-text-muted);
+	transition: color 0.2s ease;
+}
+
+.atk-sidebar-layer .atk-sidebar-header .atk-sidebar-close:hover {
+	color: var(--color-seal);
+}
+
+.atk-sidebar-layer .atk-sidebar-header .atk-sidebar-close:hover:after {
+	background-color: var(--color-seal) !important;
+}
+
+.atk-layer-dialog-wrap > .atk-layer-dialog .atk-checker-iframe-wrap .atk-close-btn:hover .atk-icon-close:after {
+	background-color: var(--color-seal) !important;
+}
+
+.atk-sidebar-layer .atk-sidebar-iframe-wrap .atk-err-alert {
+	background: var(--color-paper-page) !important;
+	border: 1.5px dashed var(--color-dashed-line) !important;
+	border-radius: 20px 12px 24px 14px / 14px 22px 12px 24px !important;
+}
+
+/* --- 对话框：纸卡确认 --- */
+.atk-layer-dialog-wrap {
+	background: oklch(22% 0.03 230 / 0.12) !important;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+.atk-layer-dialog-wrap > .atk-layer-dialog {
+	width: min(26rem, 90%) !important;
+	background: var(--color-paper-page) !important;
+	border: 1.5px dashed var(--color-dashed-line) !important;
+	border-radius: 20px 12px 24px 14px / 14px 22px 12px 24px !important;
+	padding: 1.4rem 1.5rem !important;
+	box-shadow:
+		0 12px 32px oklch(from var(--color-shadow-tint) l c h / 0.14),
+		inset 0 1px 1px oklch(100% 0 0 / 0.55) !important;
+}
+
+.atk-layer-dialog-wrap > .atk-layer-dialog > .atk-layer-dialog-content input {
+	background: var(--color-white) !important;
+	border: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.55) !important;
+	border-radius: 12px 7px 13px 8px / 8px 13px 7px 12px !important;
+	color: var(--color-text) !important;
+	font-size: var(--text-sm) !important;
+	font-family: var(--font-body);
+}
+
+.atk-layer-dialog-wrap > .atk-layer-dialog > .atk-layer-dialog-actions button {
+	border: 1px solid var(--color-primary) !important;
+	background: transparent !important;
+	color: var(--color-primary) !important;
+	border-radius: 12px 7px 13px 8px / 8px 13px 7px 12px !important;
+	font-size: var(--text-sm) !important;
+	font-weight: 600;
+	line-height: 2.2rem !important;
+	padding: 0 1rem !important;
+	transition: background 0.2s ease, color 0.2s ease !important;
+}
+
+.atk-layer-dialog-wrap > .atk-layer-dialog > .atk-layer-dialog-actions button:hover {
+	background: oklch(from var(--color-primary) l c h / 0.1) !important;
+}
+
+.atk-layer-dialog-wrap > .atk-layer-dialog > .atk-layer-dialog-actions button:active {
+	background: var(--color-primary) !important;
+	color: var(--color-white) !important;
+}
+
+.atk-layer-dialog-wrap > .atk-layer-dialog > .atk-layer-dialog-actions button.error {
+	background: var(--color-error) !important;
+	border-color: var(--color-error) !important;
+	color: var(--color-white) !important;
+}
+
+/* --- 通知：纸色便利贴 + 朱砂笔点 --- */
+.artalk .atk-notify {
+	position: relative;
+	background: var(--color-slip-btn) !important;
+	color: var(--color-text) !important;
+	border: 1.5px dashed var(--color-dashed-line) !important;
+	border-radius: 14px 8px 16px 9px / 9px 15px 8px 16px !important;
+	font-size: var(--text-xs) !important;
+	padding: 0.55rem 0.9rem 0.55rem 1.4rem !important;
+	box-shadow: 0 4px 10px oklch(from var(--color-shadow-tint) l c h / 0.08);
+}
+
+.artalk .atk-notify::before {
 	content: "";
 	position: absolute;
-	top: 0; right: 0; bottom: 0; left: 0;
-	background: linear-gradient(90deg, transparent, oklch(100% 0 0 / 0.4), transparent);
-	transform: translateX(-100%);
-	animation: shimmer 1.5s infinite;
+	left: 0.7rem;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 5px;
+	height: 5px;
+	background: var(--color-seal);
+	border-radius: 45% 60% 50% 55%;
 }
 
-@keyframes shimmer {
-	100% { transform: translateX(100%); }
+.artalk .atk-notify .atk-notify-content {
+	color: var(--color-text) !important;
+}
+
+/* --- 表情面板与预览：纸色便签 --- */
+.artalk .atk-editor-plug-emoticons > .atk-grp-wrap > .atk-grp > .atk-item:hover {
+	background: oklch(from var(--color-primary) l c h / 0.08) !important;
+	border-radius: 45% 60% 50% 55% !important;
+}
+
+.artalk .atk-editor-plug-emoticons > .atk-grp-switcher {
+	background: var(--color-paper-page) !important;
+	border-top: 1.5px dashed oklch(from var(--color-pen-line) l c h / 0.5) !important;
+	border-bottom: 0 !important;
+}
+
+.artalk .atk-editor-plug-emoticons > .atk-grp-switcher > span {
+	font-size: var(--text-xs) !important;
+	color: var(--color-text-muted) !important;
+}
+
+.artalk .atk-editor-plug-emoticons > .atk-grp-switcher > span.active {
+	color: var(--color-seal) !important;
+	background: transparent !important;
+	font-weight: 700;
+}
+
+.artalk .atk-editor-plug-preview {
+	background: var(--color-paper-page) !important;
+	border-radius: 14px 8px 16px 9px / 9px 15px 8px 16px !important;
+	padding: 0.75rem 1rem !important;
+	line-height: 1.75 !important;
+	font-size: var(--text-md) !important;
+	color: var(--color-text);
+}
+
+/* --- 控制中心动作按钮 --- */
+.atk-common-action-btn.atk-btn-confirm,
+.atk-common-action-btn.atk-btn-warn {
+	color: var(--color-seal) !important;
+}
+
+/* --- 细滚动条：湖青墨迹 --- */
+.atk-slim-scrollbar::-webkit-scrollbar-thumb,
+.atk-editor-plug-emoticons > .atk-grp-wrap::-webkit-scrollbar-thumb {
+	background: var(--color-scrollbar-handle) !important;
+}
+
+.atk-slim-scrollbar::-webkit-scrollbar-thumb:vertical:hover,
+.atk-editor-plug-emoticons > .atk-grp-wrap::-webkit-scrollbar-thumb:vertical:hover {
+	background: var(--color-scrollbar-handle-hover) !important;
+}
+
+.atk-slim-scrollbar::-webkit-scrollbar-thumb:vertical:active,
+.atk-editor-plug-emoticons > .atk-grp-wrap::-webkit-scrollbar-thumb:vertical:active {
+	background: var(--color-scrollbar-handle-active) !important;
+}
+
+/* --- 评论容器：正文纸页的延续 --- */
+.artalk-comments {
+	width: min(var(--artalk-max-width, var(--post-column-width, 100%)), 100%) !important;
+	max-width: none !important;
+	margin: 0 auto !important;
+	padding-top: 0 !important;
+	position: relative !important;
 }
 
 /* --- 响应式优化 --- */
 @container (max-width: 768px) {
 	.artalk .atk-main-editor .atk-header {
 		grid-template-columns: 1fr !important;
+		gap: 0.15rem !important;
 	}
-	
+
 	.artalk .atk-comment-children {
-		padding-left: 1rem !important;
+		margin-left: 0.25rem !important;
+		padding-left: 0.8rem !important;
 	}
-	
+
 	.artalk .atk-comment {
-		padding: 1rem !important;
+		padding: 0.9rem 0.85rem 0.7rem !important;
+	}
+
+	.artalk .atk-comment > .atk-main {
+		margin-left: 4rem !important;
+	}
+
+	.artalk .atk-comment-children .atk-comment > .atk-main {
+		margin-left: 3.4rem !important;
 	}
 }
 
-/* --- 评论容器与分割线 --- */
-.artalk-comments {
-	width: 100%;
-	max-width: var(--artalk-max-width, 1000px) !important;
-	margin: clamp(4rem, 10vw, 7rem) auto 0 !important;
-	padding-top: clamp(2.5rem, 6vw, 3.5rem) !important;
-	position: relative !important;
-}
-
-.artalk-comments::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 1px;
-	background: linear-gradient(
-		to right,
-		transparent,
-		var(--artalk-line) 20%,
-		var(--artalk-line) 80%,
-		transparent
-	);
-}
-
-.artalk-comments::after {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 12px;
-	height: 12px;
-	background: var(--artalk-accent);
-	border: 3.5px solid var(--artalk-surface);
-	border-radius: 50%;
-	box-shadow: 0 0 14px var(--artalk-accent-shadow);
+@media (prefers-reduced-motion: reduce) {
+	.artalk .atk-main-editor,
+	.artalk .atk-comment,
+	.artalk .atk-avatar,
+	.artalk .atk-send-btn,
+	.artalk .atk-plug-btn,
+	.artalk .atk-pagination > .atk-btn,
+	.artalk .atk-list-read-more .atk-list-read-more-inner,
+	.artalk .atk-notify,
+	.artalk .atk-height-limit-btn {
+		transition: none !important;
+	}
 }
