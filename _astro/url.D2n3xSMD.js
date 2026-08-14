@@ -1,0 +1,1 @@
+const c=t=>{try{return decodeURI(t)}catch{return t}},a=t=>{const e=c(t);return!e||e==="/"?"/":e.replace(/\/+$/,"")||"/"},o=(t,e)=>{const r=a(t),n=a(e);return n==="/"?r==="/":r===n||r.startsWith(`${n}/`)};export{o as i,a as n};
